@@ -43,7 +43,7 @@ const ContactSection = () => {
             <div className="space-y-6">
               {[
                 { icon: MapPin, label: "Address", value: "Bahir Dar, Ethiopia\nLake Tana Waterfront" },
-                { icon: Phone, label: "Phone", value: "[PHONE NUMBER]" },
+                { icon: Phone, label: "Phone", value: "0998900160" },
                 { icon: Mail, label: "Email", value: "reservations@hotelname.com" },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-4">
@@ -59,7 +59,7 @@ const ContactSection = () => {
             </div>
 
             <a
-              href="https://wa.me/251000000000"
+              href="https://wa.me/251998900160"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 border border-primary/40 text-primary px-6 py-3 text-sm tracking-[0.15em] uppercase font-body hover:bg-primary/10 transition-all"
@@ -70,7 +70,7 @@ const ContactSection = () => {
 
             <div className="aspect-video overflow-hidden border border-border">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31106.42095!2d37.37!3d11.59!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164326f097a5adff%3A0x75e9a69f2b8a87db!2sBahir%20Dar%2C%20Ethiopia!5e0!3m2!1sen!2s!4v1"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.802!2d37.3932!3d11.5742!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164326c98b3a1b3d%3A0x4a3e5f1c9b8d2e7a!2sBahir%20Dar!5e0!3m2!1sen!2set!4v1"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

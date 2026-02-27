@@ -156,7 +156,7 @@ const BookingSection = () => {
               Request Booking
             </button>
             <a
-              href="https://wa.me/251000000000"
+              href="https://wa.me/251998900160"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-3 border border-primary/40 text-primary px-8 py-4 text-sm tracking-[0.15em] uppercase font-body hover:bg-primary/10 transition-all"

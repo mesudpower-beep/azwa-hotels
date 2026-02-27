@@ -48,14 +48,14 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3 text-sm text-muted-foreground font-body">
                 <Phone className="w-4 h-4 text-primary shrink-0" />
-                [PHONE NUMBER]
+                0998900160
               </div>
               <div className="flex items-center gap-3 text-sm text-muted-foreground font-body">
                 <Mail className="w-4 h-4 text-primary shrink-0" />
                 reservations@hotelname.com
               </div>
               <a
-                href="https://wa.me/251000000000"
+                href="https://wa.me/251998900160"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm text-primary hover:text-gold-light transition-colors font-body"
