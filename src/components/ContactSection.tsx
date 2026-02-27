@@ -70,14 +70,14 @@ const ContactSection = () => {
 
             <div className="aspect-video overflow-hidden border border-border">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.802!2d37.3932!3d11.5742!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164326c98b3a1b3d%3A0x4a3e5f1c9b8d2e7a!2sBahir%20Dar!5e0!3m2!1sen!2set!4v1"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Azwa+Hotel,Bahir+Dar,Ethiopia&zoom=16"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Hotel location on Google Maps"
+                title="Azwa Hotel location on Google Maps"
               />
             </div>
           </motion.div>
