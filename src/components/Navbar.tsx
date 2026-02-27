@@ -34,11 +34,11 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20 lg:h-24">
           <a href="#home" className="flex flex-col items-center">
-            <span className="font-display text-xl lg:text-2xl font-bold gold-text tracking-wider">
+            <span className="font-display text-2xl lg:text-3xl font-bold gold-text tracking-widest drop-shadow-[0_0_15px_hsl(43_72%_55%/0.3)]">
               HOTEL NAME
             </span>
-            <span className="text-[10px] tracking-[0.3em] text-muted-foreground font-body uppercase">
-              Bahir Dar
+            <span className="text-[9px] tracking-[0.35em] text-primary/60 font-body uppercase mt-0.5">
+              ★ Bahir Dar ★
             </span>
           </a>
 

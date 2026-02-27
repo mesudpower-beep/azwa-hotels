@@ -20,17 +20,45 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          <p className="section-subtitle mb-4 text-sm md:text-base">Welcome to</p>
+          <p className="section-subtitle mb-6 text-sm md:text-base">Welcome to</p>
         </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-6 gold-text leading-tight"
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, delay: 0.5 }}
+          className="relative mb-8"
         >
-          HOTEL NAME
-        </motion.h1>
+          {/* Top ornamental line */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.8, delay: 1 }}
+            className="flex items-center justify-center gap-4 mb-6"
+          >
+            <div className="h-px w-16 md:w-24 bg-gradient-to-r from-transparent to-primary/70" />
+            <div className="w-2 h-2 rotate-45 border border-primary/60" />
+            <div className="h-px w-16 md:w-24 bg-gradient-to-l from-transparent to-primary/70" />
+          </motion.div>
+
+          <h1 className="font-display text-6xl md:text-8xl lg:text-9xl font-bold gold-text leading-none tracking-wider drop-shadow-[0_0_40px_hsl(43_72%_55%/0.35)]">
+            HOTEL NAME
+          </h1>
+
+          {/* Bottom ornamental line */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.8, delay: 1.1 }}
+            className="flex items-center justify-center gap-3 mt-6"
+          >
+            <div className="h-px w-10 md:w-16 bg-gradient-to-r from-transparent to-primary/50" />
+            <div className="w-1.5 h-1.5 rounded-full bg-primary/60" />
+            <div className="text-primary/60 text-xs tracking-[0.4em] uppercase font-body">★ ★ ★ ★ ★</div>
+            <div className="w-1.5 h-1.5 rounded-full bg-primary/60" />
+            <div className="h-px w-10 md:w-16 bg-gradient-to-l from-transparent to-primary/50" />
+          </motion.div>
+        </motion.div>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}

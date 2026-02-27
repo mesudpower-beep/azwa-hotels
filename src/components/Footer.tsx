@@ -15,9 +15,9 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid md:grid-cols-3 gap-12">
           <div>
-            <h3 className="font-display text-2xl font-bold gold-text mb-2">HOTEL NAME</h3>
-            <p className="text-xs tracking-[0.2em] text-muted-foreground font-body uppercase mb-6">
-              Bahir Dar, Ethiopia
+            <h3 className="font-display text-3xl font-bold gold-text mb-1 tracking-wider drop-shadow-[0_0_15px_hsl(43_72%_55%/0.3)]">HOTEL NAME</h3>
+            <p className="text-[10px] tracking-[0.35em] text-primary/60 font-body uppercase mb-6">
+              ★ Bahir Dar, Ethiopia ★
             </p>
             <p className="text-sm text-muted-foreground font-body leading-relaxed">
               Where luxury meets the source of the Nile. An unparalleled experience on the shores of Lake Tana.
