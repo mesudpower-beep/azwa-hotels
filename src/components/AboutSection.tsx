@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { CheckCircle } from "lucide-react";
 
 const AboutSection = () => {
   const ref = useRef(null);
@@ -18,11 +18,19 @@ const AboutSection = () => {
             <div className="relative">
               <img
                 src="/images/lobby.jpg"
-                alt="Grand lobby interior with marble floors and crystal chandelier"
+                alt="Azwa Hotel entrance and coffee shop in Bahir Dar"
                 className="w-full aspect-[4/5] object-cover"
                 loading="lazy"
               />
               <div className="absolute -bottom-6 -right-6 w-32 h-32 border-2 border-primary/30 hidden lg:block" />
+              {/* Credibility badge overlay */}
+              <div className="absolute top-6 left-6 glass-card px-4 py-2.5 flex items-center gap-2">
+                <span className="font-display text-xl font-bold text-primary">4.9</span>
+                <div>
+                  <div className="flex gap-0.5 text-primary text-[10px]">★★★★★</div>
+                  <p className="text-[9px] text-muted-foreground font-body tracking-wide">Google Reviews</p>
+                </div>
+              </div>
             </div>
           </motion.div>
 
@@ -38,23 +46,33 @@ const AboutSection = () => {
             </h2>
             <div className="space-y-4 text-muted-foreground font-body leading-relaxed">
               <p>
-                Nestled on the serene shores of Lake Tana in the historic city of Bahir Dar,
-                our hotel stands as a beacon of luxury and refined hospitality in the heart of Ethiopia.
+                Nestled in the heart of Bahir Dar, Azwa Hotel stands as a beacon of luxury and 
+                refined hospitality on the shores of Lake Tana — the source of the Blue Nile.
               </p>
               <p>
-                Every detail has been meticulously curated — from the hand-selected marble in our
-                grand lobby to the panoramic lake views from each suite. We believe luxury is not
-                merely about opulence, but about creating moments of transcendent comfort.
-              </p>
-              <p>
-                Whether you're here to explore the ancient monasteries of Lake Tana, witness the
-                majesty of the Blue Nile Falls, or simply retreat into unparalleled serenity, our
-                dedicated team ensures every moment exceeds expectation.
+                Every detail has been meticulously curated to provide guests with an unforgettable 
+                experience blending modern comfort with the rich cultural heritage of Ethiopia.
               </p>
             </div>
+
+            {/* Trust-building checklist - reciprocity psychology */}
+            <div className="space-y-3 pt-2">
+              {[
+                "Complimentary airport shuttle & welcome drink",
+                "Traditional Ethiopian coffee ceremony daily",
+                "Free high-speed Wi-Fi throughout the hotel",
+                "24/7 room service & concierge",
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-3">
+                  <CheckCircle className="w-4 h-4 text-primary shrink-0" />
+                  <span className="text-sm text-foreground/80 font-body">{item}</span>
+                </div>
+              ))}
+            </div>
+
             <div className="flex gap-12 pt-6">
               {[
-                { number: "50+", label: "Luxury Suites" },
+                { number: "50+", label: "Luxury Rooms" },
                 { number: "15+", label: "Years of Excellence" },
                 { number: "4.9", label: "Guest Rating" },
               ].map((stat) => (

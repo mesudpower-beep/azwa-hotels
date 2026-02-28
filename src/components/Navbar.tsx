@@ -35,7 +35,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-20 lg:h-24">
           <a href="#home" className="flex flex-col items-center">
             <span className="font-display text-2xl lg:text-3xl font-bold gold-text tracking-widest drop-shadow-[0_0_15px_hsl(43_72%_55%/0.3)]">
-              HOTEL NAME
+              AZWA HOTEL
             </span>
             <span className="text-[9px] tracking-[0.35em] text-primary/60 font-body uppercase mt-0.5">
               ★ Bahir Dar ★
