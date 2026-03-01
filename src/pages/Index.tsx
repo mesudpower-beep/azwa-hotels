@@ -6,6 +6,7 @@ import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 const AboutSection = lazy(() => import("@/components/AboutSection"));
 const RoomsSection = lazy(() => import("@/components/RoomsSection"));
 const AmenitiesSection = lazy(() => import("@/components/AmenitiesSection"));
+const AttractionsSection = lazy(() => import("@/components/AttractionsSection"));
 const GallerySection = lazy(() => import("@/components/GallerySection"));
 const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
 const BookingSection = lazy(() => import("@/components/BookingSection"));
@@ -21,6 +22,7 @@ const Index = () => {
         <AboutSection />
         <RoomsSection />
         <AmenitiesSection />
+        <AttractionsSection />
         <GallerySection />
         <TestimonialsSection />
         <BookingSection />
