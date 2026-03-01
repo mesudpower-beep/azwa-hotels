@@ -16,7 +16,8 @@ const BookingSection = () => {
   const [checkIn, setCheckIn] = useState<Date>();
   const [checkOut, setCheckOut] = useState<Date>();
   const [guests, setGuests] = useState("2");
-  const [roomType, setRoomType] = useState("deluxe");
+  const [children, setChildren] = useState("0");
+  const [roomType, setRoomType] = useState("king");
   const [specialRequests, setSpecialRequests] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -33,9 +34,10 @@ const BookingSection = () => {
   };
 
   const roomLabels: Record<string, string> = {
-    deluxe: "Deluxe Room — $180/night",
-    executive: "Executive Suite — $320/night",
-    presidential: "Presidential Suite — $550/night",
+    king: "King Room — $61/night",
+    deluxe: "Deluxe Room — $74/night",
+    twin: "Twin Double Room — $81/night",
+    family: "Family Triple Room — $111/night",
   };
 
   const buildWhatsAppMessage = () => {
@@ -48,7 +50,7 @@ const BookingSection = () => {
       `🛏️ *Room:* ${roomLabels[roomType]}`,
       `📅 *Check-in:* ${checkIn ? format(checkIn, "PPP") : "N/A"}`,
       `📅 *Check-out:* ${checkOut ? format(checkOut, "PPP") : "N/A"}`,
-      `👥 *Guests:* ${guests}`,
+      `👥 *Guests:* ${guests} Adults, ${children} Children`,
     ];
     if (specialRequests.trim()) {
       lines.push(`📝 *Special Requests:* ${specialRequests.trim()}`);
@@ -242,6 +244,28 @@ const BookingSection = () => {
 
             <div>
               <label className="block text-xs tracking-[0.15em] uppercase text-muted-foreground font-body mb-3">
+                Children
+              </label>
+              <div className={cn(inputClasses)}>
+                <Users className="w-4 h-4 text-primary" />
+                <select
+                  value={children}
+                  onChange={(e) => setChildren(e.target.value)}
+                  className="bg-transparent text-foreground flex-1 outline-none"
+                >
+                  {[0, 1, 2, 3, 4, 5].map((n) => (
+                    <option key={n} value={n} className="bg-card text-foreground">
+                      {n} {n === 1 ? "Child" : "Children"}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-xs tracking-[0.15em] uppercase text-muted-foreground font-body mb-3">
                 Room Type
               </label>
               <div className={cn(inputClasses)}>
@@ -250,9 +274,10 @@ const BookingSection = () => {
                   onChange={(e) => setRoomType(e.target.value)}
                   className="bg-transparent text-foreground flex-1 outline-none"
                 >
-                  <option value="deluxe" className="bg-card text-foreground">Deluxe Room — $180/night</option>
-                  <option value="executive" className="bg-card text-foreground">Executive Suite — $320/night</option>
-                  <option value="presidential" className="bg-card text-foreground">Presidential Suite — $550/night</option>
+                  <option value="king" className="bg-card text-foreground">King Room — $61/night</option>
+                  <option value="deluxe" className="bg-card text-foreground">Deluxe Room — $74/night</option>
+                  <option value="twin" className="bg-card text-foreground">Twin Double Room — $81/night</option>
+                  <option value="family" className="bg-card text-foreground">Family Triple Room — $111/night</option>
                 </select>
               </div>
             </div>

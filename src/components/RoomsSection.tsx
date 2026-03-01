@@ -1,34 +1,43 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Flame } from "lucide-react";
+import { Flame, BedDouble, Users, Maximize, Bath } from "lucide-react";
 
 const rooms = [
   {
-    name: "Deluxe Room",
-    description: "Elegantly appointed with premium furnishings, plush bedding, and stunning city views. Perfect for discerning travelers seeking comfort and style.",
-    price: "$180",
+    name: "King Room",
+    description: "Spacious open-concept rooms with king-sized bed, fully-stocked minibar, air conditioning, and ensuite bathroom. Perfect for travelers seeking comfort and style.",
+    price: "$61",
     per: "per night",
     image: "/images/room-deluxe.jpg",
-    features: ["King Bed", "City View", "40 sqm", "Rain Shower"],
+    features: ["King Bed", "City View", "20–25 sqm", "Minibar"],
     badge: null,
   },
   {
-    name: "Executive Suite",
-    description: "A spacious sanctuary featuring a separate living area, panoramic windows, and bespoke amenities for the ultimate luxury experience.",
-    price: "$320",
+    name: "Deluxe Room",
+    description: "Elegantly appointed with premium furnishings, plush bedding, and stunning views of Lake Tana. Enhanced amenities for a refined stay.",
+    price: "$74",
     per: "per night",
     image: "/images/room-executive.jpg",
-    features: ["King Bed", "Lake View", "75 sqm", "Living Room"],
+    features: ["King Bed", "Lake View", "30 sqm", "Rain Shower"],
     badge: "Most Popular",
   },
   {
-    name: "Presidential Suite",
-    description: "The pinnacle of luxury. Floor-to-ceiling lake views, private dining area, premium bar, and personalized butler service.",
-    price: "$550",
+    name: "Twin Double Room",
+    description: "Two comfortable double beds with breathtaking lake views — ideal for friends traveling together or families with older children.",
+    price: "$81",
     per: "per night",
     image: "/images/room-presidential.jpg",
-    features: ["King Bed", "Lake Panorama", "120 sqm", "Butler Service"],
+    features: ["Twin Beds", "Lake View", "35 sqm", "Living Area"],
     badge: null,
+  },
+  {
+    name: "Family Triple Room",
+    description: "Our most spacious accommodation with triple bedding, a separate living area, and panoramic views. Perfect for families creating lasting memories.",
+    price: "$111",
+    per: "per night",
+    image: "/images/lobby.jpg",
+    features: ["Triple Beds", "Panoramic View", "50 sqm", "Family Space"],
+    badge: "Best for Families",
   },
 ];
 
@@ -50,7 +59,7 @@ const RoomsSection = () => {
             Rooms & <span className="gold-text">Suites</span>
           </h2>
           <p className="text-muted-foreground font-body text-sm mt-4 max-w-lg mx-auto">
-            Each room is designed to make you feel at home while experiencing unmatched luxury
+            First-class rooms with breathtaking views, excellent service and genuine hospitality — your home for unforgettable moments
           </p>
         </motion.div>
 
@@ -60,14 +69,14 @@ const RoomsSection = () => {
               key={room.name}
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
+              transition={{ duration: 0.8, delay: index * 0.15 }}
               className={`grid lg:grid-cols-2 gap-8 lg:gap-16 items-center`}
             >
               <div className={index % 2 === 1 ? "lg:order-2" : ""}>
                 <div className="relative overflow-hidden group">
                   <img
                     src={room.image}
-                    alt={`${room.name} interior at Azwa Hotel`}
+                    alt={`${room.name} interior at Azwa Hotel Bahir Dar`}
                     className="w-full aspect-[16/10] object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />
@@ -75,14 +84,12 @@ const RoomsSection = () => {
                     <span className="font-display text-2xl font-bold text-primary">{room.price}</span>
                     <span className="text-xs text-muted-foreground font-body ml-1">{room.per}</span>
                   </div>
-                  {/* Social proof / scarcity badge */}
                   {room.badge && (
                     <div className="absolute top-6 left-6 bg-primary text-primary-foreground px-3 py-1.5 flex items-center gap-1.5">
                       <Flame className="w-3.5 h-3.5" />
                       <span className="text-[10px] font-body font-bold tracking-wider uppercase">{room.badge}</span>
                     </div>
                   )}
-                  {/* Scarcity text */}
                   <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-background/80 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     <p className="text-[11px] font-body text-primary tracking-wide text-center">
                       ⚡ Only 3 rooms left for this month

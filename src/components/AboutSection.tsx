@@ -46,12 +46,13 @@ const AboutSection = () => {
             </h2>
             <div className="space-y-4 text-muted-foreground font-body leading-relaxed">
               <p>
-                Nestled in the heart of Bahir Dar, Azwa Hotel stands as a beacon of luxury and 
-                refined hospitality on the shores of Lake Tana — the source of the Blue Nile.
+                Nestled in the heart of Bahir Dar, Azwa Hotel is a luxury facility located near 
+                the most historically significant attractions — Lake Tana monasteries, the majestic 
+                Blue Nile Falls (Tiss Issat), and the sacred islands of Lake Tana.
               </p>
               <p>
-                Every detail has been meticulously curated to provide guests with an unforgettable 
-                experience blending modern comfort with the rich cultural heritage of Ethiopia.
+                Our mission is enriching your life with pleasant vacation moments and lasting memories. 
+                Every detail has been curated to blend modern comfort with Ethiopia's rich cultural heritage.
               </p>
             </div>
 
