@@ -66,13 +66,21 @@ const GallerySection = () => {
           className="fixed inset-0 z-50 bg-background/95 flex items-center justify-center p-4 cursor-pointer"
           onClick={() => setSelectedImage(null)}
         >
+          <button
+            className="absolute top-6 right-6 w-10 h-10 border border-primary/40 text-primary flex items-center justify-center text-xl font-body hover:bg-primary/10 transition-colors"
+            onClick={() => setSelectedImage(null)}
+            aria-label="Close gallery preview"
+          >
+            ✕
+          </button>
           <motion.img
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             src={selectedImage}
             alt="Gallery preview"
-            className="max-w-full max-h-[90vh] object-contain"
+            className="max-w-full max-h-[85vh] object-contain"
           />
+          <p className="absolute bottom-6 text-xs text-muted-foreground font-body tracking-wider">Click anywhere to close</p>
         </div>
       )}
     </section>
