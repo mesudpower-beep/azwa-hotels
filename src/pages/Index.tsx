@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 const AboutSection = lazy(() => import("@/components/AboutSection"));
 const RoomsSection = lazy(() => import("@/components/RoomsSection"));
@@ -26,6 +27,7 @@ const Index = () => {
         <ContactSection />
         <Footer />
       </Suspense>
+      <FloatingWhatsApp />
     </main>
   );
 };
