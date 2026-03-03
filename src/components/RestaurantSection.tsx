@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Clock, UtensilsCrossed, Coffee, Leaf } from "lucide-react";
+import MenuModal from "./MenuModal";
 
 const dishes = [
   {
@@ -23,6 +24,7 @@ const dishes = [
 const RestaurantSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <section id="restaurant" className="section-padding bg-background" ref={ref}>
@@ -94,14 +96,24 @@ const RestaurantSection = () => {
               <span>Room Service: <span className="text-foreground">24 Hours</span></span>
             </div>
           </div>
-          <a
-            href="#booking"
-            className="gold-gradient text-primary-foreground px-8 py-3 text-xs tracking-[0.2em] uppercase font-body font-medium hover:opacity-90 transition-opacity whitespace-nowrap"
-          >
-            Reserve a Table
-          </a>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setMenuOpen(true)}
+              className="border border-primary/40 text-primary px-8 py-3 text-xs tracking-[0.2em] uppercase font-body font-medium hover:bg-primary/10 transition-all whitespace-nowrap"
+            >
+              View Menu
+            </button>
+            <a
+              href="#booking"
+              className="gold-gradient text-primary-foreground px-8 py-3 text-xs tracking-[0.2em] uppercase font-body font-medium hover:opacity-90 transition-opacity whitespace-nowrap"
+            >
+              Reserve a Table
+            </a>
+          </div>
         </motion.div>
       </div>
+
+      <MenuModal open={menuOpen} onClose={() => setMenuOpen(false)} />
     </section>
   );
 };
