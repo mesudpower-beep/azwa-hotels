@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MessageCircle, Shield, Award, Users } from "lucide-react";
+import { Shield, Award, Users } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const HeroSection = () => {
@@ -137,13 +137,10 @@ const HeroSection = () => {
             </span>
           </a>
           <a
-            href="https://wa.me/251998900160"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#rooms"
             className="flex items-center gap-3 border border-primary/40 text-primary px-8 py-4 text-sm tracking-[0.15em] uppercase font-body hover:bg-primary/10 transition-all duration-300"
           >
-            <MessageCircle className="w-4 h-4" />
-            WhatsApp
+            View Rooms
           </a>
         </motion.div>
       </div>
