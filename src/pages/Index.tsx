@@ -5,6 +5,8 @@ import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 const AboutSection = lazy(() => import("@/components/AboutSection"));
 const RoomsSection = lazy(() => import("@/components/RoomsSection"));
+const RestaurantSection = lazy(() => import("@/components/RestaurantSection"));
+const SpaSection = lazy(() => import("@/components/SpaSection"));
 const AmenitiesSection = lazy(() => import("@/components/AmenitiesSection"));
 const AttractionsSection = lazy(() => import("@/components/AttractionsSection"));
 const GallerySection = lazy(() => import("@/components/GallerySection"));
@@ -21,6 +23,8 @@ const Index = () => {
       <Suspense fallback={<div className="min-h-screen" />}>
         <AboutSection />
         <RoomsSection />
+        <RestaurantSection />
+        <SpaSection />
         <AmenitiesSection />
         <AttractionsSection />
         <GallerySection />
