@@ -10,7 +10,7 @@ const dishes = [
     description: "Authentic injera with rich doro wot, kitfo, and seasonal vegetable platters served on traditional mesob.",
   },
   {
-    image: "/images/spa.jpg",
+    image: "/images/international-cuisine.png",
     title: "International Cuisine",
     description: "Continental breakfast, Italian pasta, grilled steaks, and fresh salads crafted by our expert chefs.",
   },
