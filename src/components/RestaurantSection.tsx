@@ -5,7 +5,7 @@ import MenuModal from "./MenuModal";
 
 const dishes = [
   {
-    image: "/images/restaurant.jpg",
+    image: "/images/traditional-ethiopian.png",
     title: "Traditional Ethiopian",
     description: "Authentic injera with rich doro wot, kitfo, and seasonal vegetable platters served on traditional mesob.",
   },
