@@ -1,37 +1,33 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Star, Quote } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const testimonials = [
   {
-    name: "Sarah Johnson",
-    location: "New York, USA",
-    rating: 5,
-    text: "An absolutely extraordinary experience. The suite overlooking the city was breathtaking. The staff anticipated every need before we even asked. This is luxury redefined.",
-    avatar: "SJ",
-    stayType: "Family Vacation",
+    name: "Sarah Johnson", location: "New York, USA", rating: 5,
+    textEn: "An absolutely extraordinary experience. The suite overlooking the city was breathtaking. The staff anticipated every need before we even asked. This is luxury redefined.",
+    textAm: "ፍጹም ልዩ ተሞክሮ። ከተማውን የሚያይ ስዊቱ አስደናቂ ነበር። ሰራተኞቹ ከመጠየቃችን በፊት ሁሉንም ነገር ያዘጋጁ ነበር።",
+    avatar: "SJ", stayTypeEn: "Family Vacation", stayTypeAm: "የቤተሰብ ዕረፍት",
   },
   {
-    name: "Ahmed Hassan",
-    location: "Dubai, UAE",
-    rating: 5,
-    text: "Having stayed at the finest hotels across the Middle East and Europe, I can confidently say Azwa Hotel rivals them all. The blend of Ethiopian culture with world-class service is remarkable.",
-    avatar: "AH",
-    stayType: "Business Trip",
+    name: "Ahmed Hassan", location: "Dubai, UAE", rating: 5,
+    textEn: "Having stayed at the finest hotels across the Middle East and Europe, I can confidently say Azwa Hotel rivals them all. The blend of Ethiopian culture with world-class service is remarkable.",
+    textAm: "በመካከለኛው ምስራቅና አውሮፓ ምርጥ ሆቴሎች ውስጥ ከቆየሁ በኋላ አዝዋ ሆቴል ከሁሉም ጋር ይወዳደራል ብዬ በልበ ሙሉነት እላለሁ።",
+    avatar: "AH", stayTypeEn: "Business Trip", stayTypeAm: "የንግድ ጉዞ",
   },
   {
-    name: "Elena Rossi",
-    location: "Milan, Italy",
-    rating: 5,
-    text: "The spa was divine, the dining exceptional, and the views unforgettable. Every detail spoke of thoughtful elegance. We extended our stay twice — it was simply impossible to leave.",
-    avatar: "ER",
-    stayType: "Honeymoon",
+    name: "Elena Rossi", location: "Milan, Italy", rating: 5,
+    textEn: "The spa was divine, the dining exceptional, and the views unforgettable. Every detail spoke of thoughtful elegance. We extended our stay twice — it was simply impossible to leave.",
+    textAm: "ስፓው ድንቅ ነበር፣ ምግቡ ልዩ፣ እይታው የማይረሳ። ሁሉም ዝርዝር ስለ ውበት ይናገራል። ሁለት ጊዜ ቆይታችንን አራዘምን።",
+    avatar: "ER", stayTypeEn: "Honeymoon", stayTypeAm: "የሙሽሮች ጉዞ",
   },
 ];
 
 const TestimonialsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { t, language } = useLanguage();
 
   return (
     <section id="testimonials" className="section-padding bg-background" ref={ref}>
@@ -42,12 +38,12 @@ const TestimonialsSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <p className="section-subtitle mb-4">Testimonials</p>
+          <p className="section-subtitle mb-4">{t("testimonials.subtitle")}</p>
           <h2 className="section-title text-foreground">
-            What Our Guests <span className="gold-text">Say</span>
+            {t("testimonials.title1")} <span className="gold-text">{t("testimonials.title2")}</span>
           </h2>
           <p className="text-muted-foreground font-body text-sm mt-4">
-            Rated <span className="text-primary font-semibold">4.9/5</span> from over 2,400 verified reviews
+            {t("testimonials.ratedDesc")} <span className="text-primary font-semibold">4.9/5</span> {t("testimonials.verifiedReviews")}
           </p>
         </motion.div>
 
@@ -67,10 +63,10 @@ const TestimonialsSection = () => {
                 ))}
               </div>
               <span className="text-[10px] font-body tracking-wider uppercase text-primary/60 mb-4">
-                {review.stayType}
+                {language === "am" ? review.stayTypeAm : review.stayTypeEn}
               </span>
               <p className="text-foreground/80 font-body text-sm leading-relaxed italic flex-1">
-                "{review.text}"
+                "{language === "am" ? review.textAm : review.textEn}"
               </p>
               <div className="mt-8 pt-6 border-t border-border/50 flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full gold-gradient flex items-center justify-center text-primary-foreground font-body font-bold text-xs">

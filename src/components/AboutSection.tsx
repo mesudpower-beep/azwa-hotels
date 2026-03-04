@@ -1,10 +1,19 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { CheckCircle } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const AboutSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { t } = useLanguage();
+
+  const checklist = [
+    t("about.shuttle"),
+    t("about.coffee"),
+    t("about.wifi"),
+    t("about.roomService"),
+  ];
 
   return (
     <section id="about" className="section-padding bg-background" ref={ref}>
@@ -23,7 +32,6 @@ const AboutSection = () => {
                 loading="lazy"
               />
               <div className="absolute -bottom-6 -right-6 w-32 h-32 border-2 border-primary/30 hidden lg:block" />
-              {/* Credibility badge overlay */}
               <div className="absolute top-6 left-6 glass-card px-4 py-2.5 flex items-center gap-2">
                 <span className="font-display text-xl font-bold text-primary">4.9</span>
                 <div>
@@ -40,30 +48,17 @@ const AboutSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-6"
           >
-            <p className="section-subtitle">Our Story</p>
+            <p className="section-subtitle">{t("about.subtitle")}</p>
             <h2 className="section-title text-foreground">
-              A Sanctuary of <span className="gold-text">Elegance</span>
+              {t("about.title1")} <span className="gold-text">{t("about.title2")}</span>
             </h2>
             <div className="space-y-4 text-muted-foreground font-body leading-relaxed">
-              <p>
-                Nestled in the heart of Bahir Dar, Azwa Hotel is a luxury facility located near 
-                the most historically significant attractions — Lake Tana monasteries, the majestic 
-                Blue Nile Falls (Tiss Issat), and the sacred islands of Lake Tana.
-              </p>
-              <p>
-                Our mission is enriching your life with pleasant vacation moments and lasting memories. 
-                Every detail has been curated to blend modern comfort with Ethiopia's rich cultural heritage.
-              </p>
+              <p>{t("about.desc1")}</p>
+              <p>{t("about.desc2")}</p>
             </div>
 
-            {/* Trust-building checklist - reciprocity psychology */}
             <div className="space-y-3 pt-2">
-              {[
-                "Complimentary airport shuttle & welcome drink",
-                "Traditional Ethiopian coffee ceremony daily",
-                "Free high-speed Wi-Fi throughout the hotel",
-                "24/7 room service & concierge",
-              ].map((item) => (
+              {checklist.map((item) => (
                 <div key={item} className="flex items-center gap-3">
                   <CheckCircle className="w-4 h-4 text-primary shrink-0" />
                   <span className="text-sm text-foreground/80 font-body">{item}</span>
@@ -73,9 +68,9 @@ const AboutSection = () => {
 
             <div className="flex gap-12 pt-6">
               {[
-                { number: "50+", label: "Luxury Rooms" },
-                { number: "15+", label: "Years of Excellence" },
-                { number: "4.9", label: "Guest Rating" },
+                { number: "50+", label: t("about.rooms") },
+                { number: "15+", label: t("about.years") },
+                { number: "4.9", label: t("about.rating") },
               ].map((stat) => (
                 <div key={stat.label}>
                   <p className="font-display text-3xl font-bold text-primary">{stat.number}</p>
