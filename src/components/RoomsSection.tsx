@@ -1,40 +1,41 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Flame, BedDouble, Users, Maximize, Bath } from "lucide-react";
+import { Flame } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const rooms = [
   {
     name: "King Room",
-    description: "Spacious open-concept rooms with king-sized bed, fully-stocked minibar, air conditioning, and ensuite bathroom. Perfect for travelers seeking comfort and style.",
+    descEn: "Spacious open-concept rooms with king-sized bed, fully-stocked minibar, air conditioning, and ensuite bathroom. Perfect for travelers seeking comfort and style.",
+    descAm: "ሰፊ ክፍት ክፍሎች ከኪንግ መጠን አልጋ፣ ሚኒባር፣ ኤርኮንዲሽነር እና መታጠቢያ ቤት ጋር። ምቾትና ዘይቤ ለሚፈልጉ ተጓዦች ፍጹም ነው።",
     price: "$61",
-    per: "per night",
     image: "/images/room-deluxe.jpg",
     features: ["King Bed", "City View", "20–25 sqm", "Minibar"],
     badge: null,
   },
   {
     name: "Deluxe Room",
-    description: "Elegantly appointed with premium furnishings, plush bedding, and stunning views of Lake Tana. Enhanced amenities for a refined stay.",
+    descEn: "Elegantly appointed with premium furnishings, plush bedding, and stunning views of Lake Tana. Enhanced amenities for a refined stay.",
+    descAm: "በቅንጦት ያጌጠ ከፕሪሚየም ቁሳቁስ፣ ምቹ አልጋና የጣና ሐይቅ ምርጥ እይታ ጋር።",
     price: "$74",
-    per: "per night",
     image: "/images/room-executive.jpg",
     features: ["King Bed", "Lake View", "30 sqm", "Rain Shower"],
     badge: "Most Popular",
   },
   {
     name: "Twin Double Room",
-    description: "Two comfortable double beds with breathtaking lake views — ideal for friends traveling together or families with older children.",
+    descEn: "Two comfortable double beds with breathtaking lake views — ideal for friends traveling together or families with older children.",
+    descAm: "ሁለት ምቹ ድርብ አልጋዎች ከሚያስደንቅ የሐይቅ እይታ ጋር — ለጓደኞችና ቤተሰቦች ተስማሚ።",
     price: "$81",
-    per: "per night",
     image: "/images/room-presidential.jpg",
     features: ["Twin Beds", "Lake View", "35 sqm", "Living Area"],
     badge: null,
   },
   {
     name: "Family Triple Room",
-    description: "Our most spacious accommodation with triple bedding, a separate living area, and panoramic views. Perfect for families creating lasting memories.",
+    descEn: "Our most spacious accommodation with triple bedding, a separate living area, and panoramic views. Perfect for families creating lasting memories.",
+    descAm: "በጣም ሰፊው ማረፊያችን ከሶስት አልጋ፣ የተለየ የመኖሪያ ቦታ እና ሰፊ እይታ ጋር።",
     price: "$111",
-    per: "per night",
     image: "/images/lobby.jpg",
     features: ["Triple Beds", "Panoramic View", "50 sqm", "Family Space"],
     badge: "Best for Families",
@@ -44,6 +45,7 @@ const rooms = [
 const RoomsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { t, language } = useLanguage();
 
   return (
     <section id="rooms" className="section-padding bg-secondary/30" ref={ref}>
@@ -54,12 +56,12 @@ const RoomsSection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <p className="section-subtitle mb-4">Accommodations</p>
+          <p className="section-subtitle mb-4">{t("rooms.subtitle")}</p>
           <h2 className="section-title text-foreground">
-            Rooms & <span className="gold-text">Suites</span>
+            {t("rooms.title1")} <span className="gold-text">{t("rooms.title2")}</span>
           </h2>
           <p className="text-muted-foreground font-body text-sm mt-4 max-w-lg mx-auto">
-            First-class rooms with breathtaking views, excellent service and genuine hospitality — your home for unforgettable moments
+            {t("rooms.desc")}
           </p>
         </motion.div>
 
@@ -70,7 +72,7 @@ const RoomsSection = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: index * 0.15 }}
-              className={`grid lg:grid-cols-2 gap-8 lg:gap-16 items-center`}
+              className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center"
             >
               <div className={index % 2 === 1 ? "lg:order-2" : ""}>
                 <div className="relative overflow-hidden group">
@@ -82,7 +84,7 @@ const RoomsSection = () => {
                   />
                   <div className="absolute top-6 right-6 glass-card px-4 py-2">
                     <span className="font-display text-2xl font-bold text-primary">{room.price}</span>
-                    <span className="text-xs text-muted-foreground font-body ml-1">{room.per}</span>
+                    <span className="text-xs text-muted-foreground font-body ml-1">{t("rooms.perNight")}</span>
                   </div>
                   {room.badge && (
                     <div className="absolute top-6 left-6 bg-primary text-primary-foreground px-3 py-1.5 flex items-center gap-1.5">
@@ -92,7 +94,7 @@ const RoomsSection = () => {
                   )}
                   <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-background/80 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     <p className="text-[11px] font-body text-primary tracking-wide text-center">
-                      ⚡ Only 3 rooms left for this month
+                      ⚡ {t("rooms.roomsLeft")}
                     </p>
                   </div>
                 </div>
@@ -102,7 +104,9 @@ const RoomsSection = () => {
                 <h3 className="font-display text-2xl md:text-3xl font-semibold text-foreground">
                   {room.name}
                 </h3>
-                <p className="text-muted-foreground font-body leading-relaxed">{room.description}</p>
+                <p className="text-muted-foreground font-body leading-relaxed">
+                  {language === "am" ? room.descAm : room.descEn}
+                </p>
                 <div className="flex flex-wrap gap-3">
                   {room.features.map((feature) => (
                     <span
@@ -117,7 +121,7 @@ const RoomsSection = () => {
                   href="#booking"
                   className="inline-block gold-gradient text-primary-foreground px-8 py-3 text-xs tracking-[0.2em] uppercase font-body font-medium hover:opacity-90 transition-opacity mt-2"
                 >
-                  Book This Room
+                  {t("rooms.bookThis")}
                 </a>
               </div>
             </motion.div>

@@ -1,21 +1,25 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const images = [
-  { src: "/images/hero.jpg", alt: "Hotel exterior at sunset" },
-  { src: "/images/lobby.jpg", alt: "Grand lobby" },
-  { src: "/images/room-presidential.jpg", alt: "Presidential Suite" },
-  { src: "/images/pool.jpg", alt: "Infinity pool" },
-  { src: "/images/restaurant.jpg", alt: "Fine dining restaurant" },
-  { src: "/images/spa.jpg", alt: "Spa treatment room" },
-  { src: "/images/room-deluxe.jpg", alt: "Deluxe Room" },
-  { src: "/images/room-executive.jpg", alt: "Executive Suite" },
+  { src: "/images/hero.jpg", altEn: "Hotel exterior at sunset", altAm: "ሆቴል ውጭ ፀሐይ ስትጠልቅ" },
+  { src: "/images/lobby.jpg", altEn: "Grand lobby", altAm: "ግራንድ ሎቢ" },
+  { src: "/images/room-presidential.jpg", altEn: "Presidential Suite", altAm: "ፕሬዚዳንታዊ ስዊት" },
+  { src: "/images/pool.jpg", altEn: "Infinity pool", altAm: "መዋኛ" },
+  { src: "/images/restaurant.jpg", altEn: "Fine dining restaurant", altAm: "ምርጥ ምግብ ቤት" },
+  { src: "/images/spa.jpg", altEn: "Spa treatment room", altAm: "ስፓ ሕክምና ክፍል" },
+  { src: "/images/room-deluxe.jpg", altEn: "Deluxe Room", altAm: "ዴላክስ ክፍል" },
+  { src: "/images/room-executive.jpg", altEn: "Executive Suite", altAm: "ኤግዘኩቲቭ ስዊት" },
+  { src: "/images/traditional-ethiopian.png", altEn: "Traditional Ethiopian cuisine", altAm: "ባህላዊ ኢትዮጵያዊ ምግብ" },
+  { src: "/images/international-cuisine.png", altEn: "International cuisine", altAm: "ዓለም አቀፍ ምግብ" },
 ];
 
 const GallerySection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const { t, language } = useLanguage();
 
   return (
     <section id="gallery" className="section-padding bg-secondary/30" ref={ref}>
@@ -26,9 +30,9 @@ const GallerySection = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <p className="section-subtitle mb-4">Visual Journey</p>
+          <p className="section-subtitle mb-4">{t("gallery.subtitle")}</p>
           <h2 className="section-title text-foreground">
-            Our <span className="gold-text">Gallery</span>
+            {t("gallery.title1")} <span className="gold-text">{t("gallery.title2")}</span>
           </h2>
         </motion.div>
 
@@ -46,14 +50,14 @@ const GallerySection = () => {
             >
               <img
                 src={image.src}
-                alt={image.alt}
+                alt={language === "am" ? image.altAm : image.altEn}
                 className="w-full h-full object-cover aspect-square transition-transform duration-700 group-hover:scale-110"
                 loading="lazy"
                 decoding="async"
               />
               <div className="absolute inset-0 bg-background/0 group-hover:bg-background/40 transition-all duration-500 flex items-center justify-center">
                 <span className="font-body text-xs tracking-[0.2em] uppercase text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  {image.alt}
+                  {language === "am" ? image.altAm : image.altEn}
                 </span>
               </div>
             </motion.div>
@@ -80,7 +84,6 @@ const GallerySection = () => {
             alt="Gallery preview"
             className="max-w-full max-h-[85vh] object-contain"
           />
-          <p className="absolute bottom-6 text-xs text-muted-foreground font-body tracking-wider">Click anywhere to close</p>
         </div>
       )}
     </section>

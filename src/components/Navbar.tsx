@@ -1,20 +1,23 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Rooms", href: "#rooms" },
-  { label: "Restaurant", href: "#restaurant" },
-  { label: "Spa", href: "#spa" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Contact", href: "#contact" },
-];
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { t } = useLanguage();
+
+  const navLinks = [
+    { label: t("nav.home"), href: "#home" },
+    { label: t("nav.about"), href: "#about" },
+    { label: t("nav.rooms"), href: "#rooms" },
+    { label: t("nav.restaurant"), href: "#restaurant" },
+    { label: t("nav.spa"), href: "#spa" },
+    { label: t("nav.gallery"), href: "#gallery" },
+    { label: t("nav.contact"), href: "#contact" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -55,6 +58,7 @@ const Navbar = () => {
           </div>
 
           <div className="hidden lg:flex items-center gap-4">
+            <LanguageSwitcher />
             <a
               href="tel:+251998900160"
               className="flex items-center gap-2 text-xs tracking-wider text-muted-foreground hover:text-primary transition-colors"
@@ -66,16 +70,19 @@ const Navbar = () => {
               href="#booking"
               className="gold-gradient text-primary-foreground px-6 py-2.5 text-xs tracking-[0.2em] uppercase font-body font-medium hover:opacity-90 transition-opacity"
             >
-              Book Now
+              {t("nav.bookNow")}
             </a>
           </div>
 
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden text-foreground p-2"
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="flex items-center gap-3 lg:hidden">
+            <LanguageSwitcher />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-foreground p-2"
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -103,7 +110,7 @@ const Navbar = () => {
                 onClick={() => setIsOpen(false)}
                 className="block gold-gradient text-primary-foreground text-center px-6 py-3 text-xs tracking-[0.2em] uppercase font-body font-medium mt-4"
               >
-                Book Now
+                {t("nav.bookNow")}
               </a>
             </div>
           </motion.div>
