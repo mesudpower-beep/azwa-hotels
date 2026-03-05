@@ -7,6 +7,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { supabase } from "@/integrations/supabase/client";
 
 const BookingSection = () => {
   const ref = useRef(null);
@@ -55,12 +56,32 @@ const BookingSection = () => {
     return encodeURIComponent(lines.join("\n"));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) { toast.error("Please fill in all required fields"); return; }
+
+    // Send email notification
+    try {
+      await supabase.functions.invoke("send-booking-email", {
+        body: {
+          name: name.trim(),
+          email: email.trim(),
+          phone: phone.trim(),
+          roomType: roomLabels[roomType],
+          checkIn: checkIn ? format(checkIn, "PPP") : "N/A",
+          checkOut: checkOut ? format(checkOut, "PPP") : "N/A",
+          guests: `${guests} Adults, ${children} Children`,
+          specialRequests: specialRequests.trim() || undefined,
+        },
+      });
+    } catch (err) {
+      console.error("Email send failed:", err);
+    }
+
+    // Also send via WhatsApp
     const message = buildWhatsAppMessage();
     window.open(`https://wa.me/251998900160?text=${message}`, "_blank");
-    toast.success("Redirecting to WhatsApp to complete your booking!");
+    toast.success("Booking request sent! Redirecting to WhatsApp.");
   };
 
   const inputClasses = "w-full flex items-center gap-3 border border-border bg-background/50 px-4 py-3 text-sm font-body";
