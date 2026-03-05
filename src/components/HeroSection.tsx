@@ -10,16 +10,8 @@ const heroImages = [
 ];
 
 const HeroSection = () => {
-  const [viewerCount, setViewerCount] = useState(12);
   const [currentImage, setCurrentImage] = useState(0);
   const { t } = useLanguage();
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setViewerCount((prev) => prev + Math.floor(Math.random() * 3) - 1);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -48,20 +40,6 @@ const HeroSection = () => {
       ))}
       <div className="hero-overlay absolute inset-0" />
 
-      {/* Live social proof badge */}
-      <motion.div
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 2 }}
-        className="absolute top-28 lg:top-32 left-4 lg:left-8 z-20"
-      >
-        <div className="glass-card px-4 py-3 flex items-center gap-3 border-primary/20">
-          <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-          <span className="text-[11px] font-body text-foreground/80 tracking-wide">
-            <span className="text-primary font-semibold">{viewerCount}</span> {t("hero.viewingNow")}
-          </span>
-        </div>
-      </motion.div>
 
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <motion.div
