@@ -20,7 +20,7 @@ const dishes = [
     descAm: "ኮንቲኔንታል ቁርስ፣ ጣልያን ፓስታ፣ የተጠበሱ ስቴኮች እና ትኩስ ሰላጣዎች በባለሙያ ሼፎቻችን ተዘጋጅተዋል።",
   },
   {
-    image: "/images/pool.jpg",
+    image: "/images/coffee-ceremony.jpg",
     titleEn: "Coffee Ceremony",
     titleAm: "የቡና ስነ-ስርዓት",
     descEn: "Experience the authentic Ethiopian coffee ceremony — freshly roasted beans, incense, and three rounds of tradition.",
