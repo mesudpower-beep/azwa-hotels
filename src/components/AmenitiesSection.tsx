@@ -1,15 +1,18 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Waves, Dumbbell, UtensilsCrossed, Wine, Clock, Sparkles } from "lucide-react";
+import { Waves, Dumbbell, UtensilsCrossed, Wine, Clock, Sparkles, Wifi, Sun, Wind, Coffee, Car } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const amenities = [
+  { icon: Wifi, titleEn: "Free WiFi", titleAm: "ነፃ ዋይፋይ", descEn: "High-speed wireless internet available throughout the hotel — lobby, rooms, pool area, and restaurant.", descAm: "በሆቴሉ ሁሉ ከፍተኛ ፍጥነት ያለው ገመድ አልባ ኢንተርኔት — ሎቢ፣ ክፍሎች፣ መዋኛ እና ሬስቶራንት።" },
+  { icon: Sun, titleEn: "Private Balcony", titleAm: "የግል በረንዳ", descEn: "Every room features a private balcony with breathtaking views of Lake Tana and the surrounding landscape.", descAm: "እያንዳንዱ ክፍል ከጣና ሐይቅ እና ከአካባቢው መልክዓ ምድር ድንቅ እይታ ያለው የግል በረንዳ አለው።" },
+  { icon: Wind, titleEn: "Air Conditioning", titleAm: "ኤሲ (አየር ማቀዝቀዣ)", descEn: "Modern climate control in every room ensuring your comfort year-round in Bahir Dar's tropical climate.", descAm: "በባህር ዳር ሞቃታማ የአየር ንብረት ውስጥ ምቾትዎን ለማረጋገጥ በእያንዳንዱ ክፍል ዘመናዊ የአየር ማቀዝቀዣ።" },
+  { icon: Coffee, titleEn: "Complimentary Breakfast", titleAm: "ነፃ ቁርስ", descEn: "Start your day with a generous breakfast buffet featuring Ethiopian and international dishes.", descAm: "ቀንዎን በኢትዮጵያ እና በዓለም አቀፍ ምግቦች በተሞላ ሰፊ የቁርስ ቡፌ ይጀምሩ።" },
+  { icon: Car, titleEn: "Huge Parking Space", titleAm: "ሰፊ የመኪና ማቆሚያ", descEn: "Spacious and secure parking area accommodating cars, vans, and tour buses with 24/7 security.", descAm: "መኪናዎችን፣ ቫኖችን እና የቱር አውቶቡሶችን የሚያስተናግድ ሰፊና ደህንነቱ የተጠበቀ የመኪና ማቆሚያ ከ24/7 ጥበቃ ጋር።" },
   { icon: Sparkles, titleEn: "Luxury Spa", titleAm: "የቅንጦት ስፓ", descEn: "Rejuvenating treatments with traditional Ethiopian wellness rituals and premium products.", descAm: "ከባህላዊ የኢትዮጵያ ጤና ስርዓቶችና ከፕሪሚየም ምርቶች ጋር የሚያድሱ ሕክምናዎች።" },
-  { icon: Dumbbell, titleEn: "Fitness Center", titleAm: "የአካል ብቃት ማዕከል", descEn: "State-of-the-art equipment with personal trainers and yoga classes overlooking the lake.", descAm: "ዘመናዊ መሳሪያዎች ከግል አሰልጣኞችና የዮጋ ክፍሎች ከሐይቅ እይታ ጋር።" },
   { icon: Waves, titleEn: "Infinity Pool", titleAm: "ገደል ያለ መዋኛ", descEn: "Stunning lakeside infinity pool with private cabanas and poolside dining service.", descAm: "የሚያስደንቅ ከሐይቅ ጎን ያለ መዋኛ ከግል ካባናዎችና ከመዋኛ ዳር ምግብ አገልግሎት ጋር።" },
   { icon: UtensilsCrossed, titleEn: "Fine Dining", titleAm: "ምርጥ ምግብ", descEn: "World-class cuisine blending Ethiopian flavors with international gastronomy.", descAm: "ዓለም አቀፍ ደረጃ ያለው ምግብ የኢትዮጵያ ጣዕም ከዓለም አቀፍ ምግብ ጋር።" },
   { icon: Wine, titleEn: "Rooftop Bar", titleAm: "ጣሪያ ላይ ባር", descEn: "Handcrafted cocktails and premium wines with panoramic sunset views over Lake Tana.", descAm: "በእጅ የተሰሩ ኮክቴሎችና ፕሪሚየም ወይኖች ከጣና ሐይቅ ላይ ፀሐይ ስትጠልቅ ሰፊ እይታ ጋር።" },
-  { icon: Clock, titleEn: "24/7 Concierge", titleAm: "24/7 ኮንሲየርጅ", descEn: "Dedicated concierge team for bespoke excursions, transfers, and personalized experiences.", descAm: "ለግል ጉዞዎች፣ ማመላለሻዎችና ልዩ ተሞክሮዎች የተሰጠ ቡድን።" },
 ];
 
 const AmenitiesSection = () => {
