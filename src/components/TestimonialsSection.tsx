@@ -30,8 +30,12 @@ const TestimonialsSection = () => {
   const { t, language } = useLanguage();
 
   return (
-    <section id="testimonials" className="section-padding bg-background" ref={ref}>
-      <div className="max-w-7xl mx-auto">
+    <section id="testimonials" className="section-padding bg-background relative" ref={ref}>
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-1/3 left-1/3 w-[500px] h-[500px] rounded-full bg-primary/3 blur-[150px]" />
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -47,14 +51,14 @@ const TestimonialsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-6">
           {testimonials.map((review, index) => (
             <motion.div
               key={review.name}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="glass-card p-8 flex flex-col relative"
+              className="glow-card p-8 flex flex-col relative"
             >
               <Quote className="absolute top-6 right-6 w-8 h-8 text-primary/10" />
               <div className="flex gap-1 mb-4">
@@ -62,18 +66,18 @@ const TestimonialsSection = () => {
                   <Star key={i} className="w-4 h-4 fill-primary text-primary" />
                 ))}
               </div>
-              <span className="text-[10px] font-body tracking-wider uppercase text-primary/60 mb-4">
+              <span className="text-[10px] font-body tracking-wider uppercase text-primary/50 mb-4">
                 {language === "am" ? review.stayTypeAm : review.stayTypeEn}
               </span>
-              <p className="text-foreground/80 font-body text-sm leading-relaxed italic flex-1">
+              <p className="text-foreground/70 font-body text-sm leading-relaxed italic flex-1">
                 "{language === "am" ? review.textAm : review.textEn}"
               </p>
-              <div className="mt-8 pt-6 border-t border-border/50 flex items-center gap-4">
+              <div className="mt-8 pt-6 border-t border-border/30 flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full gold-gradient flex items-center justify-center text-primary-foreground font-body font-bold text-xs">
                   {review.avatar}
                 </div>
                 <div>
-                  <p className="font-display text-base font-semibold text-foreground">{review.name}</p>
+                  <p className="font-display text-base font-bold text-foreground">{review.name}</p>
                   <p className="text-xs text-muted-foreground font-body tracking-wider mt-0.5">{review.location}</p>
                 </div>
               </div>
