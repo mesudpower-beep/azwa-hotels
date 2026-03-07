@@ -16,22 +16,22 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="section-padding bg-background" ref={ref}>
-      <div className="max-w-7xl mx-auto">
+    <section id="about" className="section-padding gradient-bg relative" ref={ref}>
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <div className="relative">
+            <div className="relative group">
               <img
                 src="/images/lobby.jpg"
                 alt="Azwa Hotel entrance and coffee shop in Bahir Dar"
-                className="w-full aspect-[4/5] object-cover"
+                className="w-full aspect-[4/5] object-cover rounded-xl transition-transform duration-700 group-hover:scale-[1.02]"
                 loading="lazy"
               />
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 border-2 border-primary/30 hidden lg:block" />
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-background/60 to-transparent" />
               <div className="absolute top-6 left-6 glass-card px-4 py-2.5 flex items-center gap-2">
                 <span className="font-display text-xl font-bold text-primary">4.9</span>
                 <div>
@@ -59,9 +59,9 @@ const AboutSection = () => {
 
             <div className="space-y-3 pt-2">
               {checklist.map((item) => (
-                <div key={item} className="flex items-center gap-3">
-                  <CheckCircle className="w-4 h-4 text-primary shrink-0" />
-                  <span className="text-sm text-foreground/80 font-body">{item}</span>
+                <div key={item} className="flex items-center gap-3 group">
+                  <CheckCircle className="w-4 h-4 text-primary shrink-0 group-hover:drop-shadow-[0_0_8px_hsl(280_85%_65%/0.5)] transition-all" />
+                  <span className="text-sm text-foreground/70 font-body">{item}</span>
                 </div>
               ))}
             </div>
@@ -73,7 +73,7 @@ const AboutSection = () => {
                 { number: "4.9", label: t("about.rating") },
               ].map((stat) => (
                 <div key={stat.label}>
-                  <p className="font-display text-3xl font-bold text-primary">{stat.number}</p>
+                  <p className="font-display text-3xl font-bold gold-text">{stat.number}</p>
                   <p className="text-xs tracking-wider uppercase text-muted-foreground font-body mt-1">
                     {stat.label}
                   </p>

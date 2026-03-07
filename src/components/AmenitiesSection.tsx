@@ -10,7 +10,6 @@ const amenities = [
   { icon: Coffee, titleEn: "Complimentary Breakfast", titleAm: "ነፃ ቁርስ", descEn: "Start your day with a generous breakfast buffet featuring Ethiopian and international dishes.", descAm: "ቀንዎን በኢትዮጵያ እና በዓለም አቀፍ ምግቦች በተሞላ ሰፊ የቁርስ ቡፌ ይጀምሩ።" },
   { icon: Car, titleEn: "Huge Parking Space", titleAm: "ሰፊ የመኪና ማቆሚያ", descEn: "Spacious and secure parking area accommodating cars, vans, and tour buses with 24/7 security.", descAm: "መኪናዎችን፣ ቫኖችን እና የቱር አውቶቡሶችን የሚያስተናግድ ሰፊና ደህንነቱ የተጠበቀ የመኪና ማቆሚያ ከ24/7 ጥበቃ ጋር።" },
   { icon: Sparkles, titleEn: "Luxury Spa", titleAm: "የቅንጦት ስፓ", descEn: "Rejuvenating treatments with traditional Ethiopian wellness rituals and premium products.", descAm: "ከባህላዊ የኢትዮጵያ ጤና ስርዓቶችና ከፕሪሚየም ምርቶች ጋር የሚያድሱ ሕክምናዎች።" },
-  
   { icon: UtensilsCrossed, titleEn: "Fine Dining", titleAm: "ምርጥ ምግብ", descEn: "World-class cuisine blending Ethiopian flavors with international gastronomy.", descAm: "ዓለም አቀፍ ደረጃ ያለው ምግብ የኢትዮጵያ ጣዕም ከዓለም አቀፍ ምግብ ጋር።" },
   { icon: Wine, titleEn: "Rooftop Bar", titleAm: "ጣሪያ ላይ ባር", descEn: "Handcrafted cocktails and premium wines with panoramic sunset views over Lake Tana.", descAm: "በእጅ የተሰሩ ኮክቴሎችና ፕሪሚየም ወይኖች ከጣና ሐይቅ ላይ ፀሐይ ስትጠልቅ ሰፊ እይታ ጋር።" },
 ];
@@ -21,8 +20,8 @@ const AmenitiesSection = () => {
   const { t, language } = useLanguage();
 
   return (
-    <section id="amenities" className="section-padding bg-background" ref={ref}>
-      <div className="max-w-7xl mx-auto">
+    <section id="amenities" className="section-padding gradient-bg relative" ref={ref}>
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -35,19 +34,19 @@ const AmenitiesSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {amenities.map((amenity, index) => (
             <motion.div
               key={amenity.titleEn}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="glass-card p-8 text-center group hover:border-primary/30 transition-all duration-500"
+              transition={{ duration: 0.6, delay: index * 0.08 }}
+              className="glow-card p-8 text-center group"
             >
-              <div className="w-14 h-14 mx-auto mb-6 border border-primary/30 flex items-center justify-center group-hover:gold-gradient group-hover:border-transparent transition-all duration-500">
-                <amenity.icon className="w-6 h-6 text-primary group-hover:text-primary-foreground transition-colors duration-500" />
+              <div className="w-14 h-14 mx-auto mb-6 border border-primary/20 rounded-xl flex items-center justify-center group-hover:bg-primary/10 group-hover:border-primary/40 transition-all duration-500">
+                <amenity.icon className="w-6 h-6 text-primary group-hover:drop-shadow-[0_0_10px_hsl(280_85%_65%/0.5)] transition-all duration-500" />
               </div>
-              <h3 className="font-display text-xl font-semibold text-foreground mb-3">
+              <h3 className="font-display text-lg font-bold text-foreground mb-3">
                 {language === "am" ? amenity.titleAm : amenity.titleEn}
               </h3>
               <p className="text-muted-foreground font-body text-sm leading-relaxed">

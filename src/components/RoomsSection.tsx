@@ -48,8 +48,13 @@ const RoomsSection = () => {
   const { t, language } = useLanguage();
 
   return (
-    <section id="rooms" className="section-padding bg-secondary/30" ref={ref}>
-      <div className="max-w-7xl mx-auto">
+    <section id="rooms" className="section-padding bg-background relative" ref={ref}>
+      {/* Ambient glow */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-0 right-1/4 w-[600px] h-[400px] rounded-full bg-primary/5 blur-[150px]" />
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -75,19 +80,20 @@ const RoomsSection = () => {
               className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center"
             >
               <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                <div className="relative overflow-hidden group">
+                <div className="relative overflow-hidden group rounded-xl">
                   <img
                     src={room.image}
                     alt={`${room.name} interior at Azwa Hotel Bahir Dar`}
                     className="w-full aspect-[16/10] object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
                   <div className="absolute top-6 right-6 glass-card px-4 py-2">
-                    <span className="font-display text-2xl font-bold text-primary">{room.price}</span>
+                    <span className="font-display text-2xl font-bold gold-text">{room.price}</span>
                     <span className="text-xs text-muted-foreground font-body ml-1">{t("rooms.perNight")}</span>
                   </div>
                   {room.badge && (
-                    <div className="absolute top-6 left-6 bg-primary text-primary-foreground px-3 py-1.5 flex items-center gap-1.5">
+                    <div className="absolute top-6 left-6 neon-button px-3 py-1.5 flex items-center gap-1.5">
                       <Flame className="w-3.5 h-3.5" />
                       <span className="text-[10px] font-body font-bold tracking-wider uppercase">{room.badge}</span>
                     </div>
@@ -101,7 +107,7 @@ const RoomsSection = () => {
               </div>
 
               <div className={`space-y-6 ${index % 2 === 1 ? "lg:order-1" : ""}`}>
-                <h3 className="font-display text-2xl md:text-3xl font-semibold text-foreground">
+                <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground">
                   {room.name}
                 </h3>
                 <p className="text-muted-foreground font-body leading-relaxed">
@@ -111,7 +117,7 @@ const RoomsSection = () => {
                   {room.features.map((feature) => (
                     <span
                       key={feature}
-                      className="border border-primary/30 text-primary text-xs tracking-wider uppercase px-4 py-2 font-body"
+                      className="border border-primary/20 text-primary/80 text-xs tracking-wider uppercase px-4 py-2 font-body rounded-lg hover:border-primary/40 hover:bg-primary/5 transition-all duration-300"
                     >
                       {feature}
                     </span>
@@ -119,7 +125,7 @@ const RoomsSection = () => {
                 </div>
                 <a
                   href="#booking"
-                  className="inline-block gold-gradient text-primary-foreground px-8 py-3 text-xs tracking-[0.2em] uppercase font-body font-medium hover:opacity-90 transition-opacity mt-2"
+                  className="inline-block neon-button text-primary-foreground px-8 py-3 text-xs tracking-[0.15em] uppercase font-body font-semibold mt-2"
                 >
                   {t("rooms.bookThis")}
                 </a>
