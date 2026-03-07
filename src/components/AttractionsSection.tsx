@@ -36,8 +36,12 @@ const AttractionsSection = () => {
   const { t, language } = useLanguage();
 
   return (
-    <section className="section-padding bg-background" ref={ref}>
-      <div className="max-w-7xl mx-auto">
+    <section className="section-padding bg-background relative" ref={ref}>
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute bottom-0 left-0 w-[500px] h-[400px] rounded-full bg-accent/5 blur-[150px]" />
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -60,7 +64,7 @@ const AttractionsSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="glass-card p-8 group hover:border-primary/30 transition-all duration-500"
+              className="glow-card p-8 group"
             >
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-2">
@@ -74,13 +78,13 @@ const AttractionsSection = () => {
                   <span className="text-[11px] font-body">{attraction.distance}</span>
                 </div>
               </div>
-              <h3 className="font-display text-xl font-semibold text-foreground mb-3">
+              <h3 className="font-display text-xl font-bold text-foreground mb-3">
                 {language === "am" ? attraction.nameAm : attraction.nameEn}
               </h3>
               <p className="text-muted-foreground font-body text-sm leading-relaxed">
                 {language === "am" ? attraction.descAm : attraction.descEn}
               </p>
-              <div className="mt-4 flex items-center gap-2 text-primary/60">
+              <div className="mt-4 flex items-center gap-2 text-primary/50">
                 <MapPin className="w-3.5 h-3.5" />
                 <span className="text-[11px] font-body tracking-wide">{t("attractions.fromHotel")}</span>
               </div>
