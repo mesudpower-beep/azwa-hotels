@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-
 const BookingSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -59,19 +58,24 @@ const BookingSection = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) { toast.error("Please fill in all required fields"); return; }
-
     const message = buildWhatsAppMessage();
     window.open(`https://wa.me/251998900160?text=${message}`, "_blank");
     toast.success("Booking request sent! Redirecting to WhatsApp.");
   };
 
-  const inputClasses = "w-full flex items-center gap-3 border border-border bg-background/50 px-4 py-3 text-sm font-body";
+  const inputClasses = "w-full flex items-center gap-3 border border-border/50 bg-secondary/30 px-4 py-3 text-sm font-body rounded-lg transition-all duration-300 focus-within:border-primary/40 focus-within:bg-secondary/50";
 
   return (
     <section id="booking" className="relative section-padding" ref={ref}>
       <div className="absolute inset-0">
         <img src="/images/pool.jpg" alt="Hotel pool" className="w-full h-full object-cover" loading="lazy" />
-        <div className="absolute inset-0 bg-background/90" />
+        <div className="absolute inset-0 bg-background/92 backdrop-blur-sm" />
+      </div>
+
+      {/* Ambient glows */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-0 left-1/3 w-[600px] h-[400px] rounded-full bg-primary/5 blur-[150px]" />
+        <div className="absolute bottom-0 right-1/4 w-[400px] h-[300px] rounded-full bg-accent/5 blur-[120px]" />
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto">
@@ -86,21 +90,21 @@ const BookingSection = () => {
           <div className="grid md:grid-cols-3 gap-6">
             <div>
               <label className="block text-xs tracking-[0.15em] uppercase text-muted-foreground font-body mb-3">{t("booking.name")} <span className="text-destructive">*</span></label>
-              <div className={cn(inputClasses, errors.name && "border-destructive")}>
+              <div className={cn(inputClasses, errors.name && "border-destructive/50")}>
                 <User className="w-4 h-4 text-primary shrink-0" />
                 <input type="text" value={name} onChange={(e) => { setName(e.target.value); setErrors((p) => ({ ...p, name: "" })); }} placeholder={t("booking.name")} className="bg-transparent flex-1 outline-none text-foreground placeholder:text-muted-foreground" maxLength={100} />
               </div>
             </div>
             <div>
               <label className="block text-xs tracking-[0.15em] uppercase text-muted-foreground font-body mb-3">{t("booking.email")} <span className="text-destructive">*</span></label>
-              <div className={cn(inputClasses, errors.email && "border-destructive")}>
+              <div className={cn(inputClasses, errors.email && "border-destructive/50")}>
                 <Mail className="w-4 h-4 text-primary shrink-0" />
                 <input type="email" value={email} onChange={(e) => { setEmail(e.target.value); setErrors((p) => ({ ...p, email: "" })); }} placeholder="your@email.com" className="bg-transparent flex-1 outline-none text-foreground placeholder:text-muted-foreground" maxLength={255} />
               </div>
             </div>
             <div>
               <label className="block text-xs tracking-[0.15em] uppercase text-muted-foreground font-body mb-3">{t("booking.phone")} <span className="text-destructive">*</span></label>
-              <div className={cn(inputClasses, errors.phone && "border-destructive")}>
+              <div className={cn(inputClasses, errors.phone && "border-destructive/50")}>
                 <Phone className="w-4 h-4 text-primary shrink-0" />
                 <input type="tel" value={phone} onChange={(e) => { setPhone(e.target.value); setErrors((p) => ({ ...p, phone: "" })); }} placeholder="+251 9XX XXX XXX" className="bg-transparent flex-1 outline-none text-foreground placeholder:text-muted-foreground" maxLength={20} />
               </div>
@@ -112,7 +116,7 @@ const BookingSection = () => {
               <label className="block text-xs tracking-[0.15em] uppercase text-muted-foreground font-body mb-3">{t("booking.checkIn")} <span className="text-destructive">*</span></label>
               <Popover>
                 <PopoverTrigger asChild>
-                  <button type="button" className={cn(inputClasses, "text-left", !checkIn && "text-muted-foreground", errors.checkIn && "border-destructive")}>
+                  <button type="button" className={cn(inputClasses, "text-left", !checkIn && "text-muted-foreground", errors.checkIn && "border-destructive/50")}>
                     <Calendar className="w-4 h-4 text-primary" />
                     {checkIn ? format(checkIn, "PPP") : t("booking.selectDate")}
                   </button>
@@ -126,7 +130,7 @@ const BookingSection = () => {
               <label className="block text-xs tracking-[0.15em] uppercase text-muted-foreground font-body mb-3">{t("booking.checkOut")} <span className="text-destructive">*</span></label>
               <Popover>
                 <PopoverTrigger asChild>
-                  <button type="button" className={cn(inputClasses, "text-left", !checkOut && "text-muted-foreground", errors.checkOut && "border-destructive")}>
+                  <button type="button" className={cn(inputClasses, "text-left", !checkOut && "text-muted-foreground", errors.checkOut && "border-destructive/50")}>
                     <Calendar className="w-4 h-4 text-primary" />
                     {checkOut ? format(checkOut, "PPP") : t("booking.selectDate")}
                   </button>
@@ -174,7 +178,7 @@ const BookingSection = () => {
             <label className="block text-xs tracking-[0.15em] uppercase text-muted-foreground font-body mb-3">
               {t("booking.specialRequests")} <span className="text-muted-foreground text-[10px]">{t("booking.optional")}</span>
             </label>
-            <div className="border border-border bg-background/50 px-4 py-3">
+            <div className="border border-border/50 bg-secondary/30 px-4 py-3 rounded-lg transition-all duration-300 focus-within:border-primary/40">
               <div className="flex gap-3">
                 <FileText className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                 <textarea value={specialRequests} onChange={(e) => setSpecialRequests(e.target.value)} placeholder="..." rows={3} className="bg-transparent flex-1 outline-none text-sm font-body text-foreground placeholder:text-muted-foreground resize-none" maxLength={500} />
@@ -183,10 +187,10 @@ const BookingSection = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <button type="submit" className="gold-gradient text-primary-foreground px-10 py-4 text-sm tracking-[0.2em] uppercase font-body font-medium hover:opacity-90 transition-opacity flex-1">
+            <button type="submit" className="neon-button text-primary-foreground px-10 py-4 text-sm tracking-[0.15em] uppercase font-body font-semibold flex-1">
               {t("booking.requestBooking")}
             </button>
-            <a href="https://wa.me/251998900160" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 border border-primary/40 text-primary px-8 py-4 text-sm tracking-[0.15em] uppercase font-body hover:bg-primary/10 transition-all">
+            <a href="https://wa.me/251998900160" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 border border-primary/30 text-primary px-8 py-4 text-sm tracking-[0.1em] uppercase font-body hover:bg-primary/10 hover:border-primary/50 transition-all rounded-lg">
               <MessageCircle className="w-4 h-4" />
               {t("booking.chatWhatsApp")}
             </a>

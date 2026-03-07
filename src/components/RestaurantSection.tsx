@@ -35,8 +35,8 @@ const RestaurantSection = () => {
   const { t, language } = useLanguage();
 
   return (
-    <section id="restaurant" className="section-padding bg-background" ref={ref}>
-      <div className="max-w-7xl mx-auto">
+    <section id="restaurant" className="section-padding gradient-bg relative" ref={ref}>
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -59,9 +59,9 @@ const RestaurantSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="group overflow-hidden"
+              className="glow-card group overflow-hidden"
             >
-              <div className="relative overflow-hidden">
+              <div className="relative overflow-hidden rounded-t-xl">
                 <img
                   src={dish.image}
                   alt={language === "am" ? dish.titleAm : dish.titleEn}
@@ -70,12 +70,12 @@ const RestaurantSection = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
-                  <h3 className="font-display text-xl font-semibold text-foreground mb-1">
+                  <h3 className="font-display text-xl font-bold text-foreground mb-1">
                     {language === "am" ? dish.titleAm : dish.titleEn}
                   </h3>
                 </div>
               </div>
-              <div className="glass-card p-5 border-t-0">
+              <div className="p-5">
                 <p className="text-muted-foreground font-body text-sm leading-relaxed">
                   {language === "am" ? dish.descAm : dish.descEn}
                 </p>
@@ -111,13 +111,13 @@ const RestaurantSection = () => {
           <div className="flex items-center gap-3">
             <button
               onClick={() => setMenuOpen(true)}
-              className="border border-primary/40 text-primary px-8 py-3 text-xs tracking-[0.2em] uppercase font-body font-medium hover:bg-primary/10 transition-all whitespace-nowrap"
+              className="border border-primary/30 text-primary px-8 py-3 text-xs tracking-[0.15em] uppercase font-body font-medium hover:bg-primary/10 hover:border-primary/50 transition-all rounded-lg whitespace-nowrap"
             >
               {t("restaurant.viewMenu")}
             </button>
             <a
               href="#booking"
-              className="gold-gradient text-primary-foreground px-8 py-3 text-xs tracking-[0.2em] uppercase font-body font-medium hover:opacity-90 transition-opacity whitespace-nowrap"
+              className="neon-button text-primary-foreground px-8 py-3 text-xs tracking-[0.15em] uppercase font-body font-semibold whitespace-nowrap"
             >
               {t("restaurant.reserve")}
             </a>
