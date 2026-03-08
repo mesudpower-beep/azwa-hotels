@@ -22,14 +22,14 @@ const rooms = [
     name: "Twin Double Room",
     descEn: "Two comfortable double beds with breathtaking lake views — ideal for friends traveling together or families with older children.",
     descAm: "ሁለት ምቹ ድርብ አልጋዎች ከሚያስደንቅ የሐይቅ እይታ ጋር — ለጓደኞችና ቤተሰቦች ተስማሚ።",
-    price: "$81", image: "/images/room-presidential.jpg",
+    price: "$81", image: "/images/gallery/room-4.jpg",
     features: ["Twin Beds", "Lake View", "35 sqm", "Living Area"], badge: null,
   },
   {
     name: "Family Triple Room",
     descEn: "Our most spacious accommodation with triple bedding, a separate living area, and panoramic views. Perfect for families creating lasting memories.",
     descAm: "በጣም ሰፊው ማረፊያችን ከሶስት አልጋ፣ የተለየ የመኖሪያ ቦታ እና ሰፊ እይታ ጋር።",
-    price: "$111", image: "/images/lobby.jpg",
+    price: "$111", image: "/images/gallery/room-5.jpg",
     features: ["Triple Beds", "Panoramic View", "50 sqm", "Family Space"], badge: "Best for Families",
   },
 ];
