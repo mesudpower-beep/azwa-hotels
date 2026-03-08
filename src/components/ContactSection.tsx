@@ -3,17 +3,30 @@ import { useRef, useState } from "react";
 import { Phone, Mail, MapPin, MessageCircle, Send } from "lucide-react";
 import { toast } from "sonner";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { supabase } from "@/integrations/supabase/client";
 
 const ContactSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [sending, setSending] = useState(false);
   const { t } = useLanguage();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
       toast.error("Please fill in all fields");
+      return;
+    }
+    setSending(true);
+    const { error } = await supabase.from("contact_messages").insert({
+      name: form.name.trim(),
+      email: form.email.trim(),
+      message: form.message.trim(),
+    });
+    setSending(false);
+    if (error) {
+      toast.error("Failed to send message. Please try again.");
       return;
     }
     toast.success("Message sent! We'll respond within 24 hours.");
@@ -135,10 +148,11 @@ const ContactSection = () => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               type="submit"
-              className="w-full neon-button text-primary-foreground px-8 py-4 text-sm tracking-[0.15em] uppercase font-body font-semibold flex items-center justify-center gap-3"
+              disabled={sending}
+              className="w-full neon-button text-primary-foreground px-8 py-4 text-sm tracking-[0.15em] uppercase font-body font-semibold flex items-center justify-center gap-3 disabled:opacity-50"
             >
               <Send className="w-4 h-4" />
-              {t("contact.sendMessage")}
+              {sending ? "Sending..." : t("contact.sendMessage")}
             </motion.button>
           </motion.form>
         </div>

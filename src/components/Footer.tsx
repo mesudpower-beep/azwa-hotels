@@ -67,10 +67,13 @@ const Footer = () => {
           className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-border/30 text-center space-y-2 sm:space-y-3"
         >
           <p className="text-xs text-muted-foreground font-body tracking-wider">© {new Date().getFullYear()} Azwa Hotel. {t("footer.rights")}</p>
-          <p className="text-[11px] text-muted-foreground/60 font-body tracking-wide">
-            Built by <span className="text-primary/80 font-semibold">Amanuel Endaweke</span>{" · "}
+          <div className="flex items-center justify-center gap-3 text-[11px] text-muted-foreground/60 font-body tracking-wide">
+            <span>Built by <span className="text-primary/80 font-semibold">Amanuel Endaweke</span></span>
+            <span>·</span>
             <a href="tel:+251905517626" className="text-primary/60 hover:text-primary transition-colors">+251 90 551 7626</a>
-          </p>
+            <span>·</span>
+            <a href="/admin" className="text-primary/60 hover:text-primary transition-colors">Admin</a>
+          </div>
         </motion.div>
       </div>
     </footer>
