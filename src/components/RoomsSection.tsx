@@ -22,7 +22,7 @@ const rooms = [
     name: "Twin Double Room",
     descEn: "Two comfortable double beds with breathtaking lake views — ideal for friends traveling together or families with older children.",
     descAm: "ሁለት ምቹ ድርብ አልጋዎች ከሚያስደንቅ የሐይቅ እይታ ጋር — ለጓደኞችና ቤተሰቦች ተስማሚ።",
-    price: "$81", image: "/images/room-presidential.jpg",
+    price: "$81", image: "/images/gallery/room-4.jpg",
     features: ["Twin Beds", "Lake View", "35 sqm", "Living Area"], badge: null,
   },
   {
