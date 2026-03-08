@@ -71,7 +71,7 @@ const TestimonialsSection = () => {
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <motion.div
           className="absolute top-1/3 left-1/3 w-[500px] h-[500px] rounded-full"
-          style={{ background: "hsl(280 85% 65% / 0.03)", filter: "blur(150px)" }}
+          style={{ background: "hsl(145 45% 42% / 0.03)", filter: "blur(150px)" }}
           animate={{ scale: [1, 1.2, 1], x: [0, 30, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
