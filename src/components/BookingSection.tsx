@@ -313,7 +313,7 @@ const BookingSection = () => {
                     <label className="block text-xs tracking-[0.15em] uppercase text-muted-foreground font-body mb-3">
                       {t("booking.specialRequests")} <span className="text-muted-foreground text-[10px]">{t("booking.optional")}</span>
                     </label>
-                    <div className="border border-border/50 bg-secondary/30 px-4 py-3.5 rounded-xl transition-all duration-300 focus-within:border-primary/40 focus-within:shadow-[0_0_20px_hsl(280_85%_65%/0.1)]">
+                    <div className="border border-border/50 bg-secondary/30 px-4 py-3.5 rounded-xl transition-all duration-300 focus-within:border-primary/40 focus-within:shadow-[0_0_20px_hsl(145_45%_42%/0.1)]">
                       <div className="flex gap-3">
                         <FileText className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                         <textarea value={specialRequests} onChange={(e) => setSpecialRequests(e.target.value)} placeholder="Airport pickup, late check-in..." rows={3} className="bg-transparent flex-1 outline-none text-sm font-body text-foreground placeholder:text-muted-foreground resize-none" maxLength={500} />
