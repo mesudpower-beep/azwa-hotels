@@ -1,5 +1,6 @@
 import { lazy, Suspense, useState, useCallback } from "react";
 import Navbar from "@/components/Navbar";
+import TopInfoBar from "@/components/TopInfoBar";
 import HeroSection from "@/components/HeroSection";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import Preloader from "@/components/Preloader";
