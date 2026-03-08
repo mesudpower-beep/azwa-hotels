@@ -132,7 +132,7 @@ const RoomSelector = ({ selected, onSelect }: RoomSelectorProps) => {
                     transition={{ type: "spring", stiffness: 400, damping: 15 }}
                     className="absolute top-3 right-3 z-20"
                   >
-                    <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-[0_0_20px_hsl(280_85%_65%/0.5)]">
+                    <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-[0_0_20px_hsl(145_45%_42%/0.5)]">
                       <Check className="w-4 h-4 text-primary-foreground" />
                     </div>
                     {/* Ripple rings */}
