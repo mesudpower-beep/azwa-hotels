@@ -71,8 +71,6 @@ const Footer = () => {
             <span>Built by <span className="text-primary/80 font-semibold">Amanuel Endaweke</span></span>
             <span>·</span>
             <a href="tel:+251905517626" className="text-primary/60 hover:text-primary transition-colors">+251 90 551 7626</a>
-            <span>·</span>
-            <a href="/admin" className="text-primary/60 hover:text-primary transition-colors">Admin</a>
           </div>
         </motion.div>
       </div>
