@@ -47,10 +47,19 @@ const BookingSection = () => {
     return Object.keys(e).length === 0;
   };
 
-  const next = () => {
-    if (validateStep(step)) setStep((s) => Math.min(s + 1, 3));
+  const scrollToBooking = () => {
+    ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
-  const back = () => setStep((s) => Math.max(s - 1, 0));
+  const next = () => {
+    if (validateStep(step)) {
+      setStep((s) => Math.min(s + 1, 3));
+      setTimeout(scrollToBooking, 100);
+    }
+  };
+  const back = () => {
+    setStep((s) => Math.max(s - 1, 0));
+    setTimeout(scrollToBooking, 100);
+  };
 
   const room = ROOM_OPTIONS.find((r) => r.id === roomType)!;
   const nights = checkIn && checkOut ? Math.max(differenceInDays(checkOut, checkIn), 1) : 0;
@@ -122,7 +131,7 @@ const BookingSection = () => {
   };
 
   return (
-    <section id="booking" className="relative section-padding overflow-hidden" ref={ref}>
+    <section id="booking" className="relative section-padding pb-28 overflow-hidden" ref={ref}>
       <div className="absolute inset-0">
         <motion.img
           src="/images/pool.jpg"
