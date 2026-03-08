@@ -45,16 +45,16 @@ const StepIndicator = ({ steps, current }: StepIndicatorProps) => {
                   )}
                   animate={{
                     backgroundColor: isCompleted
-                      ? "hsl(280 85% 65%)"
+                      ? "hsl(145 45% 42%)"
                       : isActive
-                      ? "hsl(280 85% 65% / 0.2)"
-                      : "hsl(260 15% 14% / 0.5)",
+                      ? "hsl(145 45% 42% / 0.2)"
+                      : "hsl(30 10% 16% / 0.5)",
                     borderWidth: isActive ? 2 : 0,
-                    borderColor: isActive ? "hsl(280 85% 65%)" : "transparent",
+                    borderColor: isActive ? "hsl(145 45% 42%)" : "transparent",
                     boxShadow: isActive
-                      ? "0 0 20px hsl(280 85% 65% / 0.3)"
+                      ? "0 0 20px hsl(145 45% 42% / 0.3)"
                       : isCompleted
-                      ? "0 0 15px hsl(280 85% 65% / 0.2)"
+                      ? "0 0 15px hsl(145 45% 42% / 0.2)"
                       : "none",
                   }}
                   transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
