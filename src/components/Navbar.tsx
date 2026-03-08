@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import LanguageSwitcher from "./LanguageSwitcher";
+import ThemeToggle from "./ThemeToggle";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navbar = () => {
