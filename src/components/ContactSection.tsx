@@ -36,7 +36,7 @@ const ContactSection = () => {
               {[
                 { icon: MapPin, label: t("contact.address"), value: "Bahir Dar, Ethiopia\nLake Tana Waterfront" },
                 { icon: Phone, label: t("contact.phone"), value: "0998900160" },
-                { icon: Mail, label: t("contact.email"), value: "mesudpower@mail.com" },
+                { icon: Mail, label: t("contact.email"), value: "azwa-hotel@gmail.com" },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-4 group">
                   <div className="w-12 h-12 border border-primary/20 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-primary/10 group-hover:border-primary/40 transition-all duration-500">
