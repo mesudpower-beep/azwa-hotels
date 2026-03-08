@@ -1,6 +1,7 @@
 import { motion, useInView, AnimatePresence, LayoutGroup } from "framer-motion";
 import { useRef, useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { X, ZoomIn } from "lucide-react";
 
 type Category = "all" | "exterior" | "lobby" | "rooms" | "restaurant" | "food" | "pool" | "spa" | "lake" | "amenities" | "garden";
 
@@ -66,33 +67,54 @@ const GallerySection = () => {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
           className="text-center mb-12"
         >
-          <p className="section-subtitle mb-4">{t("gallery.subtitle")}</p>
+          <motion.p
+            className="section-subtitle mb-4"
+            initial={{ opacity: 0, letterSpacing: "0.4em" }}
+            animate={isInView ? { opacity: 1, letterSpacing: "0.2em" } : {}}
+            transition={{ duration: 1, delay: 0.2 }}
+          >
+            {t("gallery.subtitle")}
+          </motion.p>
           <h2 className="section-title text-foreground">
             {t("gallery.title1")} <span className="gold-text">{t("gallery.title2")}</span>
           </h2>
         </motion.div>
 
+        {/* Category filter with animated indicator */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.2, duration: 0.6 }}
           className="flex flex-wrap justify-center gap-2 mb-10"
         >
-          {categories.map((cat) => (
-            <button
+          {categories.map((cat, i) => (
+            <motion.button
               key={cat.key}
               onClick={() => setActiveCategory(cat.key)}
-              className={`px-4 py-2 text-xs tracking-[0.1em] uppercase font-body border rounded-lg transition-all duration-300 relative overflow-hidden ${
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ delay: 0.3 + i * 0.04 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className={`relative px-4 py-2 text-xs tracking-[0.1em] uppercase font-body border rounded-lg transition-all duration-300 overflow-hidden ${
                 activeCategory === cat.key
-                  ? "bg-primary text-primary-foreground border-primary shadow-[0_0_20px_hsl(280_85%_65%/0.3)]"
+                  ? "text-primary-foreground border-primary"
                   : "bg-transparent text-muted-foreground border-border/50 hover:border-primary/40 hover:text-primary"
               }`}
             >
-              {language === "am" ? cat.labelAm : cat.labelEn}
-            </button>
+              {activeCategory === cat.key && (
+                <motion.div
+                  layoutId="gallery-tab"
+                  className="absolute inset-0 rounded-lg"
+                  style={{ background: "linear-gradient(135deg, hsl(280 85% 65%), hsl(220 90% 60%))", boxShadow: "0 0 20px hsl(280 85% 65% / 0.3)" }}
+                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                />
+              )}
+              <span className="relative z-10">{language === "am" ? cat.labelAm : cat.labelEn}</span>
+            </motion.button>
           ))}
         </motion.div>
 
@@ -103,11 +125,11 @@ const GallerySection = () => {
                 <motion.div
                   key={image.src}
                   layout
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.4, type: "spring", stiffness: 300, damping: 25 }}
-                  className="relative overflow-hidden cursor-pointer group aspect-square rounded-lg"
+                  initial={{ opacity: 0, scale: 0.6, rotateY: -20 }}
+                  animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                  exit={{ opacity: 0, scale: 0.6, rotateY: 20 }}
+                  transition={{ duration: 0.5, type: "spring", stiffness: 300, damping: 25 }}
+                  className="relative overflow-hidden cursor-pointer group aspect-square rounded-xl"
                   onClick={() => setSelectedImage(image.src)}
                   whileHover={{ scale: 1.05, zIndex: 10 }}
                 >
@@ -118,8 +140,15 @@ const GallerySection = () => {
                     loading="lazy"
                     decoding="async"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end justify-center pb-4">
-                    <span className="font-body text-xs tracking-[0.15em] uppercase text-foreground translate-y-4 group-hover:translate-y-0 transition-transform duration-500 text-center px-2">
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-end pb-4">
+                    <motion.div
+                      initial={{ y: 20, opacity: 0 }}
+                      whileInView={{ y: 0, opacity: 1 }}
+                      className="mb-2"
+                    >
+                      <ZoomIn className="w-5 h-5 text-primary" />
+                    </motion.div>
+                    <span className="font-body text-xs tracking-[0.1em] uppercase text-foreground translate-y-4 group-hover:translate-y-0 transition-transform duration-500 text-center px-2">
                       {language === "am" ? image.altAm : image.altEn}
                     </span>
                   </div>
@@ -130,34 +159,37 @@ const GallerySection = () => {
         </LayoutGroup>
       </div>
 
-      {/* Lightbox */}
+      {/* Enhanced Lightbox */}
       <AnimatePresence>
         {selectedImage && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-background/95 backdrop-blur-xl flex items-center justify-center p-4 cursor-pointer"
+            className="fixed inset-0 z-50 bg-background/95 backdrop-blur-2xl flex items-center justify-center p-4 cursor-pointer"
             onClick={() => setSelectedImage(null)}
           >
             <motion.button
-              initial={{ opacity: 0, rotate: -90 }}
-              animate={{ opacity: 1, rotate: 0 }}
-              exit={{ opacity: 0, rotate: 90 }}
-              className="absolute top-6 right-6 w-10 h-10 border border-primary/30 text-primary flex items-center justify-center text-xl font-body hover:bg-primary/10 transition-colors rounded-lg z-10"
+              initial={{ opacity: 0, rotate: -90, scale: 0 }}
+              animate={{ opacity: 1, rotate: 0, scale: 1 }}
+              exit={{ opacity: 0, rotate: 90, scale: 0 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              whileHover={{ scale: 1.1, rotate: 90 }}
+              className="absolute top-6 right-6 w-12 h-12 border border-primary/30 text-primary flex items-center justify-center hover:bg-primary/10 transition-colors rounded-full z-10"
               onClick={() => setSelectedImage(null)}
               aria-label="Close gallery preview"
             >
-              ✕
+              <X className="w-5 h-5" />
             </motion.button>
             <motion.img
-              initial={{ opacity: 0, scale: 0.7, rotateY: -15 }}
+              initial={{ opacity: 0, scale: 0.5, rotateY: -30 }}
               animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-              exit={{ opacity: 0, scale: 0.7 }}
+              exit={{ opacity: 0, scale: 0.5, rotateY: 30 }}
               transition={{ type: "spring", stiffness: 200, damping: 20 }}
               src={selectedImage}
               alt="Gallery preview"
-              className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-[0_0_100px_hsl(280_85%_65%/0.15)]"
+              className="max-w-full max-h-[85vh] object-contain rounded-2xl"
+              style={{ boxShadow: "0 0 120px hsl(280 85% 65% / 0.15), 0 0 60px hsl(220 90% 60% / 0.1)" }}
             />
           </motion.div>
         )}

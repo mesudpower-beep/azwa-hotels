@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { MapPin, Clock, Star } from "lucide-react";
+import { MapPin, Clock, Star, ArrowUpRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const attractions = [
@@ -38,17 +38,29 @@ const AttractionsSection = () => {
   return (
     <section className="section-padding bg-background relative" ref={ref}>
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute bottom-0 left-0 w-[500px] h-[400px] rounded-full bg-accent/5 blur-[150px]" />
+        <motion.div
+          className="absolute bottom-0 left-0 w-[500px] h-[400px] rounded-full"
+          style={{ background: "hsl(220 90% 60% / 0.04)", filter: "blur(150px)" }}
+          animate={{ x: [0, 40, 0] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
           className="text-center mb-16"
         >
-          <p className="section-subtitle mb-4">{t("attractions.subtitle")}</p>
+          <motion.p
+            className="section-subtitle mb-4"
+            initial={{ opacity: 0, letterSpacing: "0.4em" }}
+            animate={isInView ? { opacity: 1, letterSpacing: "0.2em" } : {}}
+            transition={{ duration: 1, delay: 0.2 }}
+          >
+            {t("attractions.subtitle")}
+          </motion.p>
           <h2 className="section-title text-foreground">
             {t("attractions.title1")} <span className="gold-text">{t("attractions.title2")}</span>
           </h2>
@@ -61,20 +73,28 @@ const AttractionsSection = () => {
           {attractions.map((attraction, index) => (
             <motion.div
               key={attraction.nameEn}
-              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              initial={{ opacity: 0, y: 50, scale: 0.9 }}
               animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -6, transition: { duration: 0.3 } }}
-              className="glow-card p-8 group"
+              transition={{ duration: 0.7, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] as const }}
+              whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.3 } }}
+              className="glow-card p-8 group relative overflow-hidden"
             >
+              {/* Hover shine sweep */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/[0.03] to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none" />
+
               <div className="flex items-start justify-between mb-4">
                 <motion.div
-                  initial={{ opacity: 0, x: -10 }}
+                  initial={{ opacity: 0, x: -15 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: 0.3 + index * 0.1 }}
+                  transition={{ delay: 0.4 + index * 0.12 }}
                   className="flex items-center gap-2"
                 >
-                  <Star className="w-4 h-4 text-primary" />
+                  <motion.div
+                    animate={{ rotate: [0, 15, 0] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <Star className="w-4 h-4 text-primary" />
+                  </motion.div>
                   <span className="text-[10px] font-body tracking-wider uppercase text-primary font-semibold">
                     {attraction.highlight}
                   </span>
@@ -84,7 +104,7 @@ const AttractionsSection = () => {
                   <span className="text-[11px] font-body">{attraction.distance}</span>
                 </div>
               </div>
-              <h3 className="font-display text-xl font-bold text-foreground mb-3">
+              <h3 className="font-display text-xl font-bold text-foreground mb-3 group-hover:text-primary/90 transition-colors duration-300">
                 {language === "am" ? attraction.nameAm : attraction.nameEn}
               </h3>
               <p className="text-muted-foreground font-body text-sm leading-relaxed">
@@ -93,12 +113,23 @@ const AttractionsSection = () => {
               <motion.div
                 initial={{ width: 0 }}
                 animate={isInView ? { width: "100%" } : {}}
-                transition={{ delay: 0.5 + index * 0.1, duration: 0.8 }}
-                className="h-px bg-gradient-to-r from-primary/30 to-transparent mt-4"
+                transition={{ delay: 0.6 + index * 0.12, duration: 0.8 }}
+                className="h-px mt-4"
+                style={{ background: "linear-gradient(90deg, hsl(280 85% 65% / 0.3), transparent)" }}
               />
-              <div className="mt-4 flex items-center gap-2 text-primary/50 group-hover:text-primary/70 transition-colors">
-                <MapPin className="w-3.5 h-3.5" />
-                <span className="text-[11px] font-body tracking-wide">{t("attractions.fromHotel")}</span>
+              <div className="mt-4 flex items-center justify-between">
+                <div className="flex items-center gap-2 text-primary/50 group-hover:text-primary/70 transition-colors">
+                  <MapPin className="w-3.5 h-3.5" />
+                  <span className="text-[11px] font-body tracking-wide">{t("attractions.fromHotel")}</span>
+                </div>
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.7 + index * 0.12 }}
+                  className="text-primary/0 group-hover:text-primary/50 transition-all duration-300"
+                >
+                  <ArrowUpRight className="w-4 h-4" />
+                </motion.div>
               </div>
             </motion.div>
           ))}
@@ -107,7 +138,7 @@ const AttractionsSection = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center mt-10"
         >
           <p className="text-xs text-muted-foreground font-body tracking-wider">
