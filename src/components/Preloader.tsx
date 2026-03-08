@@ -10,16 +10,16 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
-          setTimeout(() => setPhase("reveal"), 300);
+          setTimeout(() => setPhase("reveal"), 100);
           setTimeout(() => {
             setPhase("done");
             onComplete();
-          }, 1400);
+          }, 600);
           return 100;
         }
-        return prev + Math.random() * 8 + 2;
+        return prev + Math.random() * 20 + 10;
       });
-    }, 50);
+    }, 30);
     return () => clearInterval(interval);
   }, [onComplete]);
 
