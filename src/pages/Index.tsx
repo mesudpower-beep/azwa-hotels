@@ -35,6 +35,7 @@ const Index = () => {
       <Preloader onComplete={handleLoadComplete} />
       {loaded && (
         <main>
+          <TopInfoBar />
           <CustomCursor />
           <ScrollProgress />
           <Navbar />
