@@ -1,4 +1,4 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence, LayoutGroup } from "framer-motion";
 import { useRef, useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -64,9 +64,9 @@ const GallerySection = () => {
     <section id="gallery" className="section-padding gradient-bg relative" ref={ref}>
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-12"
         >
           <p className="section-subtitle mb-4">{t("gallery.subtitle")}</p>
@@ -75,71 +75,93 @@ const GallerySection = () => {
           </h2>
         </motion.div>
 
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="flex flex-wrap justify-center gap-2 mb-10"
+        >
           {categories.map((cat) => (
             <button
               key={cat.key}
               onClick={() => setActiveCategory(cat.key)}
-              className={`px-4 py-2 text-xs tracking-[0.1em] uppercase font-body border rounded-lg transition-all duration-300 ${
+              className={`px-4 py-2 text-xs tracking-[0.1em] uppercase font-body border rounded-lg transition-all duration-300 relative overflow-hidden ${
                 activeCategory === cat.key
-                  ? "bg-primary text-primary-foreground border-primary shadow-[0_0_15px_hsl(280_85%_65%/0.3)]"
+                  ? "bg-primary text-primary-foreground border-primary shadow-[0_0_20px_hsl(280_85%_65%/0.3)]"
                   : "bg-transparent text-muted-foreground border-border/50 hover:border-primary/40 hover:text-primary"
               }`}
             >
               {language === "am" ? cat.labelAm : cat.labelEn}
             </button>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
-          {filteredImages.map((image, index) => (
-            <motion.div
-              key={image.src}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.03 }}
-              layout
-              className="relative overflow-hidden cursor-pointer group aspect-square rounded-lg"
-              onClick={() => setSelectedImage(image.src)}
-            >
-              <img
-                src={image.src}
-                alt={language === "am" ? image.altAm : image.altEn}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                loading="lazy"
-                decoding="async"
-              />
-              <div className="absolute inset-0 bg-background/0 group-hover:bg-background/50 transition-all duration-500 flex items-center justify-center">
-                <span className="font-body text-xs tracking-[0.15em] uppercase text-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-center px-2">
-                  {language === "am" ? image.altAm : image.altEn}
-                </span>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        <LayoutGroup>
+          <motion.div layout className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+            <AnimatePresence mode="popLayout">
+              {filteredImages.map((image) => (
+                <motion.div
+                  key={image.src}
+                  layout
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.4, type: "spring", stiffness: 300, damping: 25 }}
+                  className="relative overflow-hidden cursor-pointer group aspect-square rounded-lg"
+                  onClick={() => setSelectedImage(image.src)}
+                  whileHover={{ scale: 1.05, zIndex: 10 }}
+                >
+                  <img
+                    src={image.src}
+                    alt={language === "am" ? image.altAm : image.altEn}
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end justify-center pb-4">
+                    <span className="font-body text-xs tracking-[0.15em] uppercase text-foreground translate-y-4 group-hover:translate-y-0 transition-transform duration-500 text-center px-2">
+                      {language === "am" ? image.altAm : image.altEn}
+                    </span>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+        </LayoutGroup>
       </div>
 
-      {selectedImage && (
-        <div
-          className="fixed inset-0 z-50 bg-background/95 backdrop-blur-xl flex items-center justify-center p-4 cursor-pointer"
-          onClick={() => setSelectedImage(null)}
-        >
-          <button
-            className="absolute top-6 right-6 w-10 h-10 border border-primary/30 text-primary flex items-center justify-center text-xl font-body hover:bg-primary/10 transition-colors rounded-lg"
+      {/* Lightbox */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-background/95 backdrop-blur-xl flex items-center justify-center p-4 cursor-pointer"
             onClick={() => setSelectedImage(null)}
-            aria-label="Close gallery preview"
           >
-            ✕
-          </button>
-          <motion.img
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            src={selectedImage}
-            alt="Gallery preview"
-            className="max-w-full max-h-[85vh] object-contain rounded-xl"
-          />
-        </div>
-      )}
+            <motion.button
+              initial={{ opacity: 0, rotate: -90 }}
+              animate={{ opacity: 1, rotate: 0 }}
+              exit={{ opacity: 0, rotate: 90 }}
+              className="absolute top-6 right-6 w-10 h-10 border border-primary/30 text-primary flex items-center justify-center text-xl font-body hover:bg-primary/10 transition-colors rounded-lg z-10"
+              onClick={() => setSelectedImage(null)}
+              aria-label="Close gallery preview"
+            >
+              ✕
+            </motion.button>
+            <motion.img
+              initial={{ opacity: 0, scale: 0.7, rotateY: -15 }}
+              animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+              exit={{ opacity: 0, scale: 0.7 }}
+              transition={{ type: "spring", stiffness: 200, damping: 20 }}
+              src={selectedImage}
+              alt="Gallery preview"
+              className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-[0_0_100px_hsl(280_85%_65%/0.15)]"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
