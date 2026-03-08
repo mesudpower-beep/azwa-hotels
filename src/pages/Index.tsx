@@ -19,6 +19,8 @@ const SpaSection = lazy(() => import("@/components/SpaSection"));
 const AmenitiesSection = lazy(() => import("@/components/AmenitiesSection"));
 const AttractionsSection = lazy(() => import("@/components/AttractionsSection"));
 const GallerySection = lazy(() => import("@/components/GallerySection"));
+const ExperiencesSection = lazy(() => import("@/components/ExperiencesSection"));
+const SpecialOffersSection = lazy(() => import("@/components/SpecialOffersSection"));
 const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
 const BookingSection = lazy(() => import("@/components/BookingSection"));
 const ContactSection = lazy(() => import("@/components/ContactSection"));
