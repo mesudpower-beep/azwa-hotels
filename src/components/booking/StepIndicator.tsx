@@ -94,10 +94,10 @@ const StepIndicator = ({ steps, current }: StepIndicatorProps) => {
                 )}
                 animate={{
                   color: isActive
-                    ? "hsl(0 0% 95%)"
+                    ? "hsl(40 20% 92%)"
                     : isCompleted
-                    ? "hsl(280 85% 65%)"
-                    : "hsl(260 10% 55%)",
+                    ? "hsl(145 45% 42%)"
+                    : "hsl(35 10% 50%)",
                   x: isActive ? 2 : 0,
                 }}
                 transition={{ duration: 0.4 }}
