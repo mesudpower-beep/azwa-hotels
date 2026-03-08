@@ -27,8 +27,8 @@ const StickyBookingBar = () => {
           <div
             className="border-t border-border/30 backdrop-blur-2xl"
             style={{
-              background: "linear-gradient(180deg, hsl(260 25% 6% / 0.95), hsl(260 25% 4% / 0.98))",
-              boxShadow: "0 -4px 30px hsl(260 25% 4% / 0.5), 0 -1px 0 hsl(280 85% 65% / 0.1)",
+              background: "linear-gradient(180deg, hsl(30 15% 9% / 0.95), hsl(30 15% 7% / 0.98))",
+              boxShadow: "0 -4px 30px hsl(30 15% 8% / 0.5), 0 -1px 0 hsl(145 45% 42% / 0.1)",
             }}
           >
             <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between gap-4">

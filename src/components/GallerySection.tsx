@@ -189,7 +189,7 @@ const GallerySection = () => {
               src={selectedImage}
               alt="Gallery preview"
               className="max-w-full max-h-[85vh] object-contain rounded-2xl"
-              style={{ boxShadow: "0 0 120px hsl(280 85% 65% / 0.15), 0 0 60px hsl(220 90% 60% / 0.1)" }}
+              style={{ boxShadow: "0 0 120px hsl(145 45% 42% / 0.15), 0 0 60px hsl(38 70% 50% / 0.1)" }}
             />
           </motion.div>
         )}

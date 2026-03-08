@@ -186,7 +186,7 @@ const TestimonialsSection = () => {
                     <motion.div
                       layoutId="testimonial-dot"
                       className="absolute inset-0 rounded-full"
-                      style={{ background: "linear-gradient(90deg, hsl(280 85% 65%), hsl(220 90% 60%))" }}
+                      style={{ background: "linear-gradient(90deg, hsl(145 45% 42%), hsl(38 70% 50%))" }}
                       transition={{ type: "spring", stiffness: 300, damping: 25 }}
                     />
                   )}

@@ -52,7 +52,7 @@ const SpecialOffersSection = () => {
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
           className="absolute top-1/4 right-0 w-[400px] h-[400px] rounded-full"
-          style={{ background: "hsl(280 85% 65% / 0.04)", filter: "blur(150px)" }}
+          style={{ background: "hsl(145 45% 42% / 0.04)", filter: "blur(150px)" }}
           animate={{ y: [0, 30, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />

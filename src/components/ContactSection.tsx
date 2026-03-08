@@ -129,7 +129,7 @@ const ContactSection = () => {
               transition={{ delay: 0.5 }}
             >
               <label className="block text-xs tracking-[0.15em] uppercase text-muted-foreground font-body mb-3">{t("contact.message")}</label>
-              <textarea rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} maxLength={1000} className="w-full border border-border/50 bg-secondary/30 px-4 py-3 text-sm font-body text-foreground outline-none focus:border-primary/40 focus:shadow-[0_0_15px_hsl(280_85%_65%/0.1)] transition-all resize-none rounded-lg" />
+              <textarea rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} maxLength={1000} className="w-full border border-border/50 bg-secondary/30 px-4 py-3 text-sm font-body text-foreground outline-none focus:border-primary/40 focus:shadow-[0_0_15px_hsl(145_45%_42%/0.1)] transition-all resize-none rounded-lg" />
             </motion.div>
             <motion.button
               whileHover={{ scale: 1.02 }}

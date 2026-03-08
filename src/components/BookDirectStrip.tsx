@@ -20,7 +20,7 @@ const BookDirectStrip = () => {
       <div
         className="border-y border-border/20"
         style={{
-          background: "linear-gradient(135deg, hsl(260 25% 6%) 0%, hsl(260 20% 8%) 50%, hsl(260 25% 6%) 100%)",
+          background: "linear-gradient(135deg, hsl(30 15% 9%) 0%, hsl(30 12% 11%) 50%, hsl(30 15% 9%) 100%)",
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">

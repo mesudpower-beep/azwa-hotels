@@ -115,7 +115,7 @@ const AttractionsSection = () => {
                 animate={isInView ? { width: "100%" } : {}}
                 transition={{ delay: 0.6 + index * 0.12, duration: 0.8 }}
                 className="h-px mt-4"
-                style={{ background: "linear-gradient(90deg, hsl(280 85% 65% / 0.3), transparent)" }}
+                style={{ background: "linear-gradient(90deg, hsl(145 45% 42% / 0.3), transparent)" }}
               />
               <div className="mt-4 flex items-center justify-between">
                 <div className="flex items-center gap-2 text-primary/50 group-hover:text-primary/70 transition-colors">
