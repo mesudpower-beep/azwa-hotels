@@ -1,6 +1,6 @@
-import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
-import { Star, Quote } from "lucide-react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const testimonials = [
@@ -22,16 +22,52 @@ const testimonials = [
     textAm: "ስፓው ድንቅ ነበር፣ ምግቡ ልዩ፣ እይታው የማይረሳ። ሁሉም ዝርዝር ስለ ውበት ይናገራል። ሁለት ጊዜ ቆይታችንን አራዘምን።",
     avatar: "ER", stayTypeEn: "Honeymoon", stayTypeAm: "የሙሽሮች ጉዞ",
   },
+  {
+    name: "David Kim", location: "Seoul, Korea", rating: 5,
+    textEn: "Lake Tana at sunrise from our balcony was magical. The traditional coffee ceremony and the warmth of the staff made us feel truly at home. An unforgettable Ethiopian experience.",
+    textAm: "ከበረንዳችን ጣና ሐይቅ ጎህ ሲቀድ አስማታዊ ነበር። ባህላዊ የቡና ስነ ስርዓትና የሰራተኞች ሞቅ ያለ አቀባበል።",
+    avatar: "DK", stayTypeEn: "Cultural Tour", stayTypeAm: "የባህል ጉብኝት",
+  },
+  {
+    name: "Maria García", location: "Barcelona, Spain", rating: 5,
+    textEn: "From the moment we arrived, everything was impeccable. The restaurant's fusion of Ethiopian and international cuisine was a highlight. We'll definitely be returning!",
+    textAm: "ከደረስንበት ጊዜ ጀምሮ ሁሉም ነገር ፍጹም ነበር። የምግብ ቤቱ የኢትዮጵያ እና ዓለም አቀፍ ምግብ ጥምረት ድንቅ ነበር።",
+    avatar: "MG", stayTypeEn: "Anniversary Trip", stayTypeAm: "የመታሰቢያ ጉዞ",
+  },
 ];
 
 const TestimonialsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { t, language } = useLanguage();
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(0);
+
+  // Auto-advance
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDirection(1);
+      setCurrent((prev) => (prev + 1) % testimonials.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const paginate = (dir: number) => {
+    setDirection(dir);
+    setCurrent((prev) => (prev + dir + testimonials.length) % testimonials.length);
+  };
+
+  const slideVariants = {
+    enter: (dir: number) => ({ x: dir > 0 ? 300 : -300, opacity: 0, scale: 0.9 }),
+    center: { x: 0, opacity: 1, scale: 1 },
+    exit: (dir: number) => ({ x: dir > 0 ? -300 : 300, opacity: 0, scale: 0.9 }),
+  };
+
+  const review = testimonials[current];
 
   return (
-    <section id="testimonials" className="section-padding bg-background relative" ref={ref}>
+    <section id="testimonials" className="section-padding bg-background relative overflow-hidden" ref={ref}>
+      {/* Ambient bg */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <motion.div
           className="absolute top-1/3 left-1/3 w-[500px] h-[500px] rounded-full"
@@ -42,10 +78,11 @@ const TestimonialsSection = () => {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
           <motion.p
@@ -64,90 +101,110 @@ const TestimonialsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {testimonials.map((review, index) => (
-            <motion.div
-              key={review.name}
-              initial={{ opacity: 0, y: 60, rotateY: -15 }}
-              animate={isInView ? { opacity: 1, y: 0, rotateY: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.2, ease: [0.16, 1, 0.3, 1] as const }}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              className="relative group"
-              style={{ perspective: "1000px" }}
-            >
-              <motion.div
-                animate={hoveredIndex === index ? { y: -12, scale: 1.02 } : { y: 0, scale: 1 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="glow-card p-8 flex flex-col relative h-full"
-              >
-                {/* Animated quote icon */}
-                <motion.div
-                  initial={{ scale: 0, rotate: -30 }}
-                  animate={isInView ? { scale: 1, rotate: 0 } : {}}
-                  transition={{ delay: 0.6 + index * 0.2, type: "spring", stiffness: 200 }}
-                >
-                  <motion.div
-                    animate={hoveredIndex === index ? { rotate: [0, 10, -10, 0], scale: 1.2 } : {}}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <Quote className="absolute top-6 right-6 w-8 h-8 text-primary/10 group-hover:text-primary/25 transition-colors duration-500" />
-                  </motion.div>
-                </motion.div>
+        {/* Featured Carousel */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="relative max-w-4xl mx-auto"
+        >
+          <div className="glow-card p-8 md:p-12 min-h-[320px] flex flex-col justify-center relative overflow-hidden">
+            {/* Big quote watermark */}
+            <Quote className="absolute top-6 right-8 w-20 h-20 text-primary/[0.04]" />
 
-                {/* Stars with cascade */}
-                <div className="flex gap-1 mb-4">
+            <AnimatePresence mode="wait" custom={direction}>
+              <motion.div
+                key={current}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="flex flex-col items-center text-center"
+              >
+                {/* Stars */}
+                <div className="flex gap-1 mb-5">
                   {Array.from({ length: review.rating }).map((_, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, scale: 0, rotate: -180 }}
-                      animate={isInView ? { opacity: 1, scale: 1, rotate: 0 } : {}}
-                      transition={{ delay: 0.4 + index * 0.2 + i * 0.06, type: "spring", stiffness: 400 }}
-                    >
-                      <motion.div
-                        animate={hoveredIndex === index ? { scale: [1, 1.3, 1] } : {}}
-                        transition={{ delay: i * 0.05, duration: 0.3 }}
-                      >
-                        <Star className="w-4 h-4 fill-primary text-primary" />
-                      </motion.div>
-                    </motion.div>
+                    <Star key={i} className="w-4 h-4 fill-primary text-primary" />
                   ))}
                 </div>
 
                 <span className="text-[10px] font-body tracking-wider uppercase text-primary/50 mb-4">
                   {language === "am" ? review.stayTypeAm : review.stayTypeEn}
                 </span>
-                <p className="text-foreground/70 font-body text-sm leading-relaxed italic flex-1">
+
+                <p className="text-foreground/80 font-body text-base md:text-lg leading-relaxed italic max-w-2xl mb-8">
                   "{language === "am" ? review.textAm : review.textEn}"
                 </p>
 
-                <div className="mt-8 pt-6 border-t border-border/30 flex items-center gap-4">
-                  <motion.div
-                    whileHover={{ scale: 1.2, rotate: 10 }}
-                    className="w-11 h-11 rounded-full gold-gradient flex items-center justify-center text-primary-foreground font-body font-bold text-xs"
+                {/* Author */}
+                <div className="flex items-center gap-4">
+                  <div
+                    className="w-12 h-12 rounded-full gold-gradient flex items-center justify-center text-primary-foreground font-body font-bold text-sm"
                     style={{ boxShadow: "0 0 20px hsl(280 85% 65% / 0.2)" }}
                   >
                     {review.avatar}
-                  </motion.div>
-                  <div>
+                  </div>
+                  <div className="text-left">
                     <p className="font-display text-base font-bold text-foreground">{review.name}</p>
-                    <p className="text-xs text-muted-foreground font-body tracking-wider mt-0.5">{review.location}</p>
+                    <p className="text-xs text-muted-foreground font-body tracking-wider">{review.location}</p>
                   </div>
                 </div>
-
-                {/* Bottom glow line */}
-                <motion.div
-                  className="absolute bottom-0 left-0 right-0 h-[2px] rounded-b-xl"
-                  style={{ background: "linear-gradient(90deg, hsl(280 85% 65%), hsl(220 90% 60%))" }}
-                  initial={{ scaleX: 0 }}
-                  animate={hoveredIndex === index ? { scaleX: 1 } : { scaleX: 0 }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                  layoutId={undefined}
-                />
               </motion.div>
-            </motion.div>
-          ))}
-        </div>
+            </AnimatePresence>
+
+            {/* Bottom glow */}
+            <div
+              className="absolute bottom-0 left-0 right-0 h-[2px]"
+              style={{ background: "linear-gradient(90deg, transparent, hsl(280 85% 65% / 0.3), transparent)" }}
+            />
+          </div>
+
+          {/* Nav buttons */}
+          <div className="flex items-center justify-center gap-4 mt-8">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => paginate(-1)}
+              className="w-10 h-10 rounded-full border border-border/40 flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary/40 transition-all"
+              aria-label="Previous review"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </motion.button>
+
+            {/* Dots */}
+            <div className="flex gap-2">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); }}
+                  className="relative w-8 h-[3px] rounded-full overflow-hidden bg-border/30"
+                  aria-label={`Go to review ${i + 1}`}
+                >
+                  {current === i && (
+                    <motion.div
+                      layoutId="testimonial-dot"
+                      className="absolute inset-0 rounded-full"
+                      style={{ background: "linear-gradient(90deg, hsl(280 85% 65%), hsl(220 90% 60%))" }}
+                      transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                    />
+                  )}
+                </button>
+              ))}
+            </div>
+
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => paginate(1)}
+              className="w-10 h-10 rounded-full border border-border/40 flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary/40 transition-all"
+              aria-label="Next review"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </motion.button>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

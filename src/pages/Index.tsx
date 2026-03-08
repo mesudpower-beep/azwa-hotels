@@ -6,8 +6,12 @@ import Preloader from "@/components/Preloader";
 import CustomCursor from "@/components/CustomCursor";
 import ScrollProgress from "@/components/ScrollProgress";
 import SectionDivider from "@/components/SectionDivider";
+import BookDirectStrip from "@/components/BookDirectStrip";
+import StickyBookingBar from "@/components/StickyBookingBar";
+import BackToTop from "@/components/BackToTop";
 
 const AboutSection = lazy(() => import("@/components/AboutSection"));
+const StatsCounter = lazy(() => import("@/components/StatsCounter"));
 const RoomsSection = lazy(() => import("@/components/RoomsSection"));
 const RestaurantSection = lazy(() => import("@/components/RestaurantSection"));
 const SpaSection = lazy(() => import("@/components/SpaSection"));
@@ -32,9 +36,11 @@ const Index = () => {
           <ScrollProgress />
           <Navbar />
           <HeroSection />
+          <BookDirectStrip />
           <Suspense fallback={<div className="min-h-screen" />}>
             <SectionDivider variant="glow" />
             <AboutSection />
+            <StatsCounter />
             <SectionDivider variant="diamond" />
             <RoomsSection />
             <SectionDivider variant="glow" />
@@ -56,6 +62,8 @@ const Index = () => {
             <Footer />
           </Suspense>
           <FloatingWhatsApp />
+          <StickyBookingBar />
+          <BackToTop />
         </main>
       )}
     </>
