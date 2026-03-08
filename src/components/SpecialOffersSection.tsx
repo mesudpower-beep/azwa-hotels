@@ -11,7 +11,7 @@ const offers = [
     descEn: "Stay 3+ nights and get 15% off your total booking. Includes daily breakfast, airport shuttle, and late checkout.",
     descAm: "3+ ሌሊቶች ይቆዩ እና 15% ቅናሽ ያግኙ። ዕለታዊ ቁርስ፣ የአየር ማረፊያ ሸትል እና ዘግይቶ መውጣት ይካተታል።",
     badge: "15% OFF",
-    color: "hsl(280 85% 65%)",
+    color: "hsl(145 45% 42%)",
   },
   {
     icon: Gift,
