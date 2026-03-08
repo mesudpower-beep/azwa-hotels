@@ -37,7 +37,18 @@ const Footer = () => {
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-sm text-muted-foreground font-body"><MapPin className="w-4 h-4 text-primary shrink-0" /> Bahir Dar, Ethiopia</div>
               <div className="flex items-center gap-3 text-sm text-muted-foreground font-body"><Phone className="w-4 h-4 text-primary shrink-0" /> 0998900160</div>
-              <div className="flex items-center gap-3 text-sm text-muted-foreground font-body"><Mail className="w-4 h-4 text-primary shrink-0" /> mesudpower@mail.com</div>
+              <div className="flex items-center gap-3 text-sm text-muted-foreground font-body"><Mail className="w-4 h-4 text-primary shrink-0" /> azwa-hotel@gmail.com</div>
+              <a href="https://wa.me/251998900160" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-primary hover:text-neon-pink transition-colors font-body"><MessageCircle className="w-4 h-4" /> WhatsApp</a>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-12 pt-8 border-t border-border/30 text-center space-y-3">
+          <p className="text-xs text-muted-foreground font-body tracking-wider">© {new Date().getFullYear()} Azwa Hotel. {t("footer.rights")}</p>
+          <p className="text-xs text-muted-foreground/60 font-body tracking-wide">
+            Built by <span className="text-primary/80 font-semibold">Amanuel Endaweke</span>{" "}
+            <a href="tel:+251905517626" className="text-primary/60 hover:text-primary transition-colors">+251 90 551 7626</a>
+          </p>
               <a href="https://wa.me/251998900160" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-primary hover:text-neon-pink transition-colors font-body"><MessageCircle className="w-4 h-4" /> WhatsApp</a>
             </div>
           </div>
