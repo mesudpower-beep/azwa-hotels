@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import LanguageSwitcher from "./LanguageSwitcher";
+import ThemeToggle from "./ThemeToggle";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navbar = () => {
@@ -64,6 +65,7 @@ const Navbar = () => {
           </div>
 
           <div className="hidden lg:flex items-center gap-4">
+            <ThemeToggle />
             <LanguageSwitcher />
             <a
               href="tel:+251998900160"
@@ -83,6 +85,7 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-3 lg:hidden">
+            <ThemeToggle />
             <LanguageSwitcher />
             <button
               onClick={() => setIsOpen(!isOpen)}
