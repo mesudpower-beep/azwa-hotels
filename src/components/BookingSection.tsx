@@ -121,7 +121,7 @@ const BookingSection = () => {
     }
   };
 
-  const inputClasses = "w-full flex items-center gap-3 border border-border/50 bg-secondary/30 px-4 py-3.5 text-sm font-body rounded-xl transition-all duration-300 focus-within:border-primary/40 focus-within:bg-secondary/50 focus-within:shadow-[0_0_20px_hsl(280_85%_65%/0.1)]";
+  const inputClasses = "w-full flex items-center gap-3 border border-border/50 bg-secondary/30 px-4 py-3.5 text-sm font-body rounded-xl transition-all duration-300 focus-within:border-primary/40 focus-within:bg-secondary/50 focus-within:shadow-[0_0_20px_hsl(145_45%_42%/0.1)]";
 
   const stepTransition = {
     initial: { opacity: 0, x: 40, filter: "blur(8px)" },
