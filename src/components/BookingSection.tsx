@@ -1,4 +1,4 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import { Calendar, Users, MessageCircle, User, Mail, Phone, FileText, ArrowRight, ArrowLeft, Loader2 } from "lucide-react";
 import { format, differenceInDays } from "date-fns";
