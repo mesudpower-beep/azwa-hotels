@@ -23,6 +23,7 @@ const ExperiencesSection = lazy(() => import("@/components/ExperiencesSection"))
 const SpecialOffersSection = lazy(() => import("@/components/SpecialOffersSection"));
 const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
 const BookingSection = lazy(() => import("@/components/BookingSection"));
+const FAQSection = lazy(() => import("@/components/FAQSection"));
 const ContactSection = lazy(() => import("@/components/ContactSection"));
 const Footer = lazy(() => import("@/components/Footer"));
 
