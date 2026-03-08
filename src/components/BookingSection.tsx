@@ -352,7 +352,7 @@ const BookingSection = () => {
                           initial={{ scale: 0.8 }}
                           animate={{ scale: 1 }}
                           transition={{ type: "spring", stiffness: 300 }}
-                          style={{ textShadow: "0 0 30px hsl(280 85% 65% / 0.3)" }}
+                          style={{ textShadow: "0 0 30px hsl(145 45% 42% / 0.3)" }}
                         >
                           {total.toLocaleString()} ETB
                         </motion.p>

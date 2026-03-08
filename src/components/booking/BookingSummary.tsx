@@ -122,7 +122,7 @@ const BookingSummary = ({ roomType, checkIn, checkOut, adults, children }: Booki
                 transition={{ type: "spring", stiffness: 300 }}
                 className="text-primary"
                 style={{
-                  textShadow: "0 0 20px hsl(280 85% 65% / 0.3)",
+                  textShadow: "0 0 20px hsl(145 45% 42% / 0.3)",
                 }}
               >
                 {total.toLocaleString()} ETB

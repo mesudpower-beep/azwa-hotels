@@ -213,7 +213,7 @@ const RoomSelector = ({ selected, onSelect }: RoomSelectorProps) => {
                   transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                   className="absolute bottom-0 left-0 right-0 h-[2px] origin-center"
                   style={{
-                    background: "linear-gradient(90deg, transparent, hsl(280 85% 65%), hsl(220 90% 60%), transparent)",
+                    background: "linear-gradient(90deg, transparent, hsl(145 45% 42%), hsl(38 70% 50%), transparent)",
                   }}
                 />
               )}

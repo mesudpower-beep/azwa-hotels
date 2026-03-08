@@ -112,7 +112,7 @@ const StepIndicator = ({ steps, current }: StepIndicatorProps) => {
                 <motion.div
                   className="absolute inset-y-0 left-0 rounded-full"
                   style={{
-                    background: "linear-gradient(90deg, hsl(280 85% 65%), hsl(220 90% 60%))",
+                    background: "linear-gradient(90deg, hsl(145 45% 42%), hsl(38 70% 50%))",
                   }}
                   animate={{
                     width: isCompleted ? "100%" : "0%",
