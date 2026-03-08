@@ -71,7 +71,7 @@ const Index = () => {
           </Suspense>
           <FloatingWhatsApp />
           <StickyBookingBar />
-          <BackToTop />
+          
         </main>
       )}
     </>
