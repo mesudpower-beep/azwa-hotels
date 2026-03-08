@@ -38,7 +38,7 @@ const offers = [
     descEn: "Book directly with us and enjoy the best rate guarantee, no hidden fees, free cancellation, and complimentary welcome drink.",
     descAm: "በቀጥታ ያስይዙ — ምርጥ ዋጋ ዋስትና፣ ምንም ተጨማሪ ክፍያ፣ ነጻ ስረዛ እና የእንኳን ደህና መጡ መጠጥ።",
     badge: "BEST RATE",
-    color: "hsl(220 90% 60%)",
+    color: "hsl(38 70% 50%)",
   },
 ];
 
