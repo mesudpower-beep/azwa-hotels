@@ -359,6 +359,12 @@
 /* Smooth scrolling */
 html { scroll-behavior: smooth; }
 
+/* Hide default cursor on desktop when custom cursor is active */
+@media (min-width: 1024px) {
+  body { cursor: none; }
+  a, button, input, textarea, select, [role="button"] { cursor: none; }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: hsl(260 25% 4%); }
