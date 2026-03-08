@@ -262,7 +262,7 @@ const BookingSection = () => {
                     {specialRequests && <div className="mt-2"><span className="text-muted-foreground">Special Requests</span><p className="text-foreground font-medium">{specialRequests}</p></div>}
                   </div>
                   <p className="text-muted-foreground text-xs text-center">
-                    By confirming, your booking will be saved and a WhatsApp message will be sent for final verification. Telebirr payment coming soon.
+                    By confirming, your booking details will be sent via WhatsApp to the hotel. Payment will be arranged directly at the hotel.
                   </p>
                 </div>
               </div>
