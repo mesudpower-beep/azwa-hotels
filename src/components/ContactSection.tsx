@@ -119,7 +119,7 @@ const ContactSection = () => {
                   value={form[field.key]}
                   onChange={(e) => setForm({ ...form, [field.key]: e.target.value })}
                   maxLength={field.type === "email" ? 255 : 100}
-                  className="w-full border border-border/50 bg-secondary/30 px-4 py-3 text-sm font-body text-foreground outline-none focus:border-primary/40 focus:shadow-[0_0_15px_hsl(280_85%_65%/0.1)] transition-all rounded-lg"
+                  className="w-full border border-border/50 bg-secondary/30 px-4 py-3 text-sm font-body text-foreground outline-none focus:border-primary/40 focus:shadow-[0_0_15px_hsl(145_45%_42%/0.1)] transition-all rounded-lg"
                 />
               </motion.div>
             ))}
