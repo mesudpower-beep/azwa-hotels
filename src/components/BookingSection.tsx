@@ -131,7 +131,7 @@ const BookingSection = () => {
   };
 
   return (
-    <section id="booking" className="relative section-padding overflow-hidden" ref={ref}>
+    <section id="booking" className="relative section-padding pb-28 overflow-hidden" ref={ref}>
       <div className="absolute inset-0">
         <motion.img
           src="/images/pool.jpg"
