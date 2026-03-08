@@ -157,7 +157,7 @@ const TestimonialsSection = () => {
             {/* Bottom glow */}
             <div
               className="absolute bottom-0 left-0 right-0 h-[2px]"
-              style={{ background: "linear-gradient(90deg, transparent, hsl(280 85% 65% / 0.3), transparent)" }}
+              style={{ background: "linear-gradient(90deg, transparent, hsl(145 45% 42% / 0.3), transparent)" }}
             />
           </div>
 
