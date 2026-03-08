@@ -142,7 +142,7 @@ const TestimonialsSection = () => {
                 <div className="flex items-center gap-4">
                   <div
                     className="w-12 h-12 rounded-full gold-gradient flex items-center justify-center text-primary-foreground font-body font-bold text-sm"
-                    style={{ boxShadow: "0 0 20px hsl(280 85% 65% / 0.2)" }}
+                    style={{ boxShadow: "0 0 20px hsl(145 45% 42% / 0.2)" }}
                   >
                     {review.avatar}
                   </div>
