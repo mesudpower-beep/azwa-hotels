@@ -85,6 +85,7 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center gap-3 lg:hidden">
+            <ThemeToggle />
             <LanguageSwitcher />
             <button
               onClick={() => setIsOpen(!isOpen)}
