@@ -77,8 +77,8 @@ const RoomSelector = ({ selected, onSelect }: RoomSelectorProps) => {
               "border-2 transition-colors duration-500",
               "transform-gpu",
               isSelected
-                ? "border-primary shadow-[0_0_40px_hsl(280_85%_65%/0.25),0_20px_60px_hsl(260_25%_4%/0.5)]"
-                : "border-border/20 hover:border-primary/40"
+                 ? "border-primary shadow-[0_0_40px_hsl(145_45%_42%/0.25),0_20px_60px_hsl(30_15%_8%/0.5)]"
+                 : "border-border/20 hover:border-primary/40"
             )}
             style={{ transformStyle: "preserve-3d" }}
           >
