@@ -87,8 +87,8 @@ const RoomSelector = ({ selected, onSelect }: RoomSelectorProps) => {
               className="absolute inset-0 z-0"
               animate={{
                 background: isSelected
-                  ? "linear-gradient(135deg, hsl(280 85% 65% / 0.15), hsl(220 90% 60% / 0.1), hsl(330 90% 65% / 0.08))"
-                  : "linear-gradient(135deg, hsl(260 20% 8% / 0.9), hsl(260 20% 10% / 0.8))",
+                  ? "linear-gradient(135deg, hsl(145 45% 42% / 0.15), hsl(38 70% 50% / 0.1), hsl(25 50% 45% / 0.08))"
+                  : "linear-gradient(135deg, hsl(30 12% 12% / 0.9), hsl(30 12% 14% / 0.8))",
               }}
               transition={{ duration: 0.6 }}
             />
