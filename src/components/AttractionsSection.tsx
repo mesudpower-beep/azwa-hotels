@@ -40,7 +40,7 @@ const AttractionsSection = () => {
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <motion.div
           className="absolute bottom-0 left-0 w-[500px] h-[400px] rounded-full"
-          style={{ background: "hsl(220 90% 60% / 0.04)", filter: "blur(150px)" }}
+          style={{ background: "hsl(145 45% 42% / 0.04)", filter: "blur(150px)" }}
           animate={{ x: [0, 40, 0] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -115,7 +115,7 @@ const AttractionsSection = () => {
                 animate={isInView ? { width: "100%" } : {}}
                 transition={{ delay: 0.6 + index * 0.12, duration: 0.8 }}
                 className="h-px mt-4"
-                style={{ background: "linear-gradient(90deg, hsl(280 85% 65% / 0.3), transparent)" }}
+                style={{ background: "linear-gradient(90deg, hsl(145 45% 42% / 0.3), transparent)" }}
               />
               <div className="mt-4 flex items-center justify-between">
                 <div className="flex items-center gap-2 text-primary/50 group-hover:text-primary/70 transition-colors">

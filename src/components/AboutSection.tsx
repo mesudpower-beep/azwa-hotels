@@ -36,13 +36,12 @@ const AboutSection = () => {
                 <img
                   src="/images/lobby.jpg"
                   alt="Azwa Hotel entrance and coffee shop in Bahir Dar"
-                  className="w-full aspect-[4/5] object-cover rounded-2xl transition-all duration-700 group-hover:shadow-[0_0_80px_hsl(280_85%_65%/0.15)]"
+                  className="w-full aspect-[4/5] object-cover rounded-2xl transition-all duration-700 group-hover:shadow-[0_0_80px_hsl(145_45%_42%/0.15)]"
                   loading="lazy"
                 />
               </motion.div>
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-background/60 to-transparent" />
               
-              {/* Floating badge */}
               <motion.div
                 animate={isInView ? { y: [0, -10, 0] } : {}}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -62,10 +61,9 @@ const AboutSection = () => {
                 </div>
               </motion.div>
 
-              {/* Corner decorative with glow */}
               <motion.div
                 className="absolute -bottom-4 -right-4 w-28 h-28 border border-primary/20 rounded-2xl -z-10"
-                animate={isInView ? { borderColor: ["hsl(280 85% 65% / 0.1)", "hsl(280 85% 65% / 0.3)", "hsl(280 85% 65% / 0.1)"] } : {}}
+                animate={isInView ? { borderColor: ["hsl(145 45% 42% / 0.1)", "hsl(145 45% 42% / 0.3)", "hsl(145 45% 42% / 0.1)"] } : {}}
                 transition={{ duration: 3, repeat: Infinity }}
               />
               <motion.div
@@ -115,7 +113,7 @@ const AboutSection = () => {
                     whileHover={{ scale: 1.3, rotate: 360 }}
                     transition={{ duration: 0.4 }}
                   >
-                    <CheckCircle className="w-4 h-4 text-primary shrink-0 group-hover:drop-shadow-[0_0_12px_hsl(280_85%_65%/0.6)] transition-all duration-500" />
+                    <CheckCircle className="w-4 h-4 text-primary shrink-0 group-hover:drop-shadow-[0_0_12px_hsl(145_45%_42%/0.6)] transition-all duration-500" />
                   </motion.div>
                   <span className="text-sm text-foreground/70 font-body">{item}</span>
                 </motion.div>

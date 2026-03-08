@@ -45,16 +45,16 @@ const StepIndicator = ({ steps, current }: StepIndicatorProps) => {
                   )}
                   animate={{
                     backgroundColor: isCompleted
-                      ? "hsl(280 85% 65%)"
+                      ? "hsl(145 45% 42%)"
                       : isActive
-                      ? "hsl(280 85% 65% / 0.2)"
-                      : "hsl(260 15% 14% / 0.5)",
+                      ? "hsl(145 45% 42% / 0.2)"
+                      : "hsl(30 10% 16% / 0.5)",
                     borderWidth: isActive ? 2 : 0,
-                    borderColor: isActive ? "hsl(280 85% 65%)" : "transparent",
+                    borderColor: isActive ? "hsl(145 45% 42%)" : "transparent",
                     boxShadow: isActive
-                      ? "0 0 20px hsl(280 85% 65% / 0.3)"
+                      ? "0 0 20px hsl(145 45% 42% / 0.3)"
                       : isCompleted
-                      ? "0 0 15px hsl(280 85% 65% / 0.2)"
+                      ? "0 0 15px hsl(145 45% 42% / 0.2)"
                       : "none",
                   }}
                   transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -94,10 +94,10 @@ const StepIndicator = ({ steps, current }: StepIndicatorProps) => {
                 )}
                 animate={{
                   color: isActive
-                    ? "hsl(0 0% 95%)"
+                    ? "hsl(40 20% 92%)"
                     : isCompleted
-                    ? "hsl(280 85% 65%)"
-                    : "hsl(260 10% 55%)",
+                    ? "hsl(145 45% 42%)"
+                    : "hsl(35 10% 50%)",
                   x: isActive ? 2 : 0,
                 }}
                 transition={{ duration: 0.4 }}
@@ -112,7 +112,7 @@ const StepIndicator = ({ steps, current }: StepIndicatorProps) => {
                 <motion.div
                   className="absolute inset-y-0 left-0 rounded-full"
                   style={{
-                    background: "linear-gradient(90deg, hsl(280 85% 65%), hsl(220 90% 60%))",
+                    background: "linear-gradient(90deg, hsl(145 45% 42%), hsl(38 70% 50%))",
                   }}
                   animate={{
                     width: isCompleted ? "100%" : "0%",

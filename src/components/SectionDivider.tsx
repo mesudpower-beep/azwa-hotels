@@ -13,14 +13,14 @@ const SectionDivider = ({ variant = "glow" }: { variant?: Variant }) => {
         <svg viewBox="0 0 1440 80" className="absolute bottom-0 w-full" preserveAspectRatio="none">
           <motion.path
             d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,30 1440,40 L1440,80 L0,80 Z"
-            fill="hsl(260 25% 4%)"
+            fill="hsl(30 15% 8%)"
             initial={{ opacity: 0, pathLength: 0 }}
             animate={isInView ? { opacity: 1, pathLength: 1 } : {}}
             transition={{ duration: 1.5, ease: "easeInOut" }}
           />
           <motion.path
             d="M0,50 C360,10 720,70 1080,30 C1260,10 1380,50 1440,40 L1440,80 L0,80 Z"
-            fill="hsl(260 20% 8% / 0.5)"
+            fill="hsl(30 12% 12% / 0.5)"
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 0.5 } : {}}
             transition={{ duration: 1.5, delay: 0.3 }}
@@ -48,7 +48,7 @@ const SectionDivider = ({ variant = "glow" }: { variant?: Variant }) => {
             transition={{ delay: 0.3 + i * 0.15, type: "spring", stiffness: 300 }}
             className="w-2 h-2 border border-primary/40"
             style={{
-              boxShadow: "0 0 10px hsl(280 85% 65% / 0.2)",
+              boxShadow: "0 0 10px hsl(145 45% 42% / 0.2)",
             }}
           />
         ))}
@@ -72,8 +72,8 @@ const SectionDivider = ({ variant = "glow" }: { variant?: Variant }) => {
         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         className="w-40 h-px"
         style={{
-          background: "linear-gradient(90deg, transparent, hsl(280 85% 65% / 0.4), hsl(220 90% 60% / 0.3), transparent)",
-          boxShadow: "0 0 20px hsl(280 85% 65% / 0.15)",
+          background: "linear-gradient(90deg, transparent, hsl(145 45% 42% / 0.4), hsl(38 70% 50% / 0.3), transparent)",
+          boxShadow: "0 0 20px hsl(145 45% 42% / 0.15)",
         }}
       />
     </div>

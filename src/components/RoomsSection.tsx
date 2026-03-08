@@ -44,7 +44,7 @@ const RoomsSection = () => {
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <motion.div
           className="absolute top-0 right-1/4 w-[600px] h-[400px] rounded-full"
-          style={{ background: "hsl(280 85% 65% / 0.04)", filter: "blur(150px)" }}
+          style={{ background: "hsl(145 45% 42% / 0.04)", filter: "blur(150px)" }}
           animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -116,18 +116,16 @@ const RoomCard = ({ room, index, language, t }: { room: typeof rooms[0]; index: 
             />
           </motion.div>
 
-          {/* Animated gradient overlay */}
           <motion.div
             className="absolute inset-0"
             animate={{
               background: isHovered
-                ? "linear-gradient(to top, hsl(260 25% 4% / 0.7), hsl(280 85% 65% / 0.05), transparent)"
-                : "linear-gradient(to top, hsl(260 25% 4% / 0.5), transparent)",
+                ? "linear-gradient(to top, hsl(30 15% 8% / 0.7), hsl(145 45% 42% / 0.05), transparent)"
+                : "linear-gradient(to top, hsl(30 15% 8% / 0.5), transparent)",
             }}
             transition={{ duration: 0.5 }}
           />
 
-          {/* Price tag with spring animation */}
           <motion.div
             initial={{ opacity: 0, scale: 0.5, rotate: -12 }}
             animate={isInView ? { opacity: 1, scale: 1, rotate: 0 } : {}}
@@ -153,7 +151,6 @@ const RoomCard = ({ room, index, language, t }: { room: typeof rooms[0]; index: 
             </motion.div>
           )}
 
-          {/* Scarcity bar slide up */}
           <motion.div
             className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-background/90 to-transparent p-4"
             initial={{ y: "100%" }}
@@ -199,8 +196,8 @@ const RoomCard = ({ room, index, language, t }: { room: typeof rooms[0]; index: 
               transition={{ delay: 0.5 + i * 0.1, type: "spring", stiffness: 200 }}
               whileHover={{
                 scale: 1.1,
-                borderColor: "hsl(280 85% 65% / 0.5)",
-                boxShadow: "0 0 25px hsl(280 85% 65% / 0.2)",
+                borderColor: "hsl(145 45% 42% / 0.5)",
+                boxShadow: "0 0 25px hsl(145 45% 42% / 0.2)",
               }}
               className="border border-primary/20 text-primary/80 text-xs tracking-wider uppercase px-4 py-2 font-body rounded-lg transition-all duration-300 cursor-default"
             >

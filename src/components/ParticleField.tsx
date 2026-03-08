@@ -29,7 +29,6 @@ const ParticleField = () => {
     resize();
     window.addEventListener("resize", resize);
 
-    // Create particles
     const count = Math.min(80, Math.floor(window.innerWidth / 20));
     particlesRef.current = Array.from({ length: count }, () => ({
       x: Math.random() * canvas.width,
@@ -38,7 +37,7 @@ const ParticleField = () => {
       vy: (Math.random() - 0.5) * 0.4,
       size: Math.random() * 2 + 0.5,
       opacity: Math.random() * 0.5 + 0.1,
-      hue: Math.random() > 0.5 ? 280 : 220, // purple or blue
+      hue: Math.random() > 0.5 ? 145 : 38, // green or gold
     }));
 
     const handleMouse = (e: MouseEvent) => {
@@ -56,13 +55,11 @@ const ParticleField = () => {
         p.x += p.vx;
         p.y += p.vy;
 
-        // Wrap around
         if (p.x < 0) p.x = canvas.width;
         if (p.x > canvas.width) p.x = 0;
         if (p.y < 0) p.y = canvas.height;
         if (p.y > canvas.height) p.y = 0;
 
-        // Mouse interaction — gentle repel
         const dx = p.x - mouse.x;
         const dy = p.y - mouse.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
@@ -72,17 +69,16 @@ const ParticleField = () => {
           p.vy += (dy / dist) * force * 0.03;
         }
 
-        // Dampen velocity
         p.vx *= 0.99;
         p.vy *= 0.99;
 
-        // Draw particle
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(${p.hue}, 85%, 65%, ${p.opacity})`;
+        const sat = p.hue === 145 ? 45 : 70;
+        const light = p.hue === 145 ? 42 : 50;
+        ctx.fillStyle = `hsla(${p.hue}, ${sat}%, ${light}%, ${p.opacity})`;
         ctx.fill();
 
-        // Connect nearby particles
         for (let j = i + 1; j < particles.length; j++) {
           const p2 = particles[j];
           const d = Math.hypot(p.x - p2.x, p.y - p2.y);
@@ -90,7 +86,7 @@ const ParticleField = () => {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `hsla(${p.hue}, 85%, 65%, ${0.08 * (1 - d / 120)})`;
+            ctx.strokeStyle = `hsla(${p.hue}, ${sat}%, ${light}%, ${0.08 * (1 - d / 120)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }

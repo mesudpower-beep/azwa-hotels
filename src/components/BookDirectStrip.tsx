@@ -4,10 +4,10 @@ import { BadgePercent, CreditCard, ShieldCheck, Clock } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const benefits = [
-  { icon: BadgePercent, labelEn: "Best Price Guaranteed", labelAm: "ምርጥ ዋጋ ዋስትና", color: "hsl(280 85% 65%)" },
-  { icon: CreditCard, labelEn: "No Booking Fees", labelAm: "ያለ ክፍያ ማስያዝ", color: "hsl(220 90% 60%)" },
-  { icon: ShieldCheck, labelEn: "Free Cancellation", labelAm: "ነጻ ስረዛ", color: "hsl(160 80% 45%)" },
-  { icon: Clock, labelEn: "Instant Confirmation", labelAm: "ፈጣን ማረጋገጫ", color: "hsl(330 90% 65%)" },
+  { icon: BadgePercent, labelEn: "Best Price Guaranteed", labelAm: "ምርጥ ዋጋ ዋስትና", color: "hsl(145 45% 42%)" },
+  { icon: CreditCard, labelEn: "No Booking Fees", labelAm: "ያለ ክፍያ ማስያዝ", color: "hsl(38 70% 50%)" },
+  { icon: ShieldCheck, labelEn: "Free Cancellation", labelAm: "ነጻ ስረዛ", color: "hsl(170 40% 40%)" },
+  { icon: Clock, labelEn: "Instant Confirmation", labelAm: "ፈጣን ማረጋገጫ", color: "hsl(25 50% 45%)" },
 ];
 
 const BookDirectStrip = () => {
@@ -20,7 +20,7 @@ const BookDirectStrip = () => {
       <div
         className="border-y border-border/20"
         style={{
-          background: "linear-gradient(135deg, hsl(260 25% 6%) 0%, hsl(260 20% 8%) 50%, hsl(260 25% 6%) 100%)",
+          background: "linear-gradient(135deg, hsl(30 15% 9%) 0%, hsl(30 12% 11%) 50%, hsl(30 15% 9%) 100%)",
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">

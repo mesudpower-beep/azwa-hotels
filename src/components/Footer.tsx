@@ -55,7 +55,7 @@ const Footer = () => {
               <div className="flex items-center gap-3 text-sm text-muted-foreground font-body"><MapPin className="w-4 h-4 text-primary shrink-0" /> Bahir Dar, Ethiopia</div>
               <div className="flex items-center gap-3 text-sm text-muted-foreground font-body"><Phone className="w-4 h-4 text-primary shrink-0" /> 0998900160</div>
               <div className="flex items-center gap-3 text-sm text-muted-foreground font-body break-all"><Mail className="w-4 h-4 text-primary shrink-0" /> azwa-hotel@gmail.com</div>
-              <a href="https://wa.me/251998900160" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-primary hover:text-neon-pink transition-colors font-body"><MessageCircle className="w-4 h-4" /> WhatsApp</a>
+              <a href="https://wa.me/251998900160" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-primary hover:text-accent transition-colors font-body"><MessageCircle className="w-4 h-4" /> WhatsApp</a>
             </div>
           </motion.div>
         </div>

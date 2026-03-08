@@ -71,7 +71,7 @@ const TestimonialsSection = () => {
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <motion.div
           className="absolute top-1/3 left-1/3 w-[500px] h-[500px] rounded-full"
-          style={{ background: "hsl(280 85% 65% / 0.03)", filter: "blur(150px)" }}
+          style={{ background: "hsl(145 45% 42% / 0.03)", filter: "blur(150px)" }}
           animate={{ scale: [1, 1.2, 1], x: [0, 30, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -142,7 +142,7 @@ const TestimonialsSection = () => {
                 <div className="flex items-center gap-4">
                   <div
                     className="w-12 h-12 rounded-full gold-gradient flex items-center justify-center text-primary-foreground font-body font-bold text-sm"
-                    style={{ boxShadow: "0 0 20px hsl(280 85% 65% / 0.2)" }}
+                    style={{ boxShadow: "0 0 20px hsl(145 45% 42% / 0.2)" }}
                   >
                     {review.avatar}
                   </div>
@@ -157,7 +157,7 @@ const TestimonialsSection = () => {
             {/* Bottom glow */}
             <div
               className="absolute bottom-0 left-0 right-0 h-[2px]"
-              style={{ background: "linear-gradient(90deg, transparent, hsl(280 85% 65% / 0.3), transparent)" }}
+              style={{ background: "linear-gradient(90deg, transparent, hsl(145 45% 42% / 0.3), transparent)" }}
             />
           </div>
 
@@ -186,7 +186,7 @@ const TestimonialsSection = () => {
                     <motion.div
                       layoutId="testimonial-dot"
                       className="absolute inset-0 rounded-full"
-                      style={{ background: "linear-gradient(90deg, hsl(280 85% 65%), hsl(220 90% 60%))" }}
+                      style={{ background: "linear-gradient(90deg, hsl(145 45% 42%), hsl(38 70% 50%))" }}
                       transition={{ type: "spring", stiffness: 300, damping: 25 }}
                     />
                   )}

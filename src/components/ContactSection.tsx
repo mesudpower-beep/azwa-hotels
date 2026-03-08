@@ -59,7 +59,7 @@ const ContactSection = () => {
                   <motion.div
                     whileHover={{ rotate: [0, -10, 10, 0] }}
                     transition={{ duration: 0.5 }}
-                    className="w-12 h-12 border border-primary/20 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-primary/10 group-hover:border-primary/40 group-hover:shadow-[0_0_20px_hsl(280_85%_65%/0.2)] transition-all duration-500"
+                    className="w-12 h-12 border border-primary/20 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-primary/10 group-hover:border-primary/40 group-hover:shadow-[0_0_20px_hsl(145_45%_42%/0.2)] transition-all duration-500"
                   >
                     <item.icon className="w-5 h-5 text-primary" />
                   </motion.div>
@@ -119,7 +119,7 @@ const ContactSection = () => {
                   value={form[field.key]}
                   onChange={(e) => setForm({ ...form, [field.key]: e.target.value })}
                   maxLength={field.type === "email" ? 255 : 100}
-                  className="w-full border border-border/50 bg-secondary/30 px-4 py-3 text-sm font-body text-foreground outline-none focus:border-primary/40 focus:shadow-[0_0_15px_hsl(280_85%_65%/0.1)] transition-all rounded-lg"
+                  className="w-full border border-border/50 bg-secondary/30 px-4 py-3 text-sm font-body text-foreground outline-none focus:border-primary/40 focus:shadow-[0_0_15px_hsl(145_45%_42%/0.1)] transition-all rounded-lg"
                 />
               </motion.div>
             ))}
@@ -129,7 +129,7 @@ const ContactSection = () => {
               transition={{ delay: 0.5 }}
             >
               <label className="block text-xs tracking-[0.15em] uppercase text-muted-foreground font-body mb-3">{t("contact.message")}</label>
-              <textarea rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} maxLength={1000} className="w-full border border-border/50 bg-secondary/30 px-4 py-3 text-sm font-body text-foreground outline-none focus:border-primary/40 focus:shadow-[0_0_15px_hsl(280_85%_65%/0.1)] transition-all resize-none rounded-lg" />
+              <textarea rows={5} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} maxLength={1000} className="w-full border border-border/50 bg-secondary/30 px-4 py-3 text-sm font-body text-foreground outline-none focus:border-primary/40 focus:shadow-[0_0_15px_hsl(145_45%_42%/0.1)] transition-all resize-none rounded-lg" />
             </motion.div>
             <motion.button
               whileHover={{ scale: 1.02 }}

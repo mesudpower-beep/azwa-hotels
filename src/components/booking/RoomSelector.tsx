@@ -77,8 +77,8 @@ const RoomSelector = ({ selected, onSelect }: RoomSelectorProps) => {
               "border-2 transition-colors duration-500",
               "transform-gpu",
               isSelected
-                ? "border-primary shadow-[0_0_40px_hsl(280_85%_65%/0.25),0_20px_60px_hsl(260_25%_4%/0.5)]"
-                : "border-border/20 hover:border-primary/40"
+                 ? "border-primary shadow-[0_0_40px_hsl(145_45%_42%/0.25),0_20px_60px_hsl(30_15%_8%/0.5)]"
+                 : "border-border/20 hover:border-primary/40"
             )}
             style={{ transformStyle: "preserve-3d" }}
           >
@@ -87,8 +87,8 @@ const RoomSelector = ({ selected, onSelect }: RoomSelectorProps) => {
               className="absolute inset-0 z-0"
               animate={{
                 background: isSelected
-                  ? "linear-gradient(135deg, hsl(280 85% 65% / 0.15), hsl(220 90% 60% / 0.1), hsl(330 90% 65% / 0.08))"
-                  : "linear-gradient(135deg, hsl(260 20% 8% / 0.9), hsl(260 20% 10% / 0.8))",
+                  ? "linear-gradient(135deg, hsl(145 45% 42% / 0.15), hsl(38 70% 50% / 0.1), hsl(25 50% 45% / 0.08))"
+                  : "linear-gradient(135deg, hsl(30 12% 12% / 0.9), hsl(30 12% 14% / 0.8))",
               }}
               transition={{ duration: 0.6 }}
             />
@@ -132,7 +132,7 @@ const RoomSelector = ({ selected, onSelect }: RoomSelectorProps) => {
                     transition={{ type: "spring", stiffness: 400, damping: 15 }}
                     className="absolute top-3 right-3 z-20"
                   >
-                    <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-[0_0_20px_hsl(280_85%_65%/0.5)]">
+                    <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-[0_0_20px_hsl(145_45%_42%/0.5)]">
                       <Check className="w-4 h-4 text-primary-foreground" />
                     </div>
                     {/* Ripple rings */}
@@ -213,7 +213,7 @@ const RoomSelector = ({ selected, onSelect }: RoomSelectorProps) => {
                   transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                   className="absolute bottom-0 left-0 right-0 h-[2px] origin-center"
                   style={{
-                    background: "linear-gradient(90deg, transparent, hsl(280 85% 65%), hsl(220 90% 60%), transparent)",
+                    background: "linear-gradient(90deg, transparent, hsl(145 45% 42%), hsl(38 70% 50%), transparent)",
                   }}
                 />
               )}

@@ -10,7 +10,6 @@ const CustomCursor = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Don't show on mobile/touch devices
     const checkMobile = () => setIsMobile(window.innerWidth < 1024 || "ontouchstart" in window);
     checkMobile();
     window.addEventListener("resize", checkMobile);
@@ -44,53 +43,30 @@ const CustomCursor = () => {
 
   return (
     <>
-      {/* Outer glow ring */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-screen"
-        style={{
-          x: springX,
-          y: springY,
-          translateX: "-50%",
-          translateY: "-50%",
-        }}
+        style={{ x: springX, y: springY, translateX: "-50%", translateY: "-50%" }}
       >
         <motion.div
-          animate={{
-            width: isHovering ? 50 : 30,
-            height: isHovering ? 50 : 30,
-            opacity: isHovering ? 0.6 : 0.3,
-          }}
+          animate={{ width: isHovering ? 50 : 30, height: isHovering ? 50 : 30, opacity: isHovering ? 0.6 : 0.3 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
           className="rounded-full border border-primary/50"
           style={{
             boxShadow: isHovering
-              ? "0 0 25px hsl(280 85% 65% / 0.4), inset 0 0 10px hsl(280 85% 65% / 0.1)"
-              : "0 0 10px hsl(280 85% 65% / 0.2)",
+              ? "0 0 25px hsl(145 45% 42% / 0.4), inset 0 0 10px hsl(145 45% 42% / 0.1)"
+              : "0 0 10px hsl(145 45% 42% / 0.2)",
           }}
         />
       </motion.div>
-
-      {/* Inner dot */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9999]"
-        style={{
-          x: cursorX,
-          y: cursorY,
-          translateX: "-50%",
-          translateY: "-50%",
-        }}
+        style={{ x: cursorX, y: cursorY, translateX: "-50%", translateY: "-50%" }}
       >
         <motion.div
-          animate={{
-            width: isHovering ? 6 : 4,
-            height: isHovering ? 6 : 4,
-            background: isHovering
-              ? "hsl(280 85% 75%)"
-              : "hsl(280 85% 65%)",
-          }}
+          animate={{ width: isHovering ? 6 : 4, height: isHovering ? 6 : 4, background: isHovering ? "hsl(145 50% 50%)" : "hsl(145 45% 42%)" }}
           transition={{ type: "spring", stiffness: 500, damping: 25 }}
           className="rounded-full"
-          style={{ boxShadow: "0 0 15px hsl(280 85% 65% / 0.6)" }}
+          style={{ boxShadow: "0 0 15px hsl(145 45% 42% / 0.6)" }}
         />
       </motion.div>
     </>

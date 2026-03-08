@@ -11,7 +11,7 @@ const offers = [
     descEn: "Stay 3+ nights and get 15% off your total booking. Includes daily breakfast, airport shuttle, and late checkout.",
     descAm: "3+ ሌሊቶች ይቆዩ እና 15% ቅናሽ ያግኙ። ዕለታዊ ቁርስ፣ የአየር ማረፊያ ሸትል እና ዘግይቶ መውጣት ይካተታል።",
     badge: "15% OFF",
-    color: "hsl(280 85% 65%)",
+    color: "hsl(145 45% 42%)",
   },
   {
     icon: Gift,
@@ -20,7 +20,7 @@ const offers = [
     descEn: "Celebrate love with our romance package — room upgrade, flower arrangement, sparkling wine, and couples spa treatment.",
     descAm: "ፍቅርዎን ያክብሩ — የክፍል ማሻሻል፣ የአበባ ማስጌጥ፣ ወይን እና ለጥንዶች ስፓ ህክምና።",
     badge: "POPULAR",
-    color: "hsl(330 90% 65%)",
+    color: "hsl(25 50% 45%)",
   },
   {
     icon: Plane,
@@ -38,7 +38,7 @@ const offers = [
     descEn: "Book directly with us and enjoy the best rate guarantee, no hidden fees, free cancellation, and complimentary welcome drink.",
     descAm: "በቀጥታ ያስይዙ — ምርጥ ዋጋ ዋስትና፣ ምንም ተጨማሪ ክፍያ፣ ነጻ ስረዛ እና የእንኳን ደህና መጡ መጠጥ።",
     badge: "BEST RATE",
-    color: "hsl(220 90% 60%)",
+    color: "hsl(38 70% 50%)",
   },
 ];
 
@@ -52,7 +52,7 @@ const SpecialOffersSection = () => {
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
           className="absolute top-1/4 right-0 w-[400px] h-[400px] rounded-full"
-          style={{ background: "hsl(280 85% 65% / 0.04)", filter: "blur(150px)" }}
+          style={{ background: "hsl(145 45% 42% / 0.04)", filter: "blur(150px)" }}
           animate={{ y: [0, 30, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />

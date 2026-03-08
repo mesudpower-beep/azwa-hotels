@@ -109,7 +109,7 @@ const GallerySection = () => {
                 <motion.div
                   layoutId="gallery-tab"
                   className="absolute inset-0 rounded-lg"
-                  style={{ background: "linear-gradient(135deg, hsl(280 85% 65%), hsl(220 90% 60%))", boxShadow: "0 0 20px hsl(280 85% 65% / 0.3)" }}
+                  style={{ background: "linear-gradient(135deg, hsl(145 45% 42%), hsl(38 70% 50%))", boxShadow: "0 0 20px hsl(145 45% 42% / 0.3)" }}
                   transition={{ type: "spring", stiffness: 300, damping: 25 }}
                 />
               )}
@@ -189,7 +189,7 @@ const GallerySection = () => {
               src={selectedImage}
               alt="Gallery preview"
               className="max-w-full max-h-[85vh] object-contain rounded-2xl"
-              style={{ boxShadow: "0 0 120px hsl(280 85% 65% / 0.15), 0 0 60px hsl(220 90% 60% / 0.1)" }}
+              style={{ boxShadow: "0 0 120px hsl(145 45% 42% / 0.15), 0 0 60px hsl(38 70% 50% / 0.1)" }}
             />
           </motion.div>
         )}

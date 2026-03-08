@@ -121,7 +121,7 @@ const BookingSection = () => {
     }
   };
 
-  const inputClasses = "w-full flex items-center gap-3 border border-border/50 bg-secondary/30 px-4 py-3.5 text-sm font-body rounded-xl transition-all duration-300 focus-within:border-primary/40 focus-within:bg-secondary/50 focus-within:shadow-[0_0_20px_hsl(280_85%_65%/0.1)]";
+  const inputClasses = "w-full flex items-center gap-3 border border-border/50 bg-secondary/30 px-4 py-3.5 text-sm font-body rounded-xl transition-all duration-300 focus-within:border-primary/40 focus-within:bg-secondary/50 focus-within:shadow-[0_0_20px_hsl(145_45%_42%/0.1)]";
 
   const stepTransition = {
     initial: { opacity: 0, x: 40, filter: "blur(8px)" },
@@ -190,9 +190,9 @@ const BookingSection = () => {
               className="absolute inset-0 rounded-xl pointer-events-none"
               animate={{
                 boxShadow: [
-                  "inset 0 0 0 1px hsl(280 85% 65% / 0.05)",
-                  "inset 0 0 0 1px hsl(280 85% 65% / 0.15)",
-                  "inset 0 0 0 1px hsl(280 85% 65% / 0.05)",
+                  "inset 0 0 0 1px hsl(145 45% 42% / 0.05)",
+                  "inset 0 0 0 1px hsl(145 45% 42% / 0.15)",
+                  "inset 0 0 0 1px hsl(145 45% 42% / 0.05)",
                 ],
               }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -313,7 +313,7 @@ const BookingSection = () => {
                     <label className="block text-xs tracking-[0.15em] uppercase text-muted-foreground font-body mb-3">
                       {t("booking.specialRequests")} <span className="text-muted-foreground text-[10px]">{t("booking.optional")}</span>
                     </label>
-                    <div className="border border-border/50 bg-secondary/30 px-4 py-3.5 rounded-xl transition-all duration-300 focus-within:border-primary/40 focus-within:shadow-[0_0_20px_hsl(280_85%_65%/0.1)]">
+                    <div className="border border-border/50 bg-secondary/30 px-4 py-3.5 rounded-xl transition-all duration-300 focus-within:border-primary/40 focus-within:shadow-[0_0_20px_hsl(145_45%_42%/0.1)]">
                       <div className="flex gap-3">
                         <FileText className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                         <textarea value={specialRequests} onChange={(e) => setSpecialRequests(e.target.value)} placeholder="Airport pickup, late check-in..." rows={3} className="bg-transparent flex-1 outline-none text-sm font-body text-foreground placeholder:text-muted-foreground resize-none" maxLength={500} />
@@ -352,7 +352,7 @@ const BookingSection = () => {
                           initial={{ scale: 0.8 }}
                           animate={{ scale: 1 }}
                           transition={{ type: "spring", stiffness: 300 }}
-                          style={{ textShadow: "0 0 30px hsl(280 85% 65% / 0.3)" }}
+                          style={{ textShadow: "0 0 30px hsl(145 45% 42% / 0.3)" }}
                         >
                           {total.toLocaleString()} ETB
                         </motion.p>
