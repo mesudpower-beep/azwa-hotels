@@ -67,6 +67,8 @@ const Index = () => {
             <SectionDivider variant="glow" />
             <BookingSection />
             <SectionDivider variant="diamond" />
+            <FAQSection />
+            <SectionDivider variant="glow" />
             <ContactSection />
             <Footer />
           </Suspense>
