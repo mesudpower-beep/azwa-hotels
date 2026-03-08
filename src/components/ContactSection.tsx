@@ -59,7 +59,7 @@ const ContactSection = () => {
                   <motion.div
                     whileHover={{ rotate: [0, -10, 10, 0] }}
                     transition={{ duration: 0.5 }}
-                    className="w-12 h-12 border border-primary/20 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-primary/10 group-hover:border-primary/40 group-hover:shadow-[0_0_20px_hsl(280_85%_65%/0.2)] transition-all duration-500"
+                    className="w-12 h-12 border border-primary/20 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-primary/10 group-hover:border-primary/40 group-hover:shadow-[0_0_20px_hsl(145_45%_42%/0.2)] transition-all duration-500"
                   >
                     <item.icon className="w-5 h-5 text-primary" />
                   </motion.div>
