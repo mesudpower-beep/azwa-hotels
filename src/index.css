@@ -6,43 +6,43 @@
 
 @layer base {
   :root {
-    --background: 260 25% 4%;
-    --foreground: 0 0% 95%;
-    --card: 260 20% 8%;
-    --card-foreground: 0 0% 95%;
-    --popover: 260 20% 8%;
-    --popover-foreground: 0 0% 95%;
-    --primary: 280 85% 65%;
+    --background: 30 15% 8%;
+    --foreground: 40 20% 92%;
+    --card: 30 12% 12%;
+    --card-foreground: 40 20% 92%;
+    --popover: 30 12% 12%;
+    --popover-foreground: 40 20% 92%;
+    --primary: 145 45% 42%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 260 15% 14%;
-    --secondary-foreground: 0 0% 90%;
-    --muted: 260 12% 12%;
-    --muted-foreground: 260 10% 55%;
-    --accent: 220 90% 60%;
+    --secondary: 30 10% 16%;
+    --secondary-foreground: 40 15% 88%;
+    --muted: 30 8% 14%;
+    --muted-foreground: 35 10% 50%;
+    --accent: 38 70% 50%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 260 15% 16%;
-    --input: 260 15% 16%;
-    --ring: 280 85% 65%;
+    --border: 30 10% 18%;
+    --input: 30 10% 18%;
+    --ring: 145 45% 42%;
     --radius: 0.75rem;
-    --neon-purple: 280 85% 65%;
-    --neon-blue: 220 90% 60%;
-    --neon-pink: 330 90% 65%;
-    --neon-cyan: 190 95% 55%;
-    --deep-purple: 260 30% 12%;
-    --deep-blue: 240 25% 8%;
+    --neon-green: 145 45% 42%;
+    --neon-gold: 38 70% 50%;
+    --neon-earth: 25 50% 45%;
+    --neon-teal: 170 40% 40%;
+    --deep-green: 150 20% 10%;
+    --deep-brown: 30 20% 8%;
     --font-display: 'Space Grotesk', sans-serif;
     --font-heading: 'Space Grotesk', sans-serif;
     --font-body: 'Inter', sans-serif;
-    --sidebar-background: 260 25% 6%;
-    --sidebar-foreground: 0 0% 90%;
-    --sidebar-primary: 280 85% 65%;
+    --sidebar-background: 30 15% 7%;
+    --sidebar-foreground: 40 15% 88%;
+    --sidebar-primary: 145 45% 42%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 260 15% 14%;
-    --sidebar-accent-foreground: 0 0% 90%;
-    --sidebar-border: 260 15% 16%;
-    --sidebar-ring: 280 85% 65%;
+    --sidebar-accent: 30 10% 16%;
+    --sidebar-accent-foreground: 40 15% 88%;
+    --sidebar-border: 30 10% 18%;
+    --sidebar-ring: 145 45% 42%;
   }
 }
 
@@ -70,27 +70,27 @@
     @apply text-sm md:text-base tracking-[0.2em] uppercase text-primary font-medium;
   }
   .gold-gradient {
-    background: linear-gradient(135deg, hsl(280 85% 65%), hsl(220 90% 60%));
+    background: linear-gradient(135deg, hsl(145 45% 42%), hsl(38 70% 50%));
   }
   .gold-text {
-    background: linear-gradient(135deg, hsl(280 85% 70%), hsl(330 90% 65%), hsl(220 90% 65%));
+    background: linear-gradient(135deg, hsl(145 50% 48%), hsl(38 75% 55%), hsl(25 55% 50%));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .gold-border {
-    border-color: hsl(280 85% 65% / 0.3);
+    border-color: hsl(145 45% 42% / 0.3);
   }
   .glass-card {
     @apply bg-card/60 backdrop-blur-xl border border-border/40 rounded-xl;
-    box-shadow: 0 0 30px hsl(280 85% 65% / 0.05), inset 0 1px 0 hsl(0 0% 100% / 0.05);
+    box-shadow: 0 0 30px hsl(145 45% 42% / 0.05), inset 0 1px 0 hsl(40 20% 92% / 0.05);
   }
   .hero-overlay {
     background: linear-gradient(
       to bottom,
-      hsl(260 25% 4% / 0.4) 0%,
-      hsl(260 25% 4% / 0.6) 50%,
-      hsl(260 25% 4% / 0.92) 100%
+      hsl(30 15% 8% / 0.3) 0%,
+      hsl(30 15% 8% / 0.5) 50%,
+      hsl(30 15% 8% / 0.92) 100%
     );
   }
   .luxury-divider {
@@ -100,18 +100,18 @@
   .luxury-divider::after {
     content: '';
     @apply flex-1 h-px;
-    background: linear-gradient(90deg, transparent, hsl(280 85% 65% / 0.4), transparent);
+    background: linear-gradient(90deg, transparent, hsl(145 45% 42% / 0.4), transparent);
   }
 
-  /* Neon glow button */
+  /* Nature glow button */
   .neon-button {
     @apply relative overflow-hidden rounded-lg font-body font-semibold tracking-wide;
-    background: linear-gradient(135deg, hsl(280 85% 65%), hsl(220 90% 60%));
-    box-shadow: 0 0 20px hsl(280 85% 65% / 0.3), 0 0 60px hsl(280 85% 65% / 0.1);
+    background: linear-gradient(135deg, hsl(145 45% 42%), hsl(38 70% 50%));
+    box-shadow: 0 0 20px hsl(145 45% 42% / 0.3), 0 0 60px hsl(145 45% 42% / 0.1);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
   .neon-button:hover {
-    box-shadow: 0 0 30px hsl(280 85% 65% / 0.5), 0 0 80px hsl(280 85% 65% / 0.2), 0 0 120px hsl(280 85% 65% / 0.1);
+    box-shadow: 0 0 30px hsl(145 45% 42% / 0.5), 0 0 80px hsl(145 45% 42% / 0.2), 0 0 120px hsl(145 45% 42% / 0.1);
     transform: translateY(-3px) scale(1.02);
   }
   .neon-button:active {
@@ -121,7 +121,7 @@
     content: '';
     position: absolute;
     inset: -2px;
-    background: linear-gradient(135deg, hsl(280 85% 75%), hsl(330 90% 70%), hsl(220 90% 70%), hsl(280 85% 75%));
+    background: linear-gradient(135deg, hsl(145 50% 50%), hsl(38 75% 55%), hsl(170 40% 45%), hsl(145 50% 50%));
     background-size: 300% 300%;
     animation: gradient-border 4s ease infinite;
     border-radius: inherit;
@@ -139,7 +139,7 @@
     left: -50%;
     width: 200%;
     height: 200%;
-    background: linear-gradient(135deg, transparent 40%, hsl(0 0% 100% / 0.15) 50%, transparent 60%);
+    background: linear-gradient(135deg, transparent 40%, hsl(40 20% 92% / 0.15) 50%, transparent 60%);
     transform: rotate(45deg) translateX(-100%);
     transition: transform 0.6s;
     pointer-events: none;
@@ -151,18 +151,18 @@
   /* Glow card hover with 3D */
   .glow-card {
     @apply relative rounded-xl;
-    background: hsl(260 20% 8% / 0.8);
+    background: hsl(30 12% 12% / 0.8);
     backdrop-filter: blur(20px);
-    border: 1px solid hsl(260 15% 20% / 0.5);
+    border: 1px solid hsl(30 10% 22% / 0.5);
     transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transform-style: preserve-3d;
   }
   .glow-card:hover {
-    border-color: hsl(280 85% 65% / 0.4);
+    border-color: hsl(145 45% 42% / 0.4);
     box-shadow: 
-      0 0 40px hsl(280 85% 65% / 0.12),
-      0 0 80px hsl(260 80% 60% / 0.06),
-      0 20px 60px hsl(260 25% 4% / 0.4);
+      0 0 40px hsl(145 45% 42% / 0.12),
+      0 0 80px hsl(38 70% 50% / 0.06),
+      0 20px 60px hsl(30 15% 8% / 0.4);
     transform: translateY(-8px) scale(1.01);
   }
   .glow-card::before {
@@ -170,7 +170,7 @@
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    background: linear-gradient(135deg, hsl(280 85% 65% / 0.06), transparent 50%);
+    background: linear-gradient(135deg, hsl(145 45% 42% / 0.06), transparent 50%);
     opacity: 0;
     transition: opacity 0.6s;
     pointer-events: none;
@@ -181,10 +181,10 @@
 
   /* Animated gradient bg */
   .gradient-bg {
-    background: radial-gradient(ellipse at 20% 50%, hsl(280 60% 15% / 0.4) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 20%, hsl(220 60% 15% / 0.3) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 80%, hsl(330 60% 12% / 0.2) 0%, transparent 50%),
-                hsl(260 25% 4%);
+    background: radial-gradient(ellipse at 20% 50%, hsl(145 30% 12% / 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, hsl(38 40% 12% / 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, hsl(25 30% 10% / 0.2) 0%, transparent 50%),
+                hsl(30 15% 8%);
   }
 
   /* Scroll reveal animations */
@@ -310,8 +310,8 @@
 .animate-float { animation: float 6s ease-in-out infinite; }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px hsl(280 85% 65% / 0.2); }
-  50% { box-shadow: 0 0 40px hsl(280 85% 65% / 0.4), 0 0 80px hsl(280 85% 65% / 0.1); }
+  0%, 100% { box-shadow: 0 0 20px hsl(145 45% 42% / 0.2); }
+  50% { box-shadow: 0 0 40px hsl(145 45% 42% / 0.4), 0 0 80px hsl(145 45% 42% / 0.1); }
 }
 .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
 
@@ -367,9 +367,9 @@ html { scroll-behavior: smooth; }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: hsl(260 25% 4%); }
-::-webkit-scrollbar-thumb { background: hsl(280 85% 65% / 0.3); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: hsl(280 85% 65% / 0.5); }
+::-webkit-scrollbar-track { background: hsl(30 15% 8%); }
+::-webkit-scrollbar-thumb { background: hsl(145 45% 42% / 0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: hsl(145 45% 42% / 0.5); }
 
 /* Selection color */
-::selection { background: hsl(280 85% 65% / 0.3); color: hsl(0 0% 100%); }
+::selection { background: hsl(145 45% 42% / 0.3); color: hsl(0 0% 100%); }
