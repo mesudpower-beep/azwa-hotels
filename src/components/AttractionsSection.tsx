@@ -40,7 +40,7 @@ const AttractionsSection = () => {
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <motion.div
           className="absolute bottom-0 left-0 w-[500px] h-[400px] rounded-full"
-          style={{ background: "hsl(220 90% 60% / 0.04)", filter: "blur(150px)" }}
+          style={{ background: "hsl(145 45% 42% / 0.04)", filter: "blur(150px)" }}
           animate={{ x: [0, 40, 0] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         />
