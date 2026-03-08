@@ -109,7 +109,7 @@ const GallerySection = () => {
                 <motion.div
                   layoutId="gallery-tab"
                   className="absolute inset-0 rounded-lg"
-                  style={{ background: "linear-gradient(135deg, hsl(280 85% 65%), hsl(220 90% 60%))", boxShadow: "0 0 20px hsl(280 85% 65% / 0.3)" }}
+                  style={{ background: "linear-gradient(135deg, hsl(145 45% 42%), hsl(38 70% 50%))", boxShadow: "0 0 20px hsl(145 45% 42% / 0.3)" }}
                   transition={{ type: "spring", stiffness: 300, damping: 25 }}
                 />
               )}
