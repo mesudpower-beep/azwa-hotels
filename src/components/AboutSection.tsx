@@ -1,4 +1,4 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { CheckCircle } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -8,6 +8,9 @@ const AboutSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { t } = useLanguage();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const imageY = useTransform(scrollYProgress, [0, 1], [50, -50]);
+  const imageRotate = useTransform(scrollYProgress, [0, 1], [-3, 3]);
 
   const roomCount = useCounter(50, 2000, isInView);
   const yearCount = useCounter(15, 2000, isInView);
@@ -19,56 +22,65 @@ const AboutSection = () => {
     t("about.roomService"),
   ];
 
-  const containerVariants = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.1 } },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, x: 20 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const } },
-  };
-
   return (
     <section id="about" className="section-padding gradient-bg relative" ref={ref}>
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -60, rotate: -2 }}
+            initial={{ opacity: 0, x: -80, rotate: -3 }}
             animate={isInView ? { opacity: 1, x: 0, rotate: 0 } : {}}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as const }}
           >
             <div className="relative group">
-              <img
-                src="/images/lobby.jpg"
-                alt="Azwa Hotel entrance and coffee shop in Bahir Dar"
-                className="w-full aspect-[4/5] object-cover rounded-xl transition-all duration-700 group-hover:scale-[1.03] group-hover:shadow-[0_0_60px_hsl(280_85%_65%/0.15)]"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-background/60 to-transparent" />
+              <motion.div style={{ y: imageY, rotate: imageRotate }}>
+                <img
+                  src="/images/lobby.jpg"
+                  alt="Azwa Hotel entrance and coffee shop in Bahir Dar"
+                  className="w-full aspect-[4/5] object-cover rounded-2xl transition-all duration-700 group-hover:shadow-[0_0_80px_hsl(280_85%_65%/0.15)]"
+                  loading="lazy"
+                />
+              </motion.div>
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-background/60 to-transparent" />
               
-              {/* Floating badge with pulse */}
+              {/* Floating badge */}
               <motion.div
-                animate={isInView ? { y: [0, -8, 0] } : {}}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-6 left-6 glass-card px-4 py-2.5 flex items-center gap-2"
+                animate={isInView ? { y: [0, -10, 0] } : {}}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                whileHover={{ scale: 1.1 }}
+                className="absolute top-6 left-6 glass-card px-5 py-3 flex items-center gap-3"
               >
-                <span className="font-display text-xl font-bold text-primary">4.9</span>
+                <motion.span
+                  className="font-display text-2xl font-bold text-primary"
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  4.9
+                </motion.span>
                 <div>
                   <div className="flex gap-0.5 text-primary text-[10px]">★★★★★</div>
                   <p className="text-[9px] text-muted-foreground font-body tracking-wide">Google Reviews</p>
                 </div>
               </motion.div>
 
-              {/* Corner decorative element */}
-              <div className="absolute -bottom-3 -right-3 w-24 h-24 border border-primary/20 rounded-xl -z-10 group-hover:border-primary/40 transition-colors duration-700" />
+              {/* Corner decorative with glow */}
+              <motion.div
+                className="absolute -bottom-4 -right-4 w-28 h-28 border border-primary/20 rounded-2xl -z-10"
+                animate={isInView ? { borderColor: ["hsl(280 85% 65% / 0.1)", "hsl(280 85% 65% / 0.3)", "hsl(280 85% 65% / 0.1)"] } : {}}
+                transition={{ duration: 3, repeat: Infinity }}
+              />
+              <motion.div
+                className="absolute -top-4 -left-4 w-20 h-20 border border-accent/10 rounded-xl -z-10"
+                initial={{ opacity: 0, scale: 0 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ delay: 0.5, type: "spring" }}
+              />
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 60 }}
+            initial={{ opacity: 0, x: 80 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] as const }}
             className="space-y-6"
           >
             <motion.p
@@ -89,31 +101,40 @@ const AboutSection = () => {
               <p>{t("about.desc2")}</p>
             </div>
 
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
-              className="space-y-3 pt-2"
-            >
-              {checklist.map((item) => (
-                <motion.div key={item} variants={itemVariants} className="flex items-center gap-3 group">
-                  <CheckCircle className="w-4 h-4 text-primary shrink-0 group-hover:drop-shadow-[0_0_12px_hsl(280_85%_65%/0.6)] transition-all duration-500 group-hover:scale-110" />
+            <div className="space-y-3 pt-2">
+              {checklist.map((item, i) => (
+                <motion.div
+                  key={item}
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.4 + i * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
+                  whileHover={{ x: 5 }}
+                  className="flex items-center gap-3 group"
+                >
+                  <motion.div
+                    whileHover={{ scale: 1.3, rotate: 360 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <CheckCircle className="w-4 h-4 text-primary shrink-0 group-hover:drop-shadow-[0_0_12px_hsl(280_85%_65%/0.6)] transition-all duration-500" />
+                  </motion.div>
                   <span className="text-sm text-foreground/70 font-body">{item}</span>
                 </motion.div>
               ))}
-            </motion.div>
+            </div>
 
             <div className="flex gap-12 pt-6">
               {[
                 { number: roomCount, suffix: "+", label: t("about.rooms") },
                 { number: yearCount, suffix: "+", label: t("about.years") },
                 { number: 4.9, suffix: "", label: t("about.rating"), isStatic: true },
-              ].map((stat) => (
+              ].map((stat, i) => (
                 <motion.div
                   key={stat.label}
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ delay: 0.6, duration: 0.6, type: "spring" }}
+                  initial={{ opacity: 0, y: 30, scale: 0.5 }}
+                  animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+                  transition={{ delay: 0.6 + i * 0.15, duration: 0.6, type: "spring", stiffness: 200 }}
+                  whileHover={{ scale: 1.1, y: -5 }}
+                  className="cursor-default"
                 >
                   <p className="font-display text-3xl font-bold gold-text">
                     {stat.isStatic ? stat.number : stat.number}{stat.suffix}

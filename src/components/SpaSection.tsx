@@ -1,4 +1,4 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Sparkles, Droplets, Wind, Heart } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -14,33 +14,52 @@ const SpaSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { t, language } = useLanguage();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const imageY = useTransform(scrollYProgress, [0, 1], [40, -40]);
 
   return (
     <section id="spa" className="section-padding bg-background relative overflow-hidden" ref={ref}>
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 right-0 w-96 h-96 rounded-full bg-primary/5 blur-[150px] float-slow" />
-        <div className="absolute bottom-0 left-1/4 w-64 h-64 rounded-full bg-accent/5 blur-[120px] float-medium" style={{ animationDelay: '2s' }} />
+        <motion.div
+          className="absolute top-1/4 right-0 w-96 h-96 rounded-full"
+          style={{ background: "hsl(280 85% 65% / 0.04)", filter: "blur(150px)" }}
+          animate={{ x: [0, -30, 0], scale: [1, 1.2, 1] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-0 left-1/4 w-64 h-64 rounded-full"
+          style={{ background: "hsl(220 90% 60% / 0.04)", filter: "blur(120px)" }}
+          animate={{ y: [0, -20, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -60, rotate: -2 }}
+            initial={{ opacity: 0, x: -80, rotate: -3 }}
             animate={isInView ? { opacity: 1, x: 0, rotate: 0 } : {}}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as const }}
             className="relative group"
           >
-            <img src="/images/spa.jpg" alt="Azwa Hotel spa and wellness center" className="w-full aspect-[4/5] object-cover rounded-xl transition-all duration-700 group-hover:scale-[1.03] group-hover:shadow-[0_0_60px_hsl(280_85%_65%/0.15)]" loading="lazy" />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent rounded-xl" />
+            <motion.div style={{ y: imageY }}>
+              <img src="/images/spa.jpg" alt="Azwa Hotel spa and wellness center" className="w-full aspect-[4/5] object-cover rounded-2xl transition-all duration-700 group-hover:shadow-[0_0_80px_hsl(280_85%_65%/0.15)]" loading="lazy" />
+            </motion.div>
+            <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent rounded-2xl" />
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.5, duration: 0.6 }}
+              initial={{ opacity: 0, y: 30, scale: 0.9 }}
+              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={{ delay: 0.6, duration: 0.6, type: "spring" }}
+              whileHover={{ scale: 1.05 }}
               className="absolute bottom-6 left-6 right-6 glass-card p-4 text-center"
             >
               <p className="font-heading text-lg text-primary font-medium">{t("spa.relaxMessage")}</p>
             </motion.div>
-            <div className="absolute -bottom-3 -right-3 w-24 h-24 border border-primary/20 rounded-xl -z-10 group-hover:border-primary/40 transition-colors duration-700" />
+            <motion.div
+              className="absolute -bottom-4 -right-4 w-28 h-28 border border-primary/20 rounded-2xl -z-10"
+              animate={isInView ? { borderColor: ["hsl(280 85% 65% / 0.1)", "hsl(280 85% 65% / 0.3)", "hsl(280 85% 65% / 0.1)"] } : {}}
+              transition={{ duration: 3, repeat: Infinity }}
+            />
           </motion.div>
 
           <div>
@@ -50,7 +69,14 @@ const SpaSection = () => {
               transition={{ duration: 0.8 }}
               className="mb-10"
             >
-              <p className="section-subtitle mb-4">{t("spa.subtitle")}</p>
+              <motion.p
+                className="section-subtitle mb-4"
+                initial={{ opacity: 0, letterSpacing: "0.4em" }}
+                animate={isInView ? { opacity: 1, letterSpacing: "0.2em" } : {}}
+                transition={{ duration: 1, delay: 0.2 }}
+              >
+                {t("spa.subtitle")}
+              </motion.p>
               <h2 className="section-title text-foreground">
                 {t("spa.title1")} <span className="gold-text">{t("spa.title2")}</span>
               </h2>
@@ -61,18 +87,18 @@ const SpaSection = () => {
               {services.map((service, index) => (
                 <motion.div
                   key={service.titleEn}
-                  initial={{ opacity: 0, x: 40 }}
+                  initial={{ opacity: 0, x: 50 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.2 + index * 0.12, ease: [0.16, 1, 0.3, 1] }}
-                  whileHover={{ x: 8, transition: { duration: 0.2 } }}
+                  transition={{ duration: 0.7, delay: 0.3 + index * 0.12, ease: [0.16, 1, 0.3, 1] as const }}
+                  whileHover={{ x: 10, transition: { duration: 0.2 } }}
                   className="flex items-start gap-5 group cursor-default"
                 >
                   <motion.div
-                    whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
+                    whileHover={{ rotate: [0, -15, 15, 0], scale: 1.15 }}
                     transition={{ duration: 0.5 }}
-                    className="w-12 h-12 shrink-0 border border-primary/20 rounded-lg flex items-center justify-center group-hover:bg-primary/10 group-hover:border-primary/40 group-hover:shadow-[0_0_20px_hsl(280_85%_65%/0.2)] transition-all duration-500"
+                    className="w-12 h-12 shrink-0 border border-primary/20 rounded-lg flex items-center justify-center group-hover:bg-primary/10 group-hover:border-primary/40 group-hover:shadow-[0_0_25px_hsl(280_85%_65%/0.25)] transition-all duration-500"
                   >
-                    <service.icon className="w-5 h-5 text-primary group-hover:drop-shadow-[0_0_8px_hsl(280_85%_65%/0.5)] transition-all duration-500" />
+                    <service.icon className="w-5 h-5 text-primary group-hover:drop-shadow-[0_0_10px_hsl(280_85%_65%/0.6)] transition-all duration-500" />
                   </motion.div>
                   <div>
                     <h3 className="font-display text-lg font-bold text-foreground mb-1">
@@ -87,9 +113,9 @@ const SpaSection = () => {
             </div>
 
             <motion.a
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.7 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href="#booking"
