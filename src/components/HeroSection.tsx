@@ -35,7 +35,6 @@ const HeroSection = () => {
 
   const title = "AZWA HOTEL";
 
-  // Cinematic staggered letter animation
   const letterVariants = {
     hidden: { opacity: 0, y: 100, rotateX: -90, scale: 0.5 },
     visible: (i: number) => ({
@@ -55,7 +54,6 @@ const HeroSection = () => {
       onMouseMove={handleMouseMove}
       className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden"
     >
-      {/* Background images with crossfade + parallax tilt */}
       <AnimatePresence mode="wait">
         {heroImages.map((src, index) => (
           currentImage === index && (
@@ -79,16 +77,14 @@ const HeroSection = () => {
         ))}
       </AnimatePresence>
 
-      {/* Multi-layer overlay for depth */}
       <div className="hero-overlay absolute inset-0 z-[2]" />
       <div
         className="absolute inset-0 z-[2] pointer-events-none"
         style={{
-          background: "radial-gradient(ellipse at center, transparent 30%, hsl(260 25% 4% / 0.6) 100%)",
+          background: "radial-gradient(ellipse at center, transparent 30%, hsl(30 15% 8% / 0.6) 100%)",
         }}
       />
 
-      {/* Image indicator dots */}
       <div className="absolute bottom-28 left-1/2 -translate-x-1/2 z-10 flex gap-2">
         {heroImages.map((_, i) => (
           <motion.button
@@ -101,7 +97,7 @@ const HeroSection = () => {
               <motion.div
                 layoutId="hero-dot"
                 className="absolute inset-0 rounded-full"
-                style={{ background: "linear-gradient(90deg, hsl(280 85% 65%), hsl(220 90% 60%))" }}
+                style={{ background: "linear-gradient(90deg, hsl(145 45% 42%), hsl(38 70% 50%))" }}
                 transition={{ type: "spring", stiffness: 300, damping: 25 }}
               />
             )}
@@ -109,32 +105,29 @@ const HeroSection = () => {
         ))}
       </div>
 
-      {/* Particle field */}
       <ParticleField />
 
-      {/* Animated ambient orbs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-[3]">
         <motion.div
           className="absolute top-1/4 left-1/4 w-[500px] h-[500px] morphing-blob"
-          style={{ background: "hsl(280 85% 65% / 0.06)", filter: "blur(150px)" }}
+          style={{ background: "hsl(145 45% 42% / 0.06)", filter: "blur(150px)" }}
           animate={{ x: [0, 50, 0], y: [0, -30, 0] }}
           transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
           className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] morphing-blob"
-          style={{ background: "hsl(220 90% 60% / 0.05)", filter: "blur(130px)" }}
+          style={{ background: "hsl(38 70% 50% / 0.05)", filter: "blur(130px)" }}
           animate={{ x: [0, -40, 0], y: [0, 40, 0] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 3 }}
         />
         <motion.div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full"
-          style={{ background: "hsl(330 90% 65% / 0.04)", filter: "blur(120px)" }}
+          style={{ background: "hsl(25 50% 45% / 0.04)", filter: "blur(120px)" }}
           animate={{ scale: [1, 1.3, 1] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
       </div>
 
-      {/* Decorative spinning rings */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[4]">
         <motion.div
           className="w-[600px] h-[600px] md:w-[800px] md:h-[800px] border border-primary/[0.04] rounded-full"
@@ -146,13 +139,12 @@ const HeroSection = () => {
           animate={{ rotate: -360 }}
           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
         />
-        {/* Dot on the ring */}
         <motion.div
           className="absolute w-[600px] h-[600px] md:w-[800px] md:h-[800px]"
           animate={{ rotate: 360 }}
           transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
         >
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary/30" style={{ boxShadow: "0 0 10px hsl(280 85% 65% / 0.5)" }} />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary/30" style={{ boxShadow: "0 0 10px hsl(145 45% 42% / 0.5)" }} />
         </motion.div>
       </div>
 
@@ -178,7 +170,6 @@ const HeroSection = () => {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="relative mb-8"
         >
-          {/* Decorative line above title */}
           <motion.div
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
@@ -194,7 +185,6 @@ const HeroSection = () => {
             <div className="h-px w-16 md:w-24 bg-gradient-to-l from-transparent to-primary/50" />
           </motion.div>
 
-          {/* 3D Letter-by-letter animation with glow */}
           <h1
             className="font-display text-6xl md:text-8xl lg:text-9xl font-bold leading-none tracking-wider"
             style={{ perspective: "1200px" }}
@@ -209,12 +199,12 @@ const HeroSection = () => {
                 className="inline-block gold-text"
                 style={{
                   transformOrigin: "bottom",
-                  textShadow: "0 0 40px hsla(280, 85%, 65%, 0.15)",
+                  textShadow: "0 0 40px hsla(145, 45%, 42%, 0.15)",
                 }}
                 whileHover={{
                   scale: 1.2,
                   y: -10,
-                  textShadow: "0 0 60px hsla(280, 85%, 65%, 0.4)",
+                  textShadow: "0 0 60px hsla(145, 45%, 42%, 0.4)",
                   transition: { duration: 0.2 },
                 }}
               >
@@ -223,12 +213,11 @@ const HeroSection = () => {
             ))}
           </h1>
 
-          {/* Underline glow sweep */}
           <motion.div
             className="mx-auto mt-3 h-[2px] rounded-full"
             style={{
-              background: "linear-gradient(90deg, transparent, hsl(280 85% 65% / 0.6), hsl(220 90% 60% / 0.4), transparent)",
-              boxShadow: "0 0 20px hsl(280 85% 65% / 0.3)",
+              background: "linear-gradient(90deg, transparent, hsl(145 45% 42% / 0.6), hsl(38 70% 50% / 0.4), transparent)",
+              boxShadow: "0 0 20px hsl(145 45% 42% / 0.3)",
             }}
             initial={{ width: 0, opacity: 0 }}
             animate={{ width: "60%", opacity: 1 }}
@@ -267,7 +256,6 @@ const HeroSection = () => {
           {t("hero.location")}
         </motion.p>
 
-        {/* Trust badges with stagger */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -284,7 +272,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 1.8 + i * 0.1, duration: 0.5 }}
-              whileHover={{ scale: 1.1, color: "hsl(280 85% 65%)" }}
+              whileHover={{ scale: 1.1, color: "hsl(145 45% 42%)" }}
               className="flex items-center gap-1.5 text-[10px] tracking-wider uppercase text-primary/60 font-body cursor-default"
             >
               <Icon className="w-3.5 h-3.5" /> {label}
@@ -292,7 +280,6 @@ const HeroSection = () => {
           ))}
         </motion.div>
 
-        {/* CTA Buttons with ripple effect */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -307,7 +294,7 @@ const HeroSection = () => {
           >
             <span className="relative z-10">{t("hero.bookStay")}</span>
             <motion.span
-              className="absolute -top-3 -right-3 bg-neon-pink text-primary-foreground text-[9px] font-body font-bold px-2 py-0.5 tracking-wider uppercase rounded-full z-20"
+              className="absolute -top-3 -right-3 bg-accent text-primary-foreground text-[9px] font-body font-bold px-2 py-0.5 tracking-wider uppercase rounded-full z-20"
               animate={{ scale: [1, 1.1, 1] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             >
@@ -320,7 +307,6 @@ const HeroSection = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            {/* Shine sweep on hover */}
             <span className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
             <span className="relative z-10">{t("hero.viewRooms")}</span>
             <motion.span
@@ -334,7 +320,6 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Scroll indicator with enhanced animation */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

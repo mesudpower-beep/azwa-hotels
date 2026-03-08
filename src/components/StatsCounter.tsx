@@ -21,7 +21,7 @@ const AnimatedNumber = ({ value, inView }: { value: number; inView: boolean }) =
     const tick = () => {
       const elapsed = Date.now() - start;
       const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 4); // ease out quart
+      const eased = 1 - Math.pow(1 - progress, 4);
       const current = eased * value;
       setDisplay(isFloat ? current.toFixed(1) : Math.floor(current).toLocaleString());
       if (progress < 1) requestAnimationFrame(tick);
@@ -39,17 +39,16 @@ const StatsCounter = () => {
 
   return (
     <section ref={ref} className="relative py-20 overflow-hidden">
-      {/* Background */}
       <div className="absolute inset-0">
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(135deg, hsl(260 30% 8%) 0%, hsl(280 20% 6%) 50%, hsl(260 25% 4%) 100%)",
+            background: "linear-gradient(135deg, hsl(30 18% 10%) 0%, hsl(150 15% 8%) 50%, hsl(30 15% 8%) 100%)",
           }}
         />
         <motion.div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full"
-          style={{ background: "hsl(280 85% 65% / 0.04)", filter: "blur(150px)" }}
+          style={{ background: "hsl(145 45% 42% / 0.04)", filter: "blur(150px)" }}
           animate={{ scale: [1, 1.2, 1] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -75,17 +74,16 @@ const StatsCounter = () => {
                     <AnimatedNumber value={stat.value} inView={isInView} />
                     {stat.suffix}
                   </span>
-                  {/* Glow dot */}
                   <motion.div
                     className="absolute -top-1 -right-3 w-2 h-2 rounded-full bg-primary/60"
                     animate={isInView ? { scale: [0, 1.5, 1], opacity: [0, 1, 0.6] } : {}}
                     transition={{ delay: 1.5 + i * 0.15, duration: 0.5 }}
-                    style={{ boxShadow: "0 0 12px hsl(280 85% 65% / 0.5)" }}
+                    style={{ boxShadow: "0 0 12px hsl(145 45% 42% / 0.5)" }}
                   />
                 </div>
                 <motion.div
                   className="h-px w-12 mx-auto mb-3"
-                  style={{ background: "linear-gradient(90deg, transparent, hsl(280 85% 65% / 0.4), transparent)" }}
+                  style={{ background: "linear-gradient(90deg, transparent, hsl(145 45% 42% / 0.4), transparent)" }}
                   initial={{ scaleX: 0 }}
                   animate={isInView ? { scaleX: 1 } : {}}
                   transition={{ delay: 0.8 + i * 0.15, duration: 0.6 }}

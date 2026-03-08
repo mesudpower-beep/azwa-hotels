@@ -30,18 +30,18 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center"
-          style={{ background: "hsl(260 25% 4%)" }}
+          style={{ background: "hsl(30 15% 8%)" }}
         >
           {/* Ambient orbs */}
           <motion.div
             className="absolute w-[600px] h-[600px] rounded-full opacity-20"
-            style={{ background: "radial-gradient(circle, hsl(280 85% 65%), transparent 70%)" }}
+            style={{ background: "radial-gradient(circle, hsl(145 45% 42%), transparent 70%)" }}
             animate={{ scale: [1, 1.3, 1], rotate: [0, 180, 360] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           />
           <motion.div
             className="absolute w-[400px] h-[400px] rounded-full opacity-15"
-            style={{ background: "radial-gradient(circle, hsl(220 90% 60%), transparent 70%)" }}
+            style={{ background: "radial-gradient(circle, hsl(38 70% 50%), transparent 70%)" }}
             animate={{ scale: [1.2, 1, 1.2], rotate: [360, 180, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
           />
@@ -96,7 +96,7 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
 
               <h1
                 className="font-display text-5xl md:text-7xl font-bold tracking-[0.3em] gold-text"
-                style={{ textShadow: "0 0 60px hsla(280, 85%, 65%, 0.3)" }}
+                style={{ textShadow: "0 0 60px hsla(145, 45%, 42%, 0.3)" }}
               >
                 {"AZWA".split("").map((letter, i) => (
                   <motion.span
@@ -133,8 +133,8 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
               className="h-full rounded-full"
               style={{
                 width: `${Math.min(progress, 100)}%`,
-                background: "linear-gradient(90deg, hsl(280 85% 65%), hsl(220 90% 60%))",
-                boxShadow: "0 0 15px hsl(280 85% 65% / 0.5)",
+                background: "linear-gradient(90deg, hsl(145 45% 42%), hsl(38 70% 50%))",
+                boxShadow: "0 0 15px hsl(145 45% 42% / 0.5)",
               }}
             />
           </motion.div>
