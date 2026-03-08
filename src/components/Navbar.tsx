@@ -65,6 +65,7 @@ const Navbar = () => {
           </div>
 
           <div className="hidden lg:flex items-center gap-4">
+            <ThemeToggle />
             <LanguageSwitcher />
             <a
               href="tel:+251998900160"
