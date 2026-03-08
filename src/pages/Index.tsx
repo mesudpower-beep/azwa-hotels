@@ -1,5 +1,6 @@
 import { lazy, Suspense, useState, useCallback } from "react";
 import Navbar from "@/components/Navbar";
+import TopInfoBar from "@/components/TopInfoBar";
 import HeroSection from "@/components/HeroSection";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import Preloader from "@/components/Preloader";
@@ -18,6 +19,8 @@ const SpaSection = lazy(() => import("@/components/SpaSection"));
 const AmenitiesSection = lazy(() => import("@/components/AmenitiesSection"));
 const AttractionsSection = lazy(() => import("@/components/AttractionsSection"));
 const GallerySection = lazy(() => import("@/components/GallerySection"));
+const ExperiencesSection = lazy(() => import("@/components/ExperiencesSection"));
+const SpecialOffersSection = lazy(() => import("@/components/SpecialOffersSection"));
 const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection"));
 const BookingSection = lazy(() => import("@/components/BookingSection"));
 const ContactSection = lazy(() => import("@/components/ContactSection"));
@@ -32,6 +35,7 @@ const Index = () => {
       <Preloader onComplete={handleLoadComplete} />
       {loaded && (
         <main>
+          <TopInfoBar />
           <CustomCursor />
           <ScrollProgress />
           <Navbar />
@@ -50,7 +54,11 @@ const Index = () => {
             <SectionDivider variant="glow" />
             <AmenitiesSection />
             <SectionDivider variant="diamond" />
+            <ExperiencesSection />
+            <SectionDivider variant="glow" />
             <AttractionsSection />
+            <SectionDivider variant="diamond" />
+            <SpecialOffersSection />
             <SectionDivider variant="glow" />
             <GallerySection />
             <SectionDivider variant="diamond" />
