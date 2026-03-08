@@ -37,9 +37,9 @@ const TestimonialsSection = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
           <p className="section-subtitle mb-4">{t("testimonials.subtitle")}</p>
@@ -55,27 +55,48 @@ const TestimonialsSection = () => {
           {testimonials.map((review, index) => (
             <motion.div
               key={review.name}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="glow-card p-8 flex flex-col relative"
+              initial={{ opacity: 0, y: 50, rotateY: -10 }}
+              animate={isInView ? { opacity: 1, y: 0, rotateY: 0 } : {}}
+              transition={{ duration: 0.7, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -10, transition: { duration: 0.3 } }}
+              className="glow-card p-8 flex flex-col relative group"
+              style={{ perspective: "1000px" }}
             >
-              <Quote className="absolute top-6 right-6 w-8 h-8 text-primary/10" />
+              <motion.div
+                initial={{ scale: 0, rotate: -20 }}
+                animate={isInView ? { scale: 1, rotate: 0 } : {}}
+                transition={{ delay: 0.5 + index * 0.15, type: "spring", stiffness: 200 }}
+              >
+                <Quote className="absolute top-6 right-6 w-8 h-8 text-primary/10 group-hover:text-primary/20 transition-colors duration-500" />
+              </motion.div>
+
               <div className="flex gap-1 mb-4">
                 {Array.from({ length: review.rating }).map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                    animate={isInView ? { opacity: 1, scale: 1, rotate: 0 } : {}}
+                    transition={{ delay: 0.3 + index * 0.15 + i * 0.05, type: "spring", stiffness: 300 }}
+                  >
+                    <Star className="w-4 h-4 fill-primary text-primary" />
+                  </motion.div>
                 ))}
               </div>
+
               <span className="text-[10px] font-body tracking-wider uppercase text-primary/50 mb-4">
                 {language === "am" ? review.stayTypeAm : review.stayTypeEn}
               </span>
               <p className="text-foreground/70 font-body text-sm leading-relaxed italic flex-1">
                 "{language === "am" ? review.textAm : review.textEn}"
               </p>
+
               <div className="mt-8 pt-6 border-t border-border/30 flex items-center gap-4">
-                <div className="w-10 h-10 rounded-full gold-gradient flex items-center justify-center text-primary-foreground font-body font-bold text-xs">
+                <motion.div
+                  whileHover={{ scale: 1.15, rotate: 5 }}
+                  className="w-10 h-10 rounded-full gold-gradient flex items-center justify-center text-primary-foreground font-body font-bold text-xs"
+                >
                   {review.avatar}
-                </div>
+                </motion.div>
                 <div>
                   <p className="font-display text-base font-bold text-foreground">{review.name}</p>
                   <p className="text-xs text-muted-foreground font-body tracking-wider mt-0.5">{review.location}</p>

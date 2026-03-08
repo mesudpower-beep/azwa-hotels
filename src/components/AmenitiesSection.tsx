@@ -23,9 +23,9 @@ const AmenitiesSection = () => {
     <section id="amenities" className="section-padding gradient-bg relative" ref={ref}>
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
           <p className="section-subtitle mb-4">{t("amenities.subtitle")}</p>
@@ -38,14 +38,19 @@ const AmenitiesSection = () => {
           {amenities.map((amenity, index) => (
             <motion.div
               key={amenity.titleEn}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.08 }}
-              className="glow-card p-8 text-center group"
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={{ duration: 0.6, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              className="glow-card p-8 text-center group cursor-default"
             >
-              <div className="w-14 h-14 mx-auto mb-6 border border-primary/20 rounded-xl flex items-center justify-center group-hover:bg-primary/10 group-hover:border-primary/40 transition-all duration-500">
+              <motion.div
+                whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
+                transition={{ duration: 0.5 }}
+                className="w-14 h-14 mx-auto mb-6 border border-primary/20 rounded-xl flex items-center justify-center group-hover:bg-primary/10 group-hover:border-primary/40 group-hover:shadow-[0_0_25px_hsl(280_85%_65%/0.2)] transition-all duration-500"
+              >
                 <amenity.icon className="w-6 h-6 text-primary group-hover:drop-shadow-[0_0_10px_hsl(280_85%_65%/0.5)] transition-all duration-500" />
-              </div>
+              </motion.div>
               <h3 className="font-display text-lg font-bold text-foreground mb-3">
                 {language === "am" ? amenity.titleAm : amenity.titleEn}
               </h3>

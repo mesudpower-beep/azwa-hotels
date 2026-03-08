@@ -43,9 +43,9 @@ const AttractionsSection = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16"
         >
           <p className="section-subtitle mb-4">{t("attractions.subtitle")}</p>
@@ -61,18 +61,24 @@ const AttractionsSection = () => {
           {attractions.map((attraction, index) => (
             <motion.div
               key={attraction.nameEn}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -6, transition: { duration: 0.3 } }}
               className="glow-card p-8 group"
             >
               <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center gap-2">
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.3 + index * 0.1 }}
+                  className="flex items-center gap-2"
+                >
                   <Star className="w-4 h-4 text-primary" />
                   <span className="text-[10px] font-body tracking-wider uppercase text-primary font-semibold">
                     {attraction.highlight}
                   </span>
-                </div>
+                </motion.div>
                 <div className="flex items-center gap-1.5 text-muted-foreground">
                   <Clock className="w-3.5 h-3.5" />
                   <span className="text-[11px] font-body">{attraction.distance}</span>
@@ -84,7 +90,13 @@ const AttractionsSection = () => {
               <p className="text-muted-foreground font-body text-sm leading-relaxed">
                 {language === "am" ? attraction.descAm : attraction.descEn}
               </p>
-              <div className="mt-4 flex items-center gap-2 text-primary/50">
+              <motion.div
+                initial={{ width: 0 }}
+                animate={isInView ? { width: "100%" } : {}}
+                transition={{ delay: 0.5 + index * 0.1, duration: 0.8 }}
+                className="h-px bg-gradient-to-r from-primary/30 to-transparent mt-4"
+              />
+              <div className="mt-4 flex items-center gap-2 text-primary/50 group-hover:text-primary/70 transition-colors">
                 <MapPin className="w-3.5 h-3.5" />
                 <span className="text-[11px] font-body tracking-wide">{t("attractions.fromHotel")}</span>
               </div>
