@@ -190,9 +190,9 @@ const BookingSection = () => {
               className="absolute inset-0 rounded-xl pointer-events-none"
               animate={{
                 boxShadow: [
-                  "inset 0 0 0 1px hsl(280 85% 65% / 0.05)",
-                  "inset 0 0 0 1px hsl(280 85% 65% / 0.15)",
-                  "inset 0 0 0 1px hsl(280 85% 65% / 0.05)",
+                  "inset 0 0 0 1px hsl(145 45% 42% / 0.05)",
+                  "inset 0 0 0 1px hsl(145 45% 42% / 0.15)",
+                  "inset 0 0 0 1px hsl(145 45% 42% / 0.05)",
                 ],
               }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
