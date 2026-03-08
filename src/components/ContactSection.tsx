@@ -148,10 +148,11 @@ const ContactSection = () => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               type="submit"
-              className="w-full neon-button text-primary-foreground px-8 py-4 text-sm tracking-[0.15em] uppercase font-body font-semibold flex items-center justify-center gap-3"
+              disabled={sending}
+              className="w-full neon-button text-primary-foreground px-8 py-4 text-sm tracking-[0.15em] uppercase font-body font-semibold flex items-center justify-center gap-3 disabled:opacity-50"
             >
               <Send className="w-4 h-4" />
-              {t("contact.sendMessage")}
+              {sending ? "Sending..." : t("contact.sendMessage")}
             </motion.button>
           </motion.form>
         </div>
