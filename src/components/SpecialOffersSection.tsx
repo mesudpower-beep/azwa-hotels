@@ -20,7 +20,7 @@ const offers = [
     descEn: "Celebrate love with our romance package — room upgrade, flower arrangement, sparkling wine, and couples spa treatment.",
     descAm: "ፍቅርዎን ያክብሩ — የክፍል ማሻሻል፣ የአበባ ማስጌጥ፣ ወይን እና ለጥንዶች ስፓ ህክምና።",
     badge: "POPULAR",
-    color: "hsl(330 90% 65%)",
+    color: "hsl(25 50% 45%)",
   },
   {
     icon: Plane,
